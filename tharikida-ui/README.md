@@ -21,10 +21,6 @@ You can easily add **Tharikida UI** to your React project via npm or yarn:
 ```bash
 npm install tharikida-ui
 ```
-Using yarn:
-```bash
-yarn add tharikida-ui
-```
 ## Usage:
 Once installed, you can start using Tharikida UI components in your React project.
 
