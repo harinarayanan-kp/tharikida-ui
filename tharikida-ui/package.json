@@ -1,20 +1,33 @@
 {
   "name": "tharikida-ui",
-  "version": "1.0.0",
-  "description": "A simple UI component library",
-  "main": "dist/tharikida-ui.bundle.js",
+  "version": "1.0.1",
+  "description": "A lightweight, customizable React UI component library designed for simplicity and flexibility.",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
-    "build": "babel src --out-dir dist --copy-files && webpack",
+    "build": "npx babel src --out-dir dist --copy-files && webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "UI",
+    "React",
+    "component library",
+    "React components",
+    "Tharikida UI"
+  ],
+  "author": "Harinarayanan K P harikpaug18@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.25.9",
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
@@ -24,5 +37,9 @@
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.0.0"
-  }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
 }
