@@ -5,6 +5,8 @@ Tharikida UI is a lightweight React component library packed with simplicity, st
 
 ---
 
+[[VISIT WEBSITE](https://tharikida-ui.vercel.app/)]
+
 ## Features
 - 🥥 **Naadan Design:** A clean, minimalistic design inspired by Kerala's vibrant yet simple aesthetic.  
 - ⚡ **Fast and Lightweight:** Optimized for performance with minimal dependencies.  
@@ -20,10 +22,6 @@ You can easily add **Tharikida UI** to your React project via npm or yarn:
 ### Using npm:
 ```bash
 npm install tharikida-ui
-```
-Using yarn:
-```bash
-yarn add tharikida-ui
 ```
 ## Usage:
 Once installed, you can start using Tharikida UI components in your React project.
