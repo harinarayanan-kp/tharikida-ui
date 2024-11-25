@@ -10,8 +10,9 @@
     }
   },
   "scripts": {
-    "build": "npx babel src --out-dir dist --copy-files && webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && webpack",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "typedoc --out docs/ src"
   },
   "keywords": [
     "UI",
@@ -20,20 +21,21 @@
     "React components",
     "Tharikida UI"
   ],
-  "author": "Harinarayanan K P harikpaug18@gmail.com>",
+  "author": "Harinarayanan K P harikpaug18@gmail.com",
   "license": "ISC",
-  "dependencies": {
+  "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.25.9",
-    "@babel/core": "^7.26.0",
-    "@babel/preset-env": "^7.26.0",
-    "@babel/preset-react": "^7.25.9",
-    "babel-loader": "^9.2.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "css-loader": "^7.1.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "typedoc": "^0.26.11",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.0.0"
@@ -41,5 +43,8 @@
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "typescript": "^5.7.2"
+  }
 }

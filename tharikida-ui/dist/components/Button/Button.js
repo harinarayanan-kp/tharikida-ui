@@ -1,21 +1,14 @@
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _react = _interopRequireDefault(require("react"));
-require("./Button.css");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-// src/components/Button/Button.js
-
-var Button = function Button(_ref) {
-  var children = _ref.children,
-    onClick = _ref.onClick,
-    type = _ref.type;
-  return /*#__PURE__*/_react["default"].createElement("button", {
-    className: "tharikida-btn tharikida-btn-".concat(type),
-    onClick: onClick
-  }, children);
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _default = exports["default"] = Button;
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importDefault(require("react"));
+require("./Button.css");
+/**
+ * A customizable button component that can accept different styles and actions.
+ */
+const Button = ({ children, onClick, type = 'primary', style }) => {
+    return (react_1.default.createElement("button", { className: `tharikida-btn tharikida-btn-${type}`, onClick: onClick, style: style }, children));
+};
+exports.default = Button;

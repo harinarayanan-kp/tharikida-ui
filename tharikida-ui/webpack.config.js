@@ -1,31 +1,31 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js', // Entry file for your library
+  entry: './src/index.ts', // Entry file for your TypeScript library
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'tharikida-ui.bundle.js', // Output bundle file
     library: 'TharikidaUI', // Global variable for the library
     libraryTarget: 'umd', // Universal module definition for compatibility
-    globalObject: 'this', // To work in browser environment
+    globalObject: 'this', // To work in the browser environment
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.tsx?$/, // Match both .ts and .tsx files
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader', // Transpile JS files with Babel
+          loader: 'ts-loader', // Use ts-loader to transpile TypeScript files
         },
       },
       {
-        test: /\.css$/,
+        test: /\.css$/, // Handle CSS files
         use: ['style-loader', 'css-loader'], // Process CSS files
       },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'], // Resolve .ts, .tsx, .js, and .jsx
   },
   mode: 'production', // Set to 'development' for debugging
 };
