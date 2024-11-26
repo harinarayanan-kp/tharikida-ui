@@ -1,18 +1,32 @@
 /* src/components/Button/Button.css */
 .tharikida-btn {
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .tharikida-btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .tharikida-btn-secondary {
-    background-color: #6c757d;
-    color: white;
-  }
-  
+  padding: 4px 8px;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+
+  border: 1px solid #000;
+  background: #fff;
+  box-shadow: 2px 2px 0px 0px #000;
+
+  transition: 0.2s ease-in-out;
+}
+
+.tharikida-btn-primary {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+.tharikida-btn-secondary {
+  background-color: #f5e09a;
+  color: rgb(0, 0, 0);
+}
+
+.tharikida-btn:hover {
+  box-shadow: 1px 1px 0px 0px #000;
+}
+
+.tharikida-btn:active{
+  background-color: #c5c5c5;
+}

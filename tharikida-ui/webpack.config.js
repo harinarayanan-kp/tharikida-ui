@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts', // Entry file for your TypeScript library
+  entry: './src/testPage.tsx', // Entry file for your TypeScript library
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'tharikida-ui.bundle.js', // Output bundle file

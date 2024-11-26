@@ -12,7 +12,10 @@
   "scripts": {
     "build": "tsc && webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "typedoc --out docs/ src"
+    "docs": "typedoc --out docs/ src",
+    "clean": "rimraf dist",
+    "start": "webpack serve --mode development",
+    "prepare": "npm run build"
   },
   "keywords": [
     "UI",
@@ -38,13 +41,11 @@
     "typedoc": "^0.26.11",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.0.0"
+    "webpack-dev-server": "^4.0.0",
+    "typescript": "^5.7.2"
   },
   "files": [
     "dist",
     "README.md"
-  ],
-  "dependencies": {
-    "typescript": "^5.7.2"
-  }
+  ]
 }
