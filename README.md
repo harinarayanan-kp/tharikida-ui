@@ -3,7 +3,10 @@
 
 Tharikida UI is a lightweight React component library packed with simplicity, style, and a touch of Kerala flair! Whether you're building personal projects or developing applications, Tharikida UI offers the perfect balance of performance and visual appeal.
 
+
 ---
+(WORK IN PROGRES)
+  :-)
 
 [[VISIT WEBSITE](https://tharikida-ui.vercel.app/)]
 
