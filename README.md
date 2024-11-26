@@ -59,13 +59,7 @@ export default App;
 Tharikida UI includes the following components:
 
 Button: Customizable buttons with various styles.
-Modal: Simple modal component for dialogs and pop-ups.
-Input: Standard input fields (text, select, checkbox, radio).
-Card: Display cards with customizable content.
-Alert: Show alerts for notifications and warnings.
-Progress Bar: Indicate progress of tasks with a sleek bar.
-Spinner: Visual loader to show waiting states.
-Badge: Display badges for status, counts, or tags.
+
 Customization
 Tharikida UI is built to be flexible! You can easily customize the look and feel of components through props and CSS overrides.
 
