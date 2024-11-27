@@ -1,32 +1,38 @@
 /* src/components/Button/Button.css */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("../../styles/global.css");
+
 .tharikida-btn {
-  padding: 4px 8px;
-  font-family: "Montserrat", sans-serif;
-  border: none;
+  padding: var(--spacing-factor) calc(2 * var(--spacing-factor));
+  font-size: calc(4 * var(--spacing-factor));
   cursor: pointer;
-  font-size: 14px;
 
   border: 1px solid #000;
-  background: #fff;
-  box-shadow: 2px 2px 0px 0px #000;
+  margin: var(--spacing-factor);
 
   transition: 0.2s ease-in-out;
+  box-shadow: calc(0.25 * var(--spacing-factor))
+    calc(0.25 * var(--spacing-factor)) 0px 0px #000;
+  font-family: var(--font-family); /* Use theme font family */
+  font-size: var(--font-size); /* Use theme font size */
+  color: var(--text-color);
+  background-color: var(--primary-color); /* Use primary theme color */
 }
 
 .tharikida-btn-primary {
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
+  background-color: var(--primary-color); /* Use primary theme color */
 }
 
 .tharikida-btn-secondary {
-  background-color: #f5e09a;
-  color: rgb(0, 0, 0);
+  background-color: var(--secondary-color); /* Use secondary theme color */
 }
 
+.tharikida-btn-primary:active {
+  background-color: var(--tertiary-color);
+  box-shadow: var(--spacing-factor) var(--spacing-factor) 0px 0px #000;
+}
 .tharikida-btn:hover {
-  box-shadow: 1px 1px 0px 0px #000;
-}
-
-.tharikida-btn:active{
-  background-color: #c5c5c5;
+  box-shadow: calc(0.5 * var(--spacing-factor))
+    calc(0.5 * var(--spacing-factor)) 0px 0px #000;
 }

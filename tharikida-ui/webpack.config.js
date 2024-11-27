@@ -27,5 +27,11 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'], // Resolve .ts, .tsx, .js, and .jsx
   },
-  mode: 'production', // Set to 'development' for debugging
+  mode: process.env.NODE_ENV === 'development' ? 'development' : 'production', // Automatically set mode
+  devServer: {
+    static: path.resolve(__dirname, 'dist'), // Serve from 'public' directory
+    port: 3000, // Port for the dev server
+    open: true, // Open the browser automatically
+    hot: true, // Enable hot module replacement
+  },
 };

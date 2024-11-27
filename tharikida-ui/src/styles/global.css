@@ -1,0 +1,10 @@
+:root {
+  --primary-color: #9ad4f5;
+  --secondary-color: #CCFFCC;
+  --tertiary-color: #4dff00;
+  --text-color: #000000;
+  --background-color: #ffffff;
+  --font-family: "Montserrat", sans-serif;
+  --font-size: 14px;
+  --spacing-factor: 4px;
+}

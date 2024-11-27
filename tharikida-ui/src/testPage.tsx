@@ -1,14 +1,20 @@
 // src/testPage.tsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from './components/Button';
+import React from "react";
+import ReactDOM from "react-dom";
+import Button from "./components/Button";
+import { ThemeProvider } from "./theme/ThemeProvider";
 
 const App = () => {
   return (
-    <div>
-      <Button type="primary">Click me</Button>
-    </div>
+    <>
+      <ThemeProvider >
+        <div>
+          <Button type="secondary">Secondary</Button>
+          <Button type="primary">Primary</Button>
+        </div>
+      </ThemeProvider>
+    </>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
