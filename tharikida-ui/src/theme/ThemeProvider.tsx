@@ -7,8 +7,8 @@ export interface Theme {
   tertiaryColor: string;
   textColor: string;
   backgroundColor: string;
-  fontSize: string;
   fontFamily: string;
+  fontSize: number;
   spacingfactor: number;
 }
 
@@ -19,7 +19,7 @@ export const defaultTheme: Theme = {
   tertiaryColor: "#4dff00",
   textColor: "#000000",
   backgroundColor: "#fff",
-  fontSize: "1rem",
+  fontSize: 16,
   fontFamily: "Montserrat, sans-serif",
   spacingfactor: 4,
 };
@@ -31,8 +31,8 @@ interface ThemeProviderProps {
   tertiaryColor?: string;
   textColor?: string;
   backgroundColor?: string;
-  fontSize?: string;
   fontFamily?: string;
+  fontSize?: number;
   spacingfactor?: number;
 }
 
