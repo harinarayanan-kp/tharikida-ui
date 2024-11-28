@@ -1,51 +1,74 @@
-import React, { createContext, useContext, ReactNode, useEffect, useState } from 'react';
-import { Theme } from './types'; // Import the Theme type
+import React, { createContext, useContext, ReactNode } from "react";
+
+// Define the type for your theme
+export interface Theme {
+  primaryColor: string;
+  secondaryColor: string;
+  tertiaryColor: string;
+  textColor: string;
+  backgroundColor: string;
+  fontSize: string;
+  fontFamily: string;
+  spacingfactor: number;
+}
+
+// Default theme
+export const defaultTheme: Theme = {
+  primaryColor: "#3498db",
+  secondaryColor: "#2ecc71",
+  tertiaryColor: "#4dff00",
+  textColor: "#000000",
+  backgroundColor: "#fff",
+  fontSize: "1rem",
+  fontFamily: "Montserrat, sans-serif",
+  spacingfactor: 4,
+};
 
 interface ThemeProviderProps {
   children: ReactNode;
+  primaryColor?: string;
+  secondaryColor?: string;
+  tertiaryColor?: string;
+  textColor?: string;
+  backgroundColor?: string;
+  fontSize?: string;
+  fontFamily?: string;
+  spacingfactor?: number;
 }
 
 const ThemeContext = createContext<Theme | undefined>(undefined);
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme | undefined>(undefined);
+// ThemeProvider component
+export const ThemeProvider = ({
+  children,
+  primaryColor,
+  secondaryColor,
+  tertiaryColor,
+  textColor,
+  backgroundColor,
+  fontSize,
+  fontFamily,
+  spacingfactor,
+}: ThemeProviderProps) => {
+  const theme: Theme = {
+    primaryColor: primaryColor || defaultTheme.primaryColor,
+    secondaryColor: secondaryColor || defaultTheme.secondaryColor,
+    tertiaryColor: tertiaryColor || defaultTheme.tertiaryColor,
+    textColor: textColor || defaultTheme.textColor,
+    backgroundColor: backgroundColor || defaultTheme.backgroundColor,
+    fontSize: fontSize || defaultTheme.fontSize,
+    fontFamily: fontFamily || defaultTheme.fontFamily,
+    spacingfactor: spacingfactor || defaultTheme.spacingfactor,
+  };
 
-  useEffect(() => {
-    // Read the CSS variables from the root element (document.documentElement)
-    const root = document.documentElement;
-
-    const primaryColor = getComputedStyle(root).getPropertyValue('--primary-color').trim();
-    const secondaryColor = getComputedStyle(root).getPropertyValue('--secondary-color').trim();
-    const tertiaryColor = getComputedStyle(root).getPropertyValue('--tertiary-color').trim();
-    const backgroundColor = getComputedStyle(root).getPropertyValue('--background-color').trim();
-    const textColor = getComputedStyle(root).getPropertyValue('--text-color').trim();
-    const fontFamily = getComputedStyle(root).getPropertyValue('--font-family').trim();
-    const fontSize = getComputedStyle(root).getPropertyValue('--font-size').trim();
-    const spacingFactor = getComputedStyle(root).getPropertyValue('--spacing-factor').trim();
-
-    // Set the theme object based on the CSS variables
-    setTheme({
-      colors: {
-        primary: primaryColor,
-        secondary: secondaryColor,
-        tertiary: tertiaryColor,
-        background: backgroundColor,
-        text: textColor,
-      },
-      font: {
-        family: fontFamily,
-        size: fontSize,
-      },
-      spacing: (factor: number) => `${parseInt(spacingFactor) * factor}px`, // Convert to number and scale
-    });
-  }, []);
-
-  // If the theme is not set yet, return a loading or fallback component
-  if (!theme) return <div>Loading...</div>;
-
-  return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+  );
 };
 
-export const useTheme = (): Theme | undefined => {
-  return useContext(ThemeContext);
+// useTheme hook with fallback to defaultTheme
+export const useTheme = (): Theme => {
+  const context = useContext(ThemeContext);
+  // If context is undefined, fallback to defaultTheme
+  return context || defaultTheme;
 };

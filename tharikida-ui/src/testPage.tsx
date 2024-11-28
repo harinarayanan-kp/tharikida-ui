@@ -7,7 +7,9 @@ import { ThemeProvider } from "./theme/ThemeProvider";
 const App = () => {
   return (
     <>
-      <ThemeProvider >
+      <Button type="secondary">Secondary</Button>
+      <Button type="primary">Primary</Button>
+      <ThemeProvider>
         <div>
           <Button type="secondary">Secondary</Button>
           <Button type="primary">Primary</Button>
