@@ -8,7 +8,8 @@ Tharikida UI is a lightweight React component library packed with simplicity, st
 (WORK IN PROGRES)
   :-)
 
-[[VISIT WEBSITE](https://tharikida-ui.vercel.app/)]
+![image](https://github.com/user-attachments/assets/a6d99e38-6668-44f4-8df5-7ed05c1e0be5)
+
 
 ## Features
 - 🥥 **Naadan Design:** A clean, minimalistic design inspired by Kerala's vibrant yet simple aesthetic.  
@@ -31,29 +32,29 @@ Once installed, you can start using Tharikida UI components in your React projec
 
 Example:
 
-```jsx
-import React from 'react';
-import { Button, Modal } from 'tharikida-ui';
-
-const App = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-  return (
-    <div>
-      <h1>Welcome to Tharikida UI!</h1>
-      <Button onClick={() => setIsModalOpen(true)} type="primary">
-        Open Modal
-      </Button>
-
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2>Tharikida Modal</h2>
-        <p>This is a simple modal from Tharikida UI!</p>
-      </Modal>
-    </div>
-  );
-};
-
-export default App;
+```tsx
+<Button type="secondary">Secondary</Button>
+<Button type="primary">Primary</Button>
+<ThemeProvider
+  primaryColor="green"
+  backgroundColor="yellow"
+  spacingfactor={8}>
+        <div>
+          <Button type="secondary">Secondary</Button>
+          <Button type="primary">Primary</Button>
+        </div>
+        <MusicPlayer
+          musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+          currentPosition={50}
+          images={[
+            "https://cdn.pixabay.com/photo/2024/11/13/08/47/city-9193823_1280.jpg",
+            "https://cdn.pixabay.com/photo/2023/06/28/11/25/man-8094211_960_720.jpg",
+          ]}
+          musicName="FE!N"
+          artist="Travis Scott"
+        />
+</ThemeProvider>
+<Star size={40} />
 ```
 ## Components:
 Tharikida UI includes the following components:
