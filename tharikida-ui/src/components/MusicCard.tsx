@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useTheme } from "../theme/ThemeProvider";
+import ImageCarousel from "./ImageCarrosel";
 /**
  * MusicCardProps Interface
  *
@@ -20,7 +21,7 @@ interface MusicCardProps {
   musicUrl?: string;
 
   /** The URL of the image associated with the music track. */
-  image?: string;
+  images: string[];
 
   /** The current playback position as a percentage (0-100). */
   currentPosition?: number;
@@ -44,7 +45,7 @@ const MusicCard = ({
   musicName,
   artist,
   musicUrl,
-  image,
+  images,
   currentPosition,
 }: MusicCardProps) => {
   const [isPlaying, setisPlaying] = useState(false);
@@ -157,18 +158,15 @@ const MusicCard = ({
           gap: theme.spacingfactor * 2,
         }}
       >
-        {image ? (
-          <div style={{ width: "100%" }}>
-            <img
-              style={{
-                width: "100%",
-                height: "100%",
-                maxHeight: "250px",
-                objectFit: "cover",
-                border: "3px solid black",
-              }}
-              src={image}
-            ></img>
+        {images ? (
+          <div
+            style={{
+              width: "100%",
+              height: "250px",
+              border: "3px solid black",
+            }}
+          >
+            <ImageCarousel width="100%" height="100%" images={images} />
           </div>
         ) : (
           <></>
@@ -376,6 +374,18 @@ const MusicCard = ({
                 backgroundColor: theme.primaryColor,
                 borderRadius: theme.spacingfactor * 5,
                 transition: "width 0.3s ease",
+              }}
+            />
+            <div
+              style={{
+                position: "relative",
+                left: `${currentPosition}%`,
+                transform: "translateY(-50%) translateX(-50%)",
+                width: theme.spacingfactor * 4,
+                height: theme.spacingfactor * 4,
+                backgroundColor: theme.primaryColor,
+                border: "2px solid black",
+                borderRadius: theme.spacingfactor * 5,
               }}
             />
           </div>

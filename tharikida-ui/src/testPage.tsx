@@ -7,11 +7,19 @@ import MusicPlayer from "./components/MusicCard";
 import Star from "./components/Shapes/Star";
 import ActiveTag from "./components/Tags/Active";
 import Calendar from "./components/Calender";
-import PopupAlert from "./components/PopUpAlert";
+import ImageCarousel from "./components/ImageCarrosel";
+// import PopupAlert from "./components/PopUpAlert";
 
 const App = () => {
+  const images = [
+    "https://cdn.pixabay.com/photo/2024/11/08/09/45/facade-9182972_1280.jpg",
+    "https://cdn.pixabay.com/photo/2024/11/26/18/50/skyscraper-9226515_1280.jpg",
+    "https://cdn.pixabay.com/photo/2022/12/20/12/10/santa-7667744_960_720.jpg",
+  ];
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems:"center" }}>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <Button type="secondary">Secondary</Button>
       <Button type="primary">Primary</Button>
       <ThemeProvider>
@@ -22,14 +30,16 @@ const App = () => {
         <MusicPlayer
           musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
           currentPosition={50}
-          image="https://cdn.pixabay.com/photo/2023/06/28/11/25/man-8094211_960_720.jpg"
+          images={[
+            "https://cdn.pixabay.com/photo/2024/11/13/08/47/city-9193823_1280.jpg",
+            "https://cdn.pixabay.com/photo/2023/06/28/11/25/man-8094211_960_720.jpg",
+          ]}
           musicName="FE!N"
           artist="Travis Scott"
         />
       </ThemeProvider>
       <Star size={40} />
       <Calendar />
-      <PopupAlert/>
     </div>
   );
 };
