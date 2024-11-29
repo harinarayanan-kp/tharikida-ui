@@ -7,6 +7,7 @@ interface ImageCarouselProps {
   width?: string;
   containerStyle?: React.CSSProperties;
   delay?: number;
+  animationType?: "slide-in-left" | "slide-in-right" | "slide-up" | "slide-down"; // Animation types
 }
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({
@@ -15,6 +16,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
   width,
   containerStyle,
   delay = 2000,
+  animationType = "slide-in-left", // Default animation type
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -26,26 +28,40 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
     return () => clearInterval(interval);
   }, [images.length, delay]);
 
+  const getAnimationClass = (animationType: string) => {
+    switch (animationType) {
+      case "slide-in-left":
+        return "slide-in-left";
+      case "slide-in-right":
+        return "slide-in-right";
+      case "slide-up":
+        return "slide-up";
+      case "slide-down":
+        return "slide-down";
+      default:
+        return "";
+    }
+  };
+
   return (
     <div
       style={{
         width: width ? `${width}` : "100%",
         height: height ? `${height}` : "100vh",
-        objectFit: "cover",
         overflow: "hidden",
         position: "relative",
         ...containerStyle,
       }}
     >
-      {/* Render the image using the URL */}
       <img
+        key={currentIndex}
         src={images[currentIndex]}
         alt={`carousel-image-${currentIndex}`}
+        className={getAnimationClass(animationType)}
         style={{
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          transition: "opacity 0.5s ease-in-out",
         }}
       />
     </div>

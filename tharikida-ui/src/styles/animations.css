@@ -1,0 +1,54 @@
+/* Add these styles to your CSS file */
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Apply animation classes */
+.slide-in-left {
+  animation: slide-in-left 1s ease-in-out forwards;
+}
+
+.slide-in-right {
+  animation: slide-in-right 1s ease-in-out forwards;
+}
+
+.slide-up {
+  animation: slide-up 1s ease-in-out forwards;
+}
+
+.slide-down {
+  animation: slide-down 1s ease-in-out forwards;
+}

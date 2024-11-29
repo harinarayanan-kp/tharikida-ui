@@ -166,7 +166,7 @@ const MusicCard = ({
               border: "3px solid black",
             }}
           >
-            <ImageCarousel width="100%" height="100%" images={images} />
+            <ImageCarousel  width="100%" height="100%" images={images} />
           </div>
         ) : (
           <></>

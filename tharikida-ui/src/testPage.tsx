@@ -8,6 +8,7 @@ import Star from "./components/Shapes/Star";
 import ActiveTag from "./components/Tags/Active";
 import Calendar from "./components/Calender";
 import ImageCarousel from "./components/ImageCarrosel";
+import ArrowButton from "./components/Button/ArrowButton";
 // import PopupAlert from "./components/PopUpAlert";
 
 const App = () => {
@@ -22,7 +23,8 @@ const App = () => {
     >
       <Button type="secondary">Secondary</Button>
       <Button type="primary">Primary</Button>
-      <ThemeProvider>
+      <ArrowButton />
+      <ThemeProvider >
         <div>
           <Button type="secondary">Secondary</Button>
           <Button type="primary">Primary</Button>
