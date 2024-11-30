@@ -115,7 +115,7 @@ const styles = {
     flexDirection: "column" as "column",
     alignItems: "center",
     position: "relative" as "relative",
-    width: "250px",
+    width: "350px",
     fontFamily: "'Arial', sans-serif",
   },
   dateInput: {
@@ -139,8 +139,7 @@ const styles = {
     width: "100%",
     boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
     padding: "10px",
-    maxHeight: "400px", // Prevent overflow and make it scrollable
-    overflowY: "auto" as "auto", // Explicitly typed as "auto"
+    maxHeight: "400px",
   },
   header: {
     display: "flex",
@@ -150,6 +149,7 @@ const styles = {
     backgroundColor: "#f7f7f7",
   },
   select: {
+    backgroundColor: "beige",
     padding: "6px 10px",
     fontSize: "14px",
     borderRadius: "5px",
@@ -165,11 +165,16 @@ const styles = {
     textAlign: "center" as "center",
     fontWeight: "bold" as "bold",
     padding: "5px",
+    boxSizing: "border-box" as "border-box",
+    width: "100%",
     borderBottom: "1px solid #ddd",
-    backgroundColor: "#f4f4f4",
+    backgroundColor: "blue",
   },
   datesGrid: {
+    boxSizing: "border-box" as "border-box",
+    backgroundColor: "yellow",
     display: "grid",
+    width: "100%",
     gridTemplateColumns: "repeat(7, 1fr)",
     textAlign: "center" as "center",
     gap: "5px",
@@ -182,9 +187,9 @@ const styles = {
   },
   dateCell: {
     padding: "10px",
-    border: "1px solid transparent",
+    border: "1px solid red",
     margin: "2px",
-    borderRadius: "5px",
+    borderRadius: "50%",
     transition: "background-color 0.3s, color 0.3s",
   },
   selectedDate: {
@@ -193,7 +198,7 @@ const styles = {
     borderRadius: "50%",
   },
   dateCellHover: {
-    backgroundColor: "#f1f1f1",
+    backgroundColor: "red",
     cursor: "pointer",
   },
 };

@@ -21,6 +21,7 @@ const App = () => {
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
+      <Calendar/>
       <Button type="secondary">Secondary</Button>
       <Button type="primary">Primary</Button>
       <ArrowButton />
