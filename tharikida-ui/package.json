@@ -12,7 +12,7 @@
   "scripts": {
     "build": "tsc && webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "typedoc --out docs/ src",
+    "docs": "typedoc --out docs ./src",
     "clean": "rimraf dist",
     "start": "webpack serve --mode development",
     "prepare": "npm run build"

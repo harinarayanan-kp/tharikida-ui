@@ -1,4 +1,5 @@
 import Button from './components/Button/Button';
-import { MusicCard } from './components';
+import ArrowButton from './components/Button/ArrowButton';
+import MusicCard from './components/MusicCard';
 
-export { Button, MusicCard };
+export { Button, ArrowButton, MusicCard };
