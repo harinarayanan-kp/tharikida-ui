@@ -20,10 +20,12 @@ const App = () => {
   ];
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <Calendar />
+      <Calendar size="300px" />
+    
       <Dropdown
+        width="300px"
         options={["Option 1", "Option 2", "Option 3"]}
         defaultOption="Option 2"
         onChange={(value) => console.log("Selected:", value)}
@@ -48,7 +50,6 @@ const App = () => {
         />
       </ThemeProvider>
       <Star size={40} />
-      <Calendar />
     </div>
   );
 };

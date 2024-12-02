@@ -5,10 +5,9 @@ interface calendarProps {
   handleDateClick?: (day: number | null) => void;
   size?: string;
 }
-
 const CustomCalendar = ({ size }: calendarProps) => {
   const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const generateCalendar = (month: number, year: number) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -26,11 +25,8 @@ const CustomCalendar = ({ size }: calendarProps) => {
 
   const handleDateClick = (day: number | null) => {
     if (day !== null) {
-      const date = new Date(currentYear, currentMonth, day)
-        .toISOString()
-        .split("T")[0];
+      const date = new Date(currentYear, currentMonth, day);
       setSelectedDate(date);
-      console.log("Selected Date:", date);
       setShowCalendar(false);
     }
   };
@@ -49,7 +45,6 @@ const CustomCalendar = ({ size }: calendarProps) => {
     setCurrentYear(newYear);
   };
 
-  // Handle month change (now accepting string)
   const handleMonthChange = (value: string) => {
     setCurrentMonth(months.indexOf(value)); // Find the index of the month string
   };
@@ -74,68 +69,81 @@ const CustomCalendar = ({ size }: calendarProps) => {
     "December",
   ];
 
+  // Format selectedDate for display
+  const formatDate = (date: Date | null) => {
+    if (!date) return "Pick a Date"; // If no date selected, show placeholder
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "short", // "short" gives abbreviated month names
+      day: "numeric",
+    };
+    return date.toLocaleDateString(undefined, options); // Formats to "Dec 2, 2024"
+  };
+
   return (
-    <div style={styles.container}>
-      <div
-        style={styles.dateInput}
-        onClick={() => setShowCalendar(!showCalendar)}
-      >
-        {selectedDate || "Pick a Date"}
-      </div>
-      {showCalendar && (
-        <div style={styles.calendar}>
-
-          <div style={styles.header}>
-            <Dropdown
-              options={months}
-              defaultOption={months[currentMonth]}
-              onChange={handleMonthChange} // Directly handle as string
-            />
-
-            <Dropdown
-              options={years.map(String)} // Ensure the values are strings
-              defaultOption={String(currentYear)} // Default year as a string
-              onChange={(value) =>
-                handleYearChange({
-                  target: { value },
-                } as React.ChangeEvent<HTMLSelectElement>)
-              } // Simulate ChangeEvent for consistency
-            />
-          </div>
-
-          <div style={styles.daysRow}>
-            {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-              <div key={day} style={styles.dayName}>
-                {day}
-              </div>
-            ))}
-          </div>
-
-          <div style={styles.datesGrid}>
-            {dates.map((day, index) => (
-              <div
-                key={index}
-                style={{
-                  ...styles.dateCell,
-                  ...(day && { cursor: "pointer" }),
-                  ...(day !== null &&
-                    selectedDate ===
-                      new Date(currentYear, currentMonth, day)
-                        .toISOString()
-                        .split("T")[0] &&
-                    styles.selectedDate),
-                }}
-                onClick={() => handleDateClick(day)}
-              >
-                {day || ""}
-              </div>
-            ))}
-          </div>
+    <div style={{ width: size || "300px" }}>
+      <div style={styles.container}>
+        <div
+          style={styles.dateInput}
+          onClick={() => setShowCalendar(!showCalendar)}
+        >
+          {formatDate(selectedDate)}
         </div>
-      )}
+        {showCalendar && (
+          <div style={styles.calendar}>
+            <div style={styles.header}>
+              <Dropdown
+                options={months}
+                defaultOption={months[currentMonth]}
+                onChange={handleMonthChange} // Directly handle as string
+              />
+              <Dropdown
+                options={years.map(String)} // Ensure the values are strings
+                defaultOption={String(currentYear)} // Default year as a string
+                onChange={(value) =>
+                  handleYearChange({
+                    target: { value },
+                  } as React.ChangeEvent<HTMLSelectElement>)
+                } // Simulate ChangeEvent for consistency
+              />
+            </div>
+
+            <div style={styles.daysRow}>
+              {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+                <div key={day} style={styles.dayName}>
+                  {day}
+                </div>
+              ))}
+            </div>
+
+            <div style={styles.datesGrid}>
+              {dates.map((day, index) => (
+                <div
+                  key={index}
+                  style={{
+                    ...styles.dateCell,
+                    ...(day && { cursor: "pointer" }),
+                    ...(day !== null &&
+                      selectedDate &&
+                      selectedDate.toISOString().split("T")[0] ===
+                        new Date(currentYear, currentMonth, day)
+                          .toISOString()
+                          .split("T")[0] &&
+                      styles.selectedDate),
+                  }}
+                  onClick={() => handleDateClick(day)}
+                >
+                  {day || ""}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
+
 const styles = {
   container: {
     boxSizing: "border-box" as "border-box",
@@ -143,7 +151,7 @@ const styles = {
     flexDirection: "column" as "column",
     alignItems: "center",
     position: "relative" as "relative",
-    width: "321px",
+    width: "100%",
     padding: "7px 24px",
     fontFamily: "'Arial', sans-serif",
   },
@@ -175,17 +183,6 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     gap: "10px",
-  },
-  select: {
-    backgroundColor: "beige",
-    padding: "6px 10px",
-    fontSize: "14px",
-    borderRadius: "5px",
-    border: "1px solid #ccc",
-    margin: "0 5px",
-    cursor: "pointer",
-    width: "45%",
-    boxSizing: "border-box" as "border-box",
   },
   daysRow: {
     boxSizing: "border-box" as "border-box",

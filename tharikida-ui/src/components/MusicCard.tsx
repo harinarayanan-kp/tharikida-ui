@@ -50,6 +50,9 @@ const MusicCard = ({
 }: MusicCardProps) => {
   const [isPlaying, setisPlaying] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const theme = useTheme();
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -62,10 +65,31 @@ const MusicCard = ({
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
-  const handlePlay = () => {
-    setisPlaying(!isPlaying);
-  };
+  
+  useEffect(() => {
+    
+    if (musicUrl) {
+      const newAudio = new Audio(musicUrl);
+      setAudio(newAudio);
 
+      // Cleanup audio when the component unmounts
+      return () => {
+        newAudio.pause();
+        setAudio(null);
+      };
+    }
+  }, [musicUrl]);
+  const handlePlay = () => {
+    if (audio) {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      setisPlaying(!isPlaying);
+    }
+  };
+  const currentPositionPercentage = (currentTime / duration) * 100;
   return (
     <div
       style={{

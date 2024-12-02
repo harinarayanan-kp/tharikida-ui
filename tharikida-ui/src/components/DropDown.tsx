@@ -1,27 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface DropdownProps {
   options: string[];
   defaultOption?: string;
   onChange?: (value: string) => void;
+  width?: string;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
   options,
   defaultOption,
   onChange,
+  width,
 }) => {
   const [selected, setSelected] = useState(defaultOption || options[0]);
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLUListElement | null>(null);
 
   const handleSelect = (value: string) => {
     setSelected(value);
     setIsOpen(false);
     onChange && onChange(value);
   };
+  useEffect(() => {
+    if (isOpen && dropdownRef.current) {
+      const selectedOptionIndex = options.indexOf(selected);
+      const selectedOptionElement = dropdownRef.current?.children[
+        selectedOptionIndex
+      ] as HTMLElement;
+      if (selectedOptionElement) {
+        selectedOptionElement.scrollIntoView({
+          behavior: "smooth",
+          block: "center", // Ensures the selected item is vertically centered
+        });
+      }
+    }
+  }, [isOpen, selected, options]);
 
   return (
-    <div style={{ position: "relative", width: "100%" }}>
+    <div style={{ position: "relative", width: width || "100%" }}>
       <div
         style={{
           fontFamily: "montserrat",
@@ -34,6 +51,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           justifyContent: "space-between",
           alignItems: "center",
           display: "inline-flex",
+          height: "40px",
         }}
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -58,6 +76,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       </div>
       {isOpen && (
         <ul
+          ref={dropdownRef}
           style={{
             boxSizing: "border-box" as "border-box",
             zIndex: 1000,
@@ -71,6 +90,8 @@ const Dropdown: React.FC<DropdownProps> = ({
             top: "100%",
             left: 0,
             width: "100%",
+            maxHeight: "300px",
+            overflowY: "auto",
           }}
         >
           {options.map((option, index) => (
