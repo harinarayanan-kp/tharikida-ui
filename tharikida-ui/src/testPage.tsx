@@ -9,6 +9,7 @@ import ActiveTag from "./components/Tags/Active";
 import Calendar from "./components/Calender";
 import ImageCarousel from "./components/ImageCarrosel";
 import ArrowButton from "./components/Button/ArrowButton";
+import Dropdown from "./components/DropDown";
 // import PopupAlert from "./components/PopUpAlert";
 
 const App = () => {
@@ -21,11 +22,16 @@ const App = () => {
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <Calendar/>
+      <Calendar />
+      <Dropdown
+        options={["Option 1", "Option 2", "Option 3"]}
+        defaultOption="Option 2"
+        onChange={(value) => console.log("Selected:", value)}
+      />
       <Button type="secondary">Secondary</Button>
       <Button type="primary">Primary</Button>
       <ArrowButton />
-      <ThemeProvider >
+      <ThemeProvider>
         <div>
           <Button type="secondary">Secondary</Button>
           <Button type="primary">Primary</Button>
