@@ -33,9 +33,13 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const ThemeProvider_1 = require("../theme/ThemeProvider");
+const ImageCarrosel_1 = __importDefault(require("./ImageCarrosel"));
 /**
  * MusicCard Component
  *
@@ -50,10 +54,13 @@ const ThemeProvider_1 = require("../theme/ThemeProvider");
  *
  * @returns A styled React component that renders the music card.
  */
-const MusicCard = ({ musicName, artist, musicUrl, image, currentPosition, }) => {
+const MusicCard = ({ musicName, artist, musicUrl, images, currentPosition, }) => {
     const [isPlaying, setisPlaying] = (0, react_1.useState)(false);
     const [position, setPosition] = (0, react_1.useState)({ x: 0, y: 0 });
-    const theme = (0, ThemeProvider_1.useTheme)(); // Get the theme object
+    const [audio, setAudio] = (0, react_1.useState)(null);
+    const [currentTime, setCurrentTime] = (0, react_1.useState)(0);
+    const [duration, setDuration] = (0, react_1.useState)(0);
+    const theme = (0, ThemeProvider_1.useTheme)();
     (0, react_1.useEffect)(() => {
         const handleMouseMove = (e) => {
             setPosition({ x: e.clientX, y: e.clientY });
@@ -63,9 +70,29 @@ const MusicCard = ({ musicName, artist, musicUrl, image, currentPosition, }) => 
             window.removeEventListener("mousemove", handleMouseMove);
         };
     }, []);
+    (0, react_1.useEffect)(() => {
+        if (musicUrl) {
+            const newAudio = new Audio(musicUrl);
+            setAudio(newAudio);
+            // Cleanup audio when the component unmounts
+            return () => {
+                newAudio.pause();
+                setAudio(null);
+            };
+        }
+    }, [musicUrl]);
     const handlePlay = () => {
-        setisPlaying(!isPlaying);
+        if (audio) {
+            if (isPlaying) {
+                audio.pause();
+            }
+            else {
+                audio.play();
+            }
+            setisPlaying(!isPlaying);
+        }
     };
+    const currentPositionPercentage = (currentTime / duration) * 100;
     return (react_1.default.createElement("div", { style: {
             position: "relative",
             width: "300px",
@@ -86,44 +113,44 @@ const MusicCard = ({ musicName, artist, musicUrl, image, currentPosition, }) => 
                 justifyContent: "flex-end",
                 alignItems: "center",
                 gap: "10px",
+                paddingRight: theme.spacingfactor * 1.5,
+                paddingBottom: theme.spacingfactor * 0.5,
+                paddingTop: theme.spacingfactor * 0.5,
                 borderBottom: "2px solid black",
             } },
-            react_1.default.createElement("div", { className: "Line", style: {
-                    width: "24px",
-                    height: "3px",
+            react_1.default.createElement("div", { style: {
+                    width: theme.spacingfactor * 4,
+                    height: "2px",
                     borderRadius: 5,
-                    margin: "5px",
                     backgroundColor: "#000000",
                 } }),
-            react_1.default.createElement("div", { className: "Line", style: {
-                    width: "20px",
-                    height: "20px",
-                    borderRadius: 24,
-                    margin: "5px",
-                    border: "3px solid black",
+            react_1.default.createElement("div", { style: {
+                    width: theme.spacingfactor * 3,
+                    height: theme.spacingfactor * 3,
+                    borderRadius: theme.spacingfactor * 3,
+                    border: "2px solid black",
                 } }),
             react_1.default.createElement("div", { style: {
                     rotate: "45deg",
-                    height: "24px",
-                    width: "24px",
-                    margin: "3px",
+                    height: theme.spacingfactor * 5,
+                    width: theme.spacingfactor * 5,
                     position: "relative",
                 } },
                 react_1.default.createElement("div", { style: {
-                        position: "absolute", // Stack the items on top of each other
-                        top: 12, // Start from the top of the container
+                        position: "absolute",
+                        top: theme.spacingfactor * 2.5,
                         left: 0,
                         rotate: "90deg",
-                        width: 24,
+                        width: theme.spacingfactor * 5,
                         height: "2px",
                         borderRadius: 5,
                         backgroundColor: "#000000",
                     } }),
                 react_1.default.createElement("div", { style: {
                         position: "absolute",
-                        top: 12,
+                        top: theme.spacingfactor * 2.5,
                         left: 0,
-                        width: 24,
+                        width: theme.spacingfactor * 5,
                         height: "2px",
                         borderRadius: 5,
                         backgroundColor: "#000000",
@@ -138,14 +165,12 @@ const MusicCard = ({ musicName, artist, musicUrl, image, currentPosition, }) => 
                 alignItems: "center",
                 gap: theme.spacingfactor * 2,
             } },
-            image ? (react_1.default.createElement("div", { style: { width: "100%" } },
-                react_1.default.createElement("img", { style: {
-                        width: "100%",
-                        height: "100%",
-                        maxHeight: "250px",
-                        objectFit: "cover",
-                        border: "3px solid black",
-                    }, src: image }))) : (react_1.default.createElement(react_1.default.Fragment, null)),
+            images ? (react_1.default.createElement("div", { style: {
+                    width: "100%",
+                    height: "250px",
+                    border: "3px solid black",
+                } },
+                react_1.default.createElement(ImageCarrosel_1.default, { width: "100%", height: "100%", images: images }))) : (react_1.default.createElement(react_1.default.Fragment, null)),
             react_1.default.createElement("div", { style: {
                     paddingBottom: "5px",
                     paddingTop: "5px",
@@ -158,27 +183,27 @@ const MusicCard = ({ musicName, artist, musicUrl, image, currentPosition, }) => 
                 react_1.default.createElement("svg", { width: "26", height: "26", viewBox: "0 0 26 26", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
                     react_1.default.createElement("rect", { x: "1.1875", y: "0.608437", width: "24", height: "24", rx: "12", fill: "#F3FE9D" }),
                     react_1.default.createElement("rect", { x: "1.1875", y: "0.608437", width: "24", height: "24", rx: "12", stroke: "black" }),
-                    react_1.default.createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M16.9984 6.33933C17.2796 6.05815 17.7355 6.05815 18.0167 6.33933L20.1767 8.49933C20.4578 8.78051 20.4578 9.23639 20.1767 9.51757L18.0167 11.6776C17.7355 11.9587 17.2796 11.9587 16.9984 11.6776C16.7173 11.3964 16.7173 10.9405 16.9984 10.6593L17.8573 9.80045H16.884C15.78 9.80045 14.8016 10.3411 13.9268 11.1263C13.6309 11.3919 13.1757 11.3673 12.9101 11.0713C12.6445 10.7754 12.6691 10.3202 12.965 10.0546C13.9736 9.14937 15.2819 8.36045 16.884 8.36045H18.0013L16.9984 7.35757C16.7173 7.07639 16.7173 6.62051 16.9984 6.33933ZM5.98755 9.08045C5.98755 8.68281 6.30991 8.36045 6.70755 8.36045C9.46128 8.36045 11.2008 10.4813 12.6075 12.229C12.6603 12.2947 12.7127 12.3599 12.7648 12.4246C13.4429 13.2687 14.0577 14.0338 14.7221 14.6126C15.4221 15.2224 16.1065 15.5604 16.8805 15.5604H18.0013L16.9984 14.5576C16.7173 14.2764 16.7173 13.8205 16.9984 13.5393C17.2796 13.2582 17.7355 13.2582 18.0167 13.5393L20.1767 15.6993C20.4578 15.9805 20.4578 16.4364 20.1767 16.7176L18.0167 18.8776C17.7355 19.1587 17.2796 19.1587 16.9984 18.8776C16.7173 18.5964 16.7173 18.1405 16.9984 17.8593L17.8573 17.0004H16.8805C15.6339 17.0004 14.6257 16.4385 13.7761 15.6983C13.0696 15.0828 12.4243 14.2994 11.8136 13.5402C11.2096 14.2946 10.5659 15.0677 9.85959 15.68C8.99496 16.4296 7.96818 17.0004 6.71141 17.0004C6.31377 17.0004 5.99141 16.6781 5.99141 16.2804C5.99141 15.8828 6.31377 15.5604 6.71141 15.5604C7.49523 15.5604 8.19887 15.214 8.91631 14.592C9.58884 14.0089 10.2126 13.239 10.8829 12.3977C9.62133 10.9037 8.4011 9.80045 6.70755 9.80045C6.30991 9.80045 5.98755 9.4781 5.98755 9.08045Z", fill: "#0F1729" })),
+                    react_1.default.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M16.9984 6.33933C17.2796 6.05815 17.7355 6.05815 18.0167 6.33933L20.1767 8.49933C20.4578 8.78051 20.4578 9.23639 20.1767 9.51757L18.0167 11.6776C17.7355 11.9587 17.2796 11.9587 16.9984 11.6776C16.7173 11.3964 16.7173 10.9405 16.9984 10.6593L17.8573 9.80045H16.884C15.78 9.80045 14.8016 10.3411 13.9268 11.1263C13.6309 11.3919 13.1757 11.3673 12.9101 11.0713C12.6445 10.7754 12.6691 10.3202 12.965 10.0546C13.9736 9.14937 15.2819 8.36045 16.884 8.36045H18.0013L16.9984 7.35757C16.7173 7.07639 16.7173 6.62051 16.9984 6.33933ZM5.98755 9.08045C5.98755 8.68281 6.30991 8.36045 6.70755 8.36045C9.46128 8.36045 11.2008 10.4813 12.6075 12.229C12.6603 12.2947 12.7127 12.3599 12.7648 12.4246C13.4429 13.2687 14.0577 14.0338 14.7221 14.6126C15.4221 15.2224 16.1065 15.5604 16.8805 15.5604H18.0013L16.9984 14.5576C16.7173 14.2764 16.7173 13.8205 16.9984 13.5393C17.2796 13.2582 17.7355 13.2582 18.0167 13.5393L20.1767 15.6993C20.4578 15.9805 20.4578 16.4364 20.1767 16.7176L18.0167 18.8776C17.7355 19.1587 17.2796 19.1587 16.9984 18.8776C16.7173 18.5964 16.7173 18.1405 16.9984 17.8593L17.8573 17.0004H16.8805C15.6339 17.0004 14.6257 16.4385 13.7761 15.6983C13.0696 15.0828 12.4243 14.2994 11.8136 13.5402C11.2096 14.2946 10.5659 15.0677 9.85959 15.68C8.99496 16.4296 7.96818 17.0004 6.71141 17.0004C6.31377 17.0004 5.99141 16.6781 5.99141 16.2804C5.99141 15.8828 6.31377 15.5604 6.71141 15.5604C7.49523 15.5604 8.19887 15.214 8.91631 14.592C9.58884 14.0089 10.2126 13.239 10.8829 12.3977C9.62133 10.9037 8.4011 9.80045 6.70755 9.80045C6.30991 9.80045 5.98755 9.4781 5.98755 9.08045Z", fill: "#0F1729" })),
                 react_1.default.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-                    react_1.default.createElement("path", { d: "M14.4381 16.97L1.68755 9.60844L14.4381 2.2469L14.4381 16.97Z", fill: "#F3FE9D", stroke: "black", "stroke-width": "1.00004" }),
-                    react_1.default.createElement("path", { d: "M17.1882 14.1086L17.1882 4.10819", stroke: "black", "stroke-width": "1.00004", "stroke-linecap": "round" })),
+                    react_1.default.createElement("path", { d: "M14.4381 16.97L1.68755 9.60844L14.4381 2.2469L14.4381 16.97Z", fill: "#F3FE9D", stroke: "black", strokeWidth: "1.00004" }),
+                    react_1.default.createElement("path", { d: "M17.1882 14.1086L17.1882 4.10819", stroke: "black", strokeWidth: "1.00004", strokeLinecap: "round" })),
                 isPlaying ? (react_1.default.createElement("svg", { onClick: handlePlay, width: "34", height: "34", viewBox: "0 0 34 34", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
                     react_1.default.createElement("circle", { cx: "17", cy: "17", r: "16.5", fill: "#F3FE9D", stroke: "black" }),
                     react_1.default.createElement("rect", { x: "10.5", y: "11.5", width: "4", height: "13", fill: "white", stroke: "black" }),
                     react_1.default.createElement("rect", { x: "19.5", y: "11.5", width: "4", height: "13", fill: "white", stroke: "black" }))) : (react_1.default.createElement("svg", { onClick: handlePlay, width: "34", height: "34", viewBox: "0 0 35 35", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-                    react_1.default.createElement("circle", { cx: "17.689", cy: "17.6084", r: "16.5007", fill: "#F3FE9D", stroke: "black", "stroke-width": "1.00004" }),
-                    react_1.default.createElement("path", { d: "M14.1889 11.546L24.6894 17.6085L14.1889 23.6709L14.1889 11.546Z", fill: "url(#paint0_linear_64_24)", stroke: "black", "stroke-width": "1.00004" }),
+                    react_1.default.createElement("circle", { cx: "17.689", cy: "17.6084", r: "16.5007", fill: "#F3FE9D", stroke: "black", strokeWidth: "1.00004" }),
+                    react_1.default.createElement("path", { d: "M14.1889 11.546L24.6894 17.6085L14.1889 23.6709L14.1889 11.546Z", fill: "url(#paint0_linear_64_24)", stroke: "black", strokeWidth: "1.00004" }),
                     react_1.default.createElement("defs", null,
                         react_1.default.createElement("linearGradient", { id: "paint0_linear_64_24", x1: "25.6895", y1: "17.6085", x2: "9.68874", y2: "17.6085", gradientUnits: "userSpaceOnUse" },
-                            react_1.default.createElement("stop", { "stop-color": "#AA5C5C" }),
-                            react_1.default.createElement("stop", { offset: "1", "stop-color": "#FFCCCC" }))))),
+                            react_1.default.createElement("stop", { stopColor: "#AA5C5C" }),
+                            react_1.default.createElement("stop", { offset: "1", stopColor: "#FFCCCC" }))))),
                 react_1.default.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-                    react_1.default.createElement("path", { d: "M5.94031 2.24692L18.6909 9.60846L5.94031 16.97L5.94031 2.24692Z", fill: "#F3FE9D", stroke: "black", "stroke-width": "1.00004" }),
-                    react_1.default.createElement("path", { d: "M3.19019 5.10826L3.19019 15.1087", stroke: "black", "stroke-width": "1.00004", "stroke-linecap": "round" })),
+                    react_1.default.createElement("path", { d: "M5.94031 2.24692L18.6909 9.60846L5.94031 16.97L5.94031 2.24692Z", fill: "#F3FE9D", stroke: "black", strokeWidth: "1.00004" }),
+                    react_1.default.createElement("path", { d: "M3.19019 5.10826L3.19019 15.1087", stroke: "black", strokeWidth: "1.00004", strokeLinecap: "round" })),
                 react_1.default.createElement("svg", { width: "26", height: "26", viewBox: "0 0 26 26", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
                     react_1.default.createElement("rect", { x: "1.19067", y: "0.608437", width: "24", height: "24", rx: "12", fill: "#F3FE9D" }),
                     react_1.default.createElement("rect", { x: "1.19067", y: "0.608437", width: "24", height: "24", rx: "12", stroke: "black" }),
-                    react_1.default.createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M13.1907 8.18031C11.8661 6.63667 9.65275 6.15962 7.99316 7.57313C6.33356 8.98664 6.09991 11.3499 7.40321 13.0217C8.4868 14.4116 11.7661 17.3432 12.8409 18.292C12.9611 18.3982 13.0213 18.4513 13.0914 18.4721C13.1526 18.4903 13.2196 18.4903 13.2808 18.4721C13.351 18.4513 13.4111 18.3982 13.5313 18.292C14.6061 17.3432 17.8854 14.4116 18.9691 13.0217C20.2723 11.3499 20.0672 8.97177 18.3791 7.57313C16.6909 6.17449 14.5152 6.63667 13.1907 8.18031Z", fill: "white", stroke: "black", "stroke-width": "1.47222", "stroke-linecap": "round", "stroke-linejoin": "round" }))),
+                    react_1.default.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M13.1907 8.18031C11.8661 6.63667 9.65275 6.15962 7.99316 7.57313C6.33356 8.98664 6.09991 11.3499 7.40321 13.0217C8.4868 14.4116 11.7661 17.3432 12.8409 18.292C12.9611 18.3982 13.0213 18.4513 13.0914 18.4721C13.1526 18.4903 13.2196 18.4903 13.2808 18.4721C13.351 18.4513 13.4111 18.3982 13.5313 18.292C14.6061 17.3432 17.8854 14.4116 18.9691 13.0217C20.2723 11.3499 20.0672 8.97177 18.3791 7.57313C16.6909 6.17449 14.5152 6.63667 13.1907 8.18031Z", fill: "white", stroke: "black", strokeWidth: "1.47222", strokeLinecap: "round", strokeLinejoin: "round" }))),
             currentPosition ? (react_1.default.createElement("div", { style: {
                     width: "100%",
                     height: theme.spacingfactor,
@@ -191,6 +216,16 @@ const MusicCard = ({ musicName, artist, musicUrl, image, currentPosition, }) => 
                         backgroundColor: theme.primaryColor,
                         borderRadius: theme.spacingfactor * 5,
                         transition: "width 0.3s ease",
+                    } }),
+                react_1.default.createElement("div", { style: {
+                        position: "relative",
+                        left: `${currentPosition}%`,
+                        transform: "translateY(-50%) translateX(-50%)",
+                        width: theme.spacingfactor * 4,
+                        height: theme.spacingfactor * 4,
+                        backgroundColor: theme.primaryColor,
+                        border: "2px solid black",
+                        borderRadius: theme.spacingfactor * 5,
                     } }))) : (react_1.default.createElement(react_1.default.Fragment, null)),
             react_1.default.createElement("div", { style: {
                     display: "flex",
@@ -214,5 +249,5 @@ exports.default = MusicCard;
  */
 const Mouse = ({ style }) => {
     return (react_1.default.createElement("svg", { style: style, width: "22", height: "32", viewBox: "0 0 11 17", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-        react_1.default.createElement("path", { d: "M0.499559 0.979791L9.63096 7.60666L7.29259 8.77585L6.814 9.01514L7.08555 9.47619L10.0548 14.5174L6.93552 16.3183L4.10883 11.2838L3.86985 10.8581L3.43879 11.0872L0.499559 12.6493V0.979791Z", fill: "beige", stroke: "black", "stroke-width": "0.999118" })));
+        react_1.default.createElement("path", { d: "M0.499559 0.979791L9.63096 7.60666L7.29259 8.77585L6.814 9.01514L7.08555 9.47619L10.0548 14.5174L6.93552 16.3183L4.10883 11.2838L3.86985 10.8581L3.43879 11.0872L0.499559 12.6493V0.979791Z", fill: "beige", stroke: "black", strokeWidth: "0.999118" })));
 };

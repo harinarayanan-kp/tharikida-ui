@@ -10,6 +10,7 @@ import Calendar from "./components/Calender";
 import ImageCarousel from "./components/ImageCarrosel";
 import ArrowButton from "./components/Button/ArrowButton";
 import Dropdown from "./components/DropDown";
+import PopupAlert from "./components/PopupAlert";
 // import PopupAlert from "./components/PopUpAlert";
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
       <Button type="secondary">Secondary</Button>
       <Button type="primary">Primary</Button>
       <ArrowButton />
+      <PopupAlert />
       <ThemeProvider>
         <div>
           <Button type="secondary">Secondary</Button>

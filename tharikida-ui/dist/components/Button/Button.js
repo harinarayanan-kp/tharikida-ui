@@ -24,6 +24,8 @@ const Button = ({ type, children, onClick, styles, className }) => {
         borderRadius: `${theme.spacingfactor * 1}px`, // Correct template literal usage
         margin: `${theme.spacingfactor * 1}px`,
         transition: "background-color 0.3s ease",
+        height: "fit-content",
+        width: "fit-content"
     };
     const mergedStyles = Object.assign(Object.assign({}, buttonStyles), styles);
     const handleClick = () => {
