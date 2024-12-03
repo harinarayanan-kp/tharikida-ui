@@ -1,8 +1,8 @@
 # Tharikida UI 🚀🔥
-**A Naadan React Component Library for Building Fast and Fun UIs**  
 
-Tharikida UI is a lightweight React component library packed with simplicity, style, and a touch of Kerala flair! Whether you're building personal projects or developing applications, Tharikida UI offers the perfect balance of performance and visual appeal.
+## A Neo-Brutalist React Library for Bold, Fast UIs
 
+Tharikida UI brings a bold neo-brutalist design to your React projects—raw, vibrant, and modern. With a built-in ThemeProvider, you can easily customize colors, spacing, and more to match your unique style. Build fast, stylish apps with a touch of Kerala flair!
 
 ---
 (WORK IN PROGRES)
