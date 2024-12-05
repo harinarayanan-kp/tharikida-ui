@@ -1,46 +1,8 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
-const DropDown_1 = __importDefault(require("./DropDown"));
+import React, { useState } from "react";
+import Dropdown from "./DropDown";
 const CustomCalendar = ({ size }) => {
-    const [showCalendar, setShowCalendar] = (0, react_1.useState)(false);
-    const [selectedDate, setSelectedDate] = (0, react_1.useState)(null);
+    const [showCalendar, setShowCalendar] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(null);
     const generateCalendar = (month, year) => {
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const firstDay = new Date(year, month, 1).getDay();
@@ -50,8 +12,8 @@ const CustomCalendar = ({ size }) => {
         return dates;
     };
     const today = new Date();
-    const [currentMonth, setCurrentMonth] = (0, react_1.useState)(today.getMonth());
-    const [currentYear, setCurrentYear] = (0, react_1.useState)(today.getFullYear());
+    const [currentMonth, setCurrentMonth] = useState(today.getMonth());
+    const [currentYear, setCurrentYear] = useState(today.getFullYear());
     const dates = generateCalendar(currentMonth, currentYear);
     const handleDateClick = (day) => {
         if (day !== null) {
@@ -106,17 +68,17 @@ const CustomCalendar = ({ size }) => {
         };
         return date.toLocaleDateString(undefined, options); // Formats to "Dec 2, 2024"
     };
-    return (react_1.default.createElement("div", { style: { width: size || "300px" } },
-        react_1.default.createElement("div", { style: styles.container },
-            react_1.default.createElement("div", { style: styles.dateInput, onClick: () => setShowCalendar(!showCalendar) }, formatDate(selectedDate)),
-            showCalendar && (react_1.default.createElement("div", { style: styles.calendar },
-                react_1.default.createElement("div", { style: styles.header },
-                    react_1.default.createElement(DropDown_1.default, { options: months, defaultOption: months[currentMonth], onChange: handleMonthChange }),
-                    react_1.default.createElement(DropDown_1.default, { options: years.map(String), defaultOption: String(currentYear), onChange: (value) => handleYearChange({
+    return (React.createElement("div", { style: { width: size || "300px" } },
+        React.createElement("div", { style: styles.container },
+            React.createElement("div", { style: styles.dateInput, onClick: () => setShowCalendar(!showCalendar) }, formatDate(selectedDate)),
+            showCalendar && (React.createElement("div", { style: styles.calendar },
+                React.createElement("div", { style: styles.header },
+                    React.createElement(Dropdown, { options: months, defaultOption: months[currentMonth], onChange: handleMonthChange }),
+                    React.createElement(Dropdown, { options: years.map(String), defaultOption: String(currentYear), onChange: (value) => handleYearChange({
                             target: { value },
                         }) })),
-                react_1.default.createElement("div", { style: styles.daysRow }, ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (react_1.default.createElement("div", { key: day, style: styles.dayName }, day)))),
-                react_1.default.createElement("div", { style: styles.datesGrid }, dates.map((day, index) => (react_1.default.createElement("div", { key: index, style: Object.assign(Object.assign(Object.assign({}, styles.dateCell), (day && { cursor: "pointer" })), (day !== null &&
+                React.createElement("div", { style: styles.daysRow }, ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (React.createElement("div", { key: day, style: styles.dayName }, day)))),
+                React.createElement("div", { style: styles.datesGrid }, dates.map((day, index) => (React.createElement("div", { key: index, style: Object.assign(Object.assign(Object.assign({}, styles.dateCell), (day && { cursor: "pointer" })), (day !== null &&
                         selectedDate &&
                         selectedDate.toISOString().split("T")[0] ===
                             new Date(currentYear, currentMonth, day)
@@ -204,4 +166,4 @@ const styles = {
         cursor: "pointer",
     },
 };
-exports.default = CustomCalendar;
+export default CustomCalendar;

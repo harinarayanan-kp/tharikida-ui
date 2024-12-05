@@ -3,12 +3,17 @@
     "jsx": "react",
     "outDir": "./dist",
     "target": "es2016", 
-    "module": "commonjs",
+    "module": "ESNext",
     "esModuleInterop": true,
     "strict": true, 
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "removeComments": false
+    "removeComments": false,
+    "declaration": true,                      // Enable generation of declaration files (.d.ts)
+    "declarationDir": "./dist/types",         // Directory for the .d.ts files
+    "moduleResolution": "node",               // Proper resolution of node modules
+    "resolveJsonModule": true,                // Allows importing JSON files as modules
+    "isolatedModules": true                   // Ensures each file can be safely transpiled independently
   },
   "include": [
     "src/**/*"

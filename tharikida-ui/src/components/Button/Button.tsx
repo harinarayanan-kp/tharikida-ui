@@ -1,34 +1,29 @@
+"use client"
+
 import React from "react";
 import { useTheme } from "../../theme/ThemeProvider";
-import "./Button.css";
 
-interface ButtonProps {
-  type: "primary" | "secondary";
-  children: React.ReactNode;
-  styles?: React.CSSProperties; // Typing the styles as React.CSSProperties
-  onClick?: () => void; // Function passed from the parent to handle click events
-  className?: string; // Prop to allow custom className with top priority
+export interface ButtonProps {
+  type?: "primary" | "secondary";
+  children?: React.ReactNode;
+  styles?: React.CSSProperties;
+  onClick?: () => void;
+  className?: string;
 }
 
 const Button = ({ type, children, onClick, styles, className }: ButtonProps) => {
   const theme = useTheme();
-
-  // // Determine button class based on type
-  // const buttonClass =
-  //   type === "primary" ? "tharikida-btn-primary" : "tharikida-btn-secondary";
-
-  // Default button styles without active state logic
   const buttonStyles: React.CSSProperties = {
     backgroundColor:
       type === "primary" ? theme.primaryColor : theme.secondaryColor, // Default color based on type
     color: theme.textColor,
     fontSize: theme.fontSize,
     fontFamily: theme.fontFamily,
-    paddingLeft: `${theme.spacingfactor * 1}px`, // Correct template literal usage
-    paddingRight: `${theme.spacingfactor * 2}px`, // Correct template literal usage
-    paddingTop: `${theme.spacingfactor * 1}px`, // Correct template literal usage
-    paddingBottom: `${theme.spacingfactor * 1}px`, // Correct template literal usage
-    borderRadius: `${theme.spacingfactor * 1}px`, // Correct template literal usage
+    paddingLeft: `${theme.spacingfactor * 1}px`,
+    paddingRight: `${theme.spacingfactor * 2}px`,
+    paddingTop: `${theme.spacingfactor * 1}px`,
+    paddingBottom: `${theme.spacingfactor * 1}px`,
+    borderRadius: `${theme.spacingfactor * 1}px`,
     margin: `${theme.spacingfactor * 1}px`,
     transition: "background-color 0.3s ease",
     height: "fit-content",
@@ -45,7 +40,7 @@ const Button = ({ type, children, onClick, styles, className }: ButtonProps) => 
 
   return (
     <button
-      className={`tharikida-btn ${className}`} // Add className prop with top priority
+      className={`tharikida-btn ${className}`}
       style={mergedStyles}
       onClick={handleClick}
     >

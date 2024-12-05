@@ -1,44 +1,9 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
-const ThemeProvider_1 = require("../theme/ThemeProvider");
+import React, { useState } from "react";
+import { useTheme } from "../theme/ThemeProvider";
 // PopupAlert component
 const PopupAlert = () => {
-    const [isOpen, setIsOpen] = (0, react_1.useState)(false); // State to control popup visibility
-    const theme = (0, ThemeProvider_1.useTheme)(); // Call hook inside the component
+    const [isOpen, setIsOpen] = useState(false); // State to control popup visibility
+    const theme = useTheme(); // Call hook inside the component
     const togglePopup = () => {
         setIsOpen(!isOpen);
     };
@@ -89,12 +54,12 @@ const PopupAlert = () => {
             transition: "background-color 0.3s",
         },
     };
-    return (react_1.default.createElement("div", { style: styles.container },
-        react_1.default.createElement("button", { onClick: togglePopup, style: styles.button }, "Show Alert"),
-        isOpen && (react_1.default.createElement("div", { style: styles.popup },
-            react_1.default.createElement("div", { style: styles.popupContent },
-                react_1.default.createElement("h2", null, "Alert"),
-                react_1.default.createElement("p", null, "This is a simple popup alert box."),
-                react_1.default.createElement("button", { onClick: togglePopup, style: styles.closeButton }, "Close"))))));
+    return (React.createElement("div", { style: styles.container },
+        React.createElement("button", { onClick: togglePopup, style: styles.button }, "Show Alert"),
+        isOpen && (React.createElement("div", { style: styles.popup },
+            React.createElement("div", { style: styles.popupContent },
+                React.createElement("h2", null, "Alert"),
+                React.createElement("p", null, "This is a simple popup alert box."),
+                React.createElement("button", { onClick: togglePopup, style: styles.closeButton }, "Close"))))));
 };
-exports.default = PopupAlert;
+export default PopupAlert;

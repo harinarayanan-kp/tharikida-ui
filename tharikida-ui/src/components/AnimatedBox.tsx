@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import Star from "./Shapes/Star";
 
@@ -18,7 +19,7 @@ const RandomDivs: React.FC<RandomDivsProps> = ({
   maxDivs = 5, // Default maximum number of divs
   animationSpeed = 2, // Default animation speed (1 second)
   starSize = 40, // Default size of the star and wrapper div
-  color
+  color = "white",
 }) => {
   const [divs, setDivs] = useState<
     { id: number; x: number; y: number; delay: number; visible: boolean }[]
