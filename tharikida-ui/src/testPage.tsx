@@ -11,6 +11,7 @@ import ImageCarousel from "./components/ImageCarrosel";
 import ArrowButton from "./components/Button/ArrowButton";
 import Dropdown from "./components/DropDown";
 import PopupAlert from "./components/PopupAlert";
+import RandomDivs from "./components/AnimatedBox";
 // import PopupAlert from "./components/PopUpAlert";
 
 const App = () => {
@@ -21,10 +22,11 @@ const App = () => {
   ];
   return (
     <div
-    style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
+      <RandomDivs width={800} height={200} />
       <Calendar size="300px" />
-    
+
       <Dropdown
         width="300px"
         options={["Option 1", "Option 2", "Option 3"]}
