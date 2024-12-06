@@ -36,14 +36,7 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          echo "Listing files in the current directory:"
-          ls -al
-          if [ -f "yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "tharikida-ui/package.json" ]; then
+          if [ -f "tharikida-ui/package.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
@@ -56,7 +49,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache: tharikida-ui/package-lock.json
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
