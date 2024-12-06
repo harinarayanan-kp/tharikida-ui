@@ -5,8 +5,6 @@
 Tharikida UI brings a bold neo-brutalist design to your React projects—raw, vibrant, and modern. With a built-in ThemeProvider, you can easily customize colors, spacing, and more to match your unique style. Build fast, stylish apps with a touch of Kerala flair!
 
 ---
-(WORK IN PROGRES)
-  :-)
 
 ![image](https://github.com/user-attachments/assets/a6d99e38-6668-44f4-8df5-7ed05c1e0be5)
 
