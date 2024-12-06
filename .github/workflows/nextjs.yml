@@ -31,8 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Change directory to Next.js project
-        run: cd tharikida-ui
+      # - name: Change directory to Next.js project
+      #   run: cd tharikida-ui
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -61,8 +61,13 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
         working-directory: tharikida-ui
+        
+      - name: Check installed versions
+        run: npm list typescript ts-loader typedoc
+        working-directory: tharikida-ui
+
         
       - name: Build with Next.js
         run: npm run build
