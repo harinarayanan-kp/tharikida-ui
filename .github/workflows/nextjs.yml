@@ -71,7 +71,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: tharikida-ui/out
+          path: tharikida-ui/dist
 
   # Deployment job
   deploy:
