@@ -18,7 +18,7 @@ const Button = ({ type, children, onClick, styles, className }) => {
         height: "fit-content",
         width: "fit-content"
     };
-    const mergedStyles = Object.assign(Object.assign({}, buttonStyles), styles);
+    const mergedStyles = { ...buttonStyles, ...styles };
     const handleClick = () => {
         if (onClick) {
             onClick();

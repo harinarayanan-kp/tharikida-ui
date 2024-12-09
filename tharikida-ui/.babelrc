@@ -1,7 +1,0 @@
-{
-    "presets": [
-      "@babel/preset-env",  // For transforming modern JavaScript to older versions
-      "@babel/preset-react" // For transforming JSX code into JavaScript
-    ]
-  }
-  

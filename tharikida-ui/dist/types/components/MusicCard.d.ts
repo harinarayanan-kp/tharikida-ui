@@ -14,7 +14,7 @@ interface MusicCardProps {
     /** The URL of the music track. */
     musicUrl?: string;
     /** The URL of the image associated with the music track. */
-    images: string[];
+    images?: string[];
     /** The current playback position as a percentage (0-100). */
     currentPosition?: number;
 }

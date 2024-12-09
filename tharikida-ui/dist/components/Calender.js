@@ -78,13 +78,17 @@ const CustomCalendar = ({ size }) => {
                             target: { value },
                         }) })),
                 React.createElement("div", { style: styles.daysRow }, ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (React.createElement("div", { key: day, style: styles.dayName }, day)))),
-                React.createElement("div", { style: styles.datesGrid }, dates.map((day, index) => (React.createElement("div", { key: index, style: Object.assign(Object.assign(Object.assign({}, styles.dateCell), (day && { cursor: "pointer" })), (day !== null &&
-                        selectedDate &&
-                        selectedDate.toISOString().split("T")[0] ===
-                            new Date(currentYear, currentMonth, day)
-                                .toISOString()
-                                .split("T")[0] &&
-                        styles.selectedDate)), onClick: () => handleDateClick(day) }, day || "")))))))));
+                React.createElement("div", { style: styles.datesGrid }, dates.map((day, index) => (React.createElement("div", { key: index, style: {
+                        ...styles.dateCell,
+                        ...(day && { cursor: "pointer" }),
+                        ...(day !== null &&
+                            selectedDate &&
+                            selectedDate.toISOString().split("T")[0] ===
+                                new Date(currentYear, currentMonth, day)
+                                    .toISOString()
+                                    .split("T")[0] &&
+                            styles.selectedDate),
+                    }, onClick: () => handleDateClick(day) }, day || "")))))))));
 };
 const styles = {
     container: {

@@ -1,21 +1,14 @@
 {
   "name": "tharikida-ui",
-  "version": "1.0.1",
+  "author": "Harinarayanan K P harikpaug18@gmail.com",
+  "version": "1.0.9",
   "description": "A lightweight, customizable React UI component library designed for simplicity and flexibility.",
-  "main": "dist/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
-    }
-  },
-  "scripts": {
-    "build": "tsc && webpack",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "typedoc --out docs ./src",
-    "clean": "rimraf dist",
-    "start": "webpack serve --mode development",
-    "prepare": "npm run build"
+  "license": "MIT",
+  "main": "src/index.ts",
+  "homepage": "https://harinarayanan-kp.github.io/tharikida-ui/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harinarayanan-kp/tharikida-ui"
   },
   "keywords": [
     "UI",
@@ -24,28 +17,28 @@
     "React components",
     "Tharikida UI"
   ],
-  "author": "Harinarayanan K P harikpaug18@gmail.com",
-  "license": "ISC",
+  "typings": "src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "start": "npm link",
+    "prepare": "npm run build"
+  },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "css-loader": "^7.1.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "style-loader": "^4.0.0",
-    "ts-loader": "^9.5.1",
-    "typedoc": "^0.26.11",
-    "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.0.0",
     "typescript": "^5.7.2"
   },
   "files": [
-    "dist",
+    "src/**/*",
     "README.md"
   ]
 }

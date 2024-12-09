@@ -1,8 +1,7 @@
 import React from "react";
 
-type Props = {};
 
-const Polikkum = (props: Props) => {
+const Polikkum = () => {
   return (
     <svg
       style={{

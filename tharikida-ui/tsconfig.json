@@ -1,22 +1,23 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "outDir": "./dist",
-    "target": "es2016", 
+    "target": "ESNext",
     "module": "ESNext",
     "esModuleInterop": true,
-    "strict": true, 
+    "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "removeComments": false,
-    "declaration": true,                      // Enable generation of declaration files (.d.ts)
-    "declarationDir": "./dist/types",         // Directory for the .d.ts files
-    "moduleResolution": "node",               // Proper resolution of node modules
-    "resolveJsonModule": true,                // Allows importing JSON files as modules
-    "isolatedModules": true                   // Ensures each file can be safely transpiled independently
+    "declaration": true,
+    "declarationDir": "./dist/types", // Optional, if you want to output types to a directory
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "outDir": "./dist"
   },
   "include": [
-    "src/**/*"
+    "src/**/*",  // Include all source files
+    "types/**/*" // Include the types directory for custom types
   ],
   "exclude": [
     "node_modules",

@@ -9,10 +9,9 @@ const Dropdown = ({ options, defaultOption, onChange, width, }) => {
         onChange && onChange(value);
     };
     useEffect(() => {
-        var _a;
         if (isOpen && dropdownRef.current) {
             const selectedOptionIndex = options.indexOf(selected);
-            const selectedOptionElement = (_a = dropdownRef.current) === null || _a === void 0 ? void 0 : _a.children[selectedOptionIndex];
+            const selectedOptionElement = dropdownRef.current?.children[selectedOptionIndex];
             if (selectedOptionElement) {
                 selectedOptionElement.scrollIntoView({
                     behavior: "smooth",

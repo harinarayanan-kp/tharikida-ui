@@ -1,8 +1,8 @@
+import Link from "next/link";
 import React from "react";
 
-type Props = {};
 
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const githubIcon = (
     <a
       href="https://github.com/harinarayanan-kp/tharikida-ui"
@@ -39,10 +39,10 @@ const Navbar = (props: Props) => {
     >
       <style>
         @import
-        url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        url(&aposhttps://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap&apos);
       </style>
 
-      <a
+      <Link
         href="/"
         style={{
           cursor: "pointer",
@@ -65,7 +65,7 @@ const Navbar = (props: Props) => {
           />
         </svg>
         Tharikida-ui
-      </a>
+      </Link>
       {githubIcon}
     </div>
   );

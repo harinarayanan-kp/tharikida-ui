@@ -19,7 +19,7 @@ color = "white", }) => {
             };
             setDivs((prev) => {
                 if (prev.length >= maxDivs) {
-                    return prev.map((div, idx) => idx === 0 ? Object.assign(Object.assign({}, div), { visible: false }) : div);
+                    return prev.map((div, idx) => idx === 0 ? { ...div, visible: false } : div);
                 }
                 return [...prev, newDiv];
             });

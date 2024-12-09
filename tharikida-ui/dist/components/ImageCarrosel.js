@@ -22,7 +22,13 @@ const ImageCarousel = ({ images, height, width, containerStyle, delay = 2000, an
                 return "";
         }
     };
-    return (React.createElement("div", { style: Object.assign({ width: width ? `${width}` : "100%", height: height ? `${height}` : "100vh", overflow: "hidden", position: "relative" }, containerStyle) },
+    return (React.createElement("div", { style: {
+            width: width ? `${width}` : "100%",
+            height: height ? `${height}` : "100vh",
+            overflow: "hidden",
+            position: "relative",
+            ...containerStyle,
+        } },
         React.createElement("img", { key: currentIndex, src: images[currentIndex], alt: `carousel-image-${currentIndex}`, className: getAnimationClass(animationType), style: {
                 width: "100%",
                 height: "100%",
