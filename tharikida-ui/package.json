@@ -1,10 +1,10 @@
 {
   "name": "tharikida-ui",
   "author": "Harinarayanan K P harikpaug18@gmail.com",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "A lightweight, customizable React UI component library designed for simplicity and flexibility.",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "homepage": "https://harinarayanan-kp.github.io/tharikida-ui/",
   "repository": {
     "type": "git",
@@ -17,7 +17,6 @@
     "React components",
     "Tharikida UI"
   ],
-  "typings": "src/index.d.ts",
   "exports": {
     ".": {
       "import": "./src/index.ts",
@@ -38,7 +37,7 @@
     "typescript": "^5.7.2"
   },
   "files": [
-    "src/**/*",
+    "dist/**/*",
     "README.md"
   ]
 }

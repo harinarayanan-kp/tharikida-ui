@@ -25,62 +25,16 @@ import React from "react";
  * @returns {JSX.Element} A styled button element with an arrow inside.
  */
 export interface Props {
-    /**
-     * Button style type. Can be one of 'box', 'rounded', or 'hybrid'.
-     * - 'box' results in a square or rectangular button with sharp corners.
-     * - 'rounded' results in a fully circular or oval button.
-     * - 'hybrid' creates a button with a customizable border-radius, allowing smooth transitions between 'box' and 'rounded'.
-     */
     type?: "box" | "rounded" | "hybrid";
-    /**
-     * The initial direction of the arrow when the button is rendered.
-     * Determines where the arrow will be pointing initially.
-     */
     initialDirection?: "topleft" | "topright" | "bottomleft" | "bottomright" | "left" | "right" | "top" | "bottom";
-    /**
-     * The final direction of the arrow after rotation (hover effect).
-     * Defines the target direction of the arrow when the user hovers over the button.
-     */
     finalDirection?: "topleft" | "topright" | "bottomleft" | "bottomright" | "left" | "right" | "top" | "bottom";
-    /**
-     * Background color of the button. Defaults to transparent.
-     * Accepts any valid CSS color value.
-     */
     backgroundColor?: string;
-    /**
-     * Fill color of the arrow. Defaults to black.
-     * Accepts any valid CSS color value.
-     */
     arrowFillColor?: string;
-    /**
-     * Stroke color of the arrow. Defaults to transparent.
-     * Accepts any valid CSS color value.
-     */
     arrowStrokeColor?: string;
-    /**
-     * Border color of the button. Defaults to black.
-     * Accepts any valid CSS color value.
-     */
     borderColor?: string;
-    /**
-     * Shadow color for the button. Defaults to black.
-     * Accepts any valid CSS color value.
-     */
     shadowColor?: string;
-    /**
-     * Size of the button. Affects width, height, and the arrow size. Defaults to 48px.
-     * Accepts any positive number (in pixels).
-     */
     size?: number;
-    /**
-     * Border-radius percentage for 'hybrid' type. Defaults to 25%.
-     * Defines the level of roundness on the corners of the button.
-     * Accepts a percentage value between 0 and 100.
-     */
     borderRadiusPercentage?: number;
-    /**
-     * Optional click handler. Executes when the button is clicked.
-     */
     onClick?: () => void;
 }
 /**

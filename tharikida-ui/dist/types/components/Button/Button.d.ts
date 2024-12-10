@@ -6,5 +6,5 @@ export interface ButtonProps {
     onClick?: () => void;
     className?: string;
 }
-declare const Button: ({ type, children, onClick, styles, className }: ButtonProps) => React.JSX.Element;
+declare const Button: ({ type, children, onClick, styles, className, }: ButtonProps) => React.JSX.Element;
 export default Button;

@@ -9,15 +9,15 @@
     "forceConsistentCasingInFileNames": true,
     "removeComments": false,
     "declaration": true,
-    "declarationDir": "./dist/types", // Optional, if you want to output types to a directory
+    "declarationDir": "./dist/types",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "outDir": "./dist"
   },
   "include": [
-    "src/**/*",  // Include all source files
-    "types/**/*" // Include the types directory for custom types
+    "src/**/*",
+    "types/**/*"
   ],
   "exclude": [
     "node_modules",
