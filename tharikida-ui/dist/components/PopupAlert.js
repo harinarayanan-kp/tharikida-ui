@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from "react";
 import { useTheme } from "../theme/ThemeProvider";
 // PopupAlert component
 const PopupAlert = () => {
@@ -54,12 +55,7 @@ const PopupAlert = () => {
             transition: "background-color 0.3s",
         },
     };
-    return (React.createElement("div", { style: styles.container },
-        React.createElement("button", { onClick: togglePopup, style: styles.button }, "Show Alert"),
-        isOpen && (React.createElement("div", { style: styles.popup },
-            React.createElement("div", { style: styles.popupContent },
-                React.createElement("h2", null, "Alert"),
-                React.createElement("p", null, "This is a simple popup alert box."),
-                React.createElement("button", { onClick: togglePopup, style: styles.closeButton }, "Close"))))));
+    return (_jsxs("div", { style: styles.container, children: [_jsx("button", { onClick: togglePopup, style: styles.button, children: "Show Alert" }), isOpen && (_jsx("div", { style: styles.popup, children: _jsxs("div", { style: styles.popupContent, children: [_jsx("h2", { children: "Alert" }), _jsx("p", { children: "This is a simple popup alert box." }), _jsx("button", { onClick: togglePopup, style: styles.closeButton, children: "Close" })] }) }))] }));
 };
 export default PopupAlert;
+//# sourceMappingURL=PopupAlert.js.map

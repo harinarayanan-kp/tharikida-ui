@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useEffect, useState } from "react";
 import Star from "./Shapes/Star";
 const RandomDivs = ({ height = 200, width = 200, frequency = 5, // Default frequency to 5 divs per second
 maxDivs = 5, // Default maximum number of divs
@@ -35,25 +36,22 @@ color = "white", }) => {
     const handleAnimationEnd = (id) => {
         setDivs((prev) => prev.filter((div) => div.id !== id)); // Remove the div after animation
     };
-    return (React.createElement("div", { style: {
+    return (_jsxs("div", { style: {
             width: `${width}px`,
             height: `${height}px`,
             position: "relative",
             overflow: "hidden",
-        } },
-        divs.map((div) => (React.createElement("div", { key: div.id, style: {
-                position: "absolute",
-                top: `${div.y}px`,
-                left: `${div.x}px`,
-                width: `${starSize}px`, // Use starSize for the width
-                height: `${starSize}px`, // Use starSize for the height
-                animation: `scale-in-out ${animationSpeed}s forwards`, // Use 'forwards' to keep the final state
-                animationDelay: `${div.delay}s`,
-                transform: "scale(0)",
-                opacity: 0,
-            }, onAnimationEnd: () => handleAnimationEnd(div.id) },
-            React.createElement(Star, { size: starSize, color: color })))),
-        React.createElement("style", null, `
+        }, children: [divs.map((div) => (_jsx("div", { style: {
+                    position: "absolute",
+                    top: `${div.y}px`,
+                    left: `${div.x}px`,
+                    width: `${starSize}px`, // Use starSize for the width
+                    height: `${starSize}px`, // Use starSize for the height
+                    animation: `scale-in-out ${animationSpeed}s forwards`, // Use 'forwards' to keep the final state
+                    animationDelay: `${div.delay}s`,
+                    transform: "scale(0)",
+                    opacity: 0,
+                }, onAnimationEnd: () => handleAnimationEnd(div.id), children: _jsx(Star, { size: starSize, color: color }) }, div.id))), _jsx("style", { children: `
           @keyframes scale-in-out {
             0% {
               transform: scale(0);
@@ -72,6 +70,7 @@ color = "white", }) => {
               opacity: 0;
             }
           }
-        `)));
+        ` })] }));
 };
 export default RandomDivs;
+//# sourceMappingURL=AnimatedBox.js.map

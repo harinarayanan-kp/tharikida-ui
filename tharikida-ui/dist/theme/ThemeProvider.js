@@ -1,5 +1,6 @@
 "use client";
-import React, { createContext, useContext } from 'react';
+import { jsx as _jsx } from "react/jsx-runtime";
+import { createContext, useContext } from 'react';
 const defaultTheme = {
     primaryColor: "#3498db",
     secondaryColor: "#2ecc71",
@@ -22,10 +23,11 @@ export const ThemeProvider = ({ children, primaryColor, secondaryColor, tertiary
         fontFamily: fontFamily || defaultTheme.fontFamily,
         spacingfactor: spacingfactor || defaultTheme.spacingfactor,
     };
-    return (React.createElement(ThemeContext.Provider, { value: theme }, children));
+    return (_jsx(ThemeContext.Provider, { value: theme, children: children }));
 };
 // Custom hook to use the theme in other components
 export const useTheme = () => {
     const context = useContext(ThemeContext);
     return context; // The context will either return the custom theme or the default theme
 };
+//# sourceMappingURL=ThemeProvider.js.map

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from "react";
 import Dropdown from "./DropDown";
 const CustomCalendar = ({ size }) => {
     const [showCalendar, setShowCalendar] = useState(false);
@@ -68,27 +69,19 @@ const CustomCalendar = ({ size }) => {
         };
         return date.toLocaleDateString(undefined, options); // Formats to "Dec 2, 2024"
     };
-    return (React.createElement("div", { style: { width: size || "300px" } },
-        React.createElement("div", { style: styles.container },
-            React.createElement("div", { style: styles.dateInput, onClick: () => setShowCalendar(!showCalendar) }, formatDate(selectedDate)),
-            showCalendar && (React.createElement("div", { style: styles.calendar },
-                React.createElement("div", { style: styles.header },
-                    React.createElement(Dropdown, { options: months, defaultOption: months[currentMonth], onChange: handleMonthChange }),
-                    React.createElement(Dropdown, { options: years.map(String), defaultOption: String(currentYear), onChange: (value) => handleYearChange({
-                            target: { value },
-                        }) })),
-                React.createElement("div", { style: styles.daysRow }, ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (React.createElement("div", { key: day, style: styles.dayName }, day)))),
-                React.createElement("div", { style: styles.datesGrid }, dates.map((day, index) => (React.createElement("div", { key: index, style: {
-                        ...styles.dateCell,
-                        ...(day && { cursor: "pointer" }),
-                        ...(day !== null &&
-                            selectedDate &&
-                            selectedDate.toISOString().split("T")[0] ===
-                                new Date(currentYear, currentMonth, day)
-                                    .toISOString()
-                                    .split("T")[0] &&
-                            styles.selectedDate),
-                    }, onClick: () => handleDateClick(day) }, day || "")))))))));
+    return (_jsx("div", { style: { width: size || "300px" }, children: _jsxs("div", { style: styles.container, children: [_jsx("div", { style: styles.dateInput, onClick: () => setShowCalendar(!showCalendar), children: formatDate(selectedDate) }), showCalendar && (_jsxs("div", { style: styles.calendar, children: [_jsxs("div", { style: styles.header, children: [_jsx(Dropdown, { options: months, defaultOption: months[currentMonth], onChange: handleMonthChange }), _jsx(Dropdown, { options: years.map(String), defaultOption: String(currentYear), onChange: (value) => handleYearChange({
+                                        target: { value },
+                                    }) })] }), _jsx("div", { style: styles.daysRow, children: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (_jsx("div", { style: styles.dayName, children: day }, day))) }), _jsx("div", { style: styles.datesGrid, children: dates.map((day, index) => (_jsx("div", { style: {
+                                    ...styles.dateCell,
+                                    ...(day && { cursor: "pointer" }),
+                                    ...(day !== null &&
+                                        selectedDate &&
+                                        selectedDate.toISOString().split("T")[0] ===
+                                            new Date(currentYear, currentMonth, day)
+                                                .toISOString()
+                                                .split("T")[0] &&
+                                        styles.selectedDate),
+                                }, onClick: () => handleDateClick(day), children: day || "" }, index))) })] }))] }) }));
 };
 const styles = {
     container: {
@@ -171,3 +164,4 @@ const styles = {
     },
 };
 export default CustomCalendar;
+//# sourceMappingURL=Calender.js.map

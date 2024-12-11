@@ -7,7 +7,6 @@ import {
   ArrowButton,
   MusicCard,
   AnimatedBox,
-  useTheme,
   ThemeProvider,
 } from "tharikida-ui";
 
@@ -27,9 +26,9 @@ export default function Docs() {
         <AnimatedBox color="black" width={800} />
       </div>
       <Polikkum />
-      {/* <div style={{ top: 100, position: "fixed", zIndex: -5 }}>
+      <div style={{ top: 100, position: "fixed", zIndex: -5 }}>
         <AnimatedBox color="yellowgreen" width={800} />
-      </div> */}
+      </div>
       <ThemeProvider>
         <Button> TEST </Button>
         <ArrowButton />

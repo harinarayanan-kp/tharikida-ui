@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import { jsx as _jsx } from "react/jsx-runtime";
+import { useState } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 const Button = ({ type, children, onClick, styles, className = "", }) => {
     const theme = useTheme();
@@ -26,7 +27,7 @@ const Button = ({ type, children, onClick, styles, className = "", }) => {
             onClick();
         }
     };
-    return (React.createElement("button", { className: `tharikida-btn ${className}`, style: mergedStyles, onClick: handleClick, onMouseEnter: (e) => {
+    return (_jsx("button", { className: `tharikida-btn ${className}`, style: mergedStyles, onClick: handleClick, onMouseEnter: (e) => {
             e.currentTarget.style.boxShadow = `1px 1px 0px black`; // Change box-shadow on hover
         }, onMouseLeave: (e) => {
             if (!isActive) {
@@ -36,6 +37,7 @@ const Button = ({ type, children, onClick, styles, className = "", }) => {
             setIsActive(true); // Set active state when mouse is down
         }, onMouseUp: () => {
             setIsActive(false); // Reset active state when mouse is released
-        } }, children));
+        }, children: children }));
 };
 export default Button;
+//# sourceMappingURL=Button.js.map
