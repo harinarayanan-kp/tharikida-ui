@@ -68,4 +68,3 @@ type = "hybrid", initialDirection = "topright", finalDirection = "right", backgr
                 }, viewBox: "0 0 18 11", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: _jsx("path", { d: "M9.91229 10.6961L17.4123 6.36601C18.079 5.98111 18.079 5.01886 17.4123 4.63396L9.91229 0.30383C9.24563 -0.08107 8.41229 0.400055 8.41229 1.16985L8.41229 3.49998C8.41229 4.05227 7.96458 4.49998 7.41229 4.49998L1.59598 4.49998C1.04369 4.49998 0.595978 4.9477 0.595978 5.49998C0.595977 6.05227 1.04369 6.49998 1.59598 6.49998L7.41229 6.49998C7.96458 6.49998 8.41229 6.9477 8.41229 7.49998L8.41229 9.83011C8.41229 10.5999 9.24562 11.081 9.91229 10.6961Z", fill: arrowFillColor, stroke: arrowStrokeColor }) }) }) }));
 };
 export default ArrowButton;
-//# sourceMappingURL=ArrowButton.js.map

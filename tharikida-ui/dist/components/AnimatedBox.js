@@ -73,4 +73,3 @@ color = "white", }) => {
         ` })] }));
 };
 export default RandomDivs;
-//# sourceMappingURL=AnimatedBox.js.map

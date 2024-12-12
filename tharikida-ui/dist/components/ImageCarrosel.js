@@ -36,4 +36,3 @@ const ImageCarousel = ({ images, height, width, containerStyle, delay = 2000, an
             } }, currentIndex) }));
 };
 export default ImageCarousel;
-//# sourceMappingURL=ImageCarrosel.js.map

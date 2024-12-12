@@ -173,4 +173,3 @@ export default MusicCard;
 const Mouse = ({ style }) => {
     return (_jsx("svg", { style: style, width: "22", height: "32", viewBox: "0 0 11 17", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: _jsx("path", { d: "M0.499559 0.979791L9.63096 7.60666L7.29259 8.77585L6.814 9.01514L7.08555 9.47619L10.0548 14.5174L6.93552 16.3183L4.10883 11.2838L3.86985 10.8581L3.43879 11.0872L0.499559 12.6493V0.979791Z", fill: "beige", stroke: "black", strokeWidth: "0.999118" }) }));
 };
-//# sourceMappingURL=MusicCard.js.map

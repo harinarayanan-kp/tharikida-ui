@@ -24,4 +24,3 @@ export default function ActiveTag(props) {
                     border: "2px solid black",
                 } })), "Active"] }));
 }
-//# sourceMappingURL=Active.js.map

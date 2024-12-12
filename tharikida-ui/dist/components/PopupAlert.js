@@ -58,4 +58,3 @@ const PopupAlert = () => {
     return (_jsxs("div", { style: styles.container, children: [_jsx("button", { onClick: togglePopup, style: styles.button, children: "Show Alert" }), isOpen && (_jsx("div", { style: styles.popup, children: _jsxs("div", { style: styles.popupContent, children: [_jsx("h2", { children: "Alert" }), _jsx("p", { children: "This is a simple popup alert box." }), _jsx("button", { onClick: togglePopup, style: styles.closeButton, children: "Close" })] }) }))] }));
 };
 export default PopupAlert;
-//# sourceMappingURL=PopupAlert.js.map

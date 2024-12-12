@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Button } from "tharikida-ui";
+import { Button, ThemeProvider } from "tharikida-ui";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -75,7 +75,9 @@ const Navbar = () => {
           gap: 16,
         }}
       >
-        <Button className="bg-change">Home</Button>
+        <ThemeProvider primaryColor="red">
+          <Button className="bg-change">Home</Button>
+        </ThemeProvider>
         {githubIcon}
       </div>
     </div>

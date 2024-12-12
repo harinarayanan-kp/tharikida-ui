@@ -40,4 +40,3 @@ const Button = ({ type, children, onClick, styles, className = "", }) => {
         }, children: children }));
 };
 export default Button;
-//# sourceMappingURL=Button.js.map
