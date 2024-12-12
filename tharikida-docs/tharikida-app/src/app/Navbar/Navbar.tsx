@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
-
+import { Button } from "tharikida-ui";
+import "./Navbar.css";
 
 const Navbar = () => {
   const githubIcon = (
@@ -66,7 +67,17 @@ const Navbar = () => {
         </svg>
         Tharikida-ui
       </Link>
-      {githubIcon}
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 16,
+        }}
+      >
+        <Button className="bg-change">Home</Button>
+        {githubIcon}
+      </div>
     </div>
   );
 };
