@@ -66,7 +66,7 @@ Here’s an example of customizing the primary button color:
 
 ```jsx
 <Button style={{ backgroundColor: '#F1C40F' }} type="primary">
-  Custom Button
+  HELLO
 </Button>
 ```
 For more advanced theming and customization options, refer to the documentation.
