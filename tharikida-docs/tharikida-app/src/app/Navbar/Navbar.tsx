@@ -76,7 +76,9 @@ const Navbar = () => {
         }}
       >
         <ThemeProvider primaryColor="red">
-          <Button className="bg-change">Home</Button>
+          <Link href={"/docs"}>
+            <Button className="bg-change">Docs</Button>
+          </Link>
         </ThemeProvider>
         {githubIcon}
       </div>
