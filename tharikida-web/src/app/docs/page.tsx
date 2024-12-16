@@ -1,39 +1,48 @@
 "use client";
-import React, { useState } from "react";
-import Navbar from "../Navbar/Navbar";
-import { ArrowButton, Button } from "tharikida-ui";
-import Code from "./Code";
 
+import React, { useState } from "react";
+import {
+  Button,
+  ArrowButton,
+  MusicCard,
+  AnimatedBox,
+  ThemeProvider,
+} from "tharikida-ui";
+import ButtonDocs from "./ButtonDocs";
+import ArrowButtonDocs from "./ArrowButtonDocs";
+import MusicCardDocs from "./MusicCardDocs";
+import AnimatedBoxDocs from "./AnimatedBoxDocs";
+import CalendarDocs from "./CalenderDocs";
+import DropdownDocs from "./DropDownDocs";
+import Code from "./Code";
+import Navbar from "../Navbar/Navbar";
 const Page = () => {
   const [activeTab, setActiveTab] = useState("Getting Started");
 
   const renderContent = () => {
-    if (activeTab === "Getting Started") {
-      return (
-        <div>
-          <h1>Getting Started</h1>
-          <br />
-          <Code>npm install tharikida-ui</Code>
-        </div>
-      );
-    } else if (activeTab === "Button") {
-      return (
-        <div>
-          <h1>Button Component</h1>
-          <Button>Click Here</Button>
-          <h2>Usage</h2>
-          <Code>{`<Button>Click Here</Button>`}</Code>
-        </div>
-      );
-    } else if (activeTab === "ArrowButton") {
-      return (
-        <div>
-          <h1>Button Component</h1>
-          <ArrowButton />
-          <h2>Usage</h2>
-          <Code>{`<ArrowButton/>`}</Code>
-        </div>
-      );
+    switch (activeTab) {
+      case "Getting Started":
+        return (
+          <div>
+            <h1>Getting Started</h1>
+            <br />
+            <Code>npm install tharikida-ui</Code>
+          </div>
+        );
+      case "Button":
+        return <ButtonDocs />;
+      case "ArrowButton":
+        return <ArrowButtonDocs />;
+      case "MusicCard":
+        return <MusicCardDocs />;
+      case "AnimatedBox":
+        return <AnimatedBoxDocs />;
+      case "Calendar":
+        return <CalendarDocs />;
+      case "Dropdown":
+        return <DropdownDocs />;
+      default:
+        return null;
     }
   };
 
@@ -73,6 +82,30 @@ const Page = () => {
             onClick={() => setActiveTab("ArrowButton")}
           >
             Arrow Button
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("MusicCard")}
+          >
+            Music Card
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("AnimatedBox")}
+          >
+            Animated Box
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Calendar")}
+          >
+            Calendar
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Dropdown")}
+          >
+            Dropdown
           </Button>
         </div>
         <div

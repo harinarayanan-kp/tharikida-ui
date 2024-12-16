@@ -1,12 +1,6 @@
 import Navbar from "./Navbar/Navbar";
 import Polikkum from "./Navbar/Polikkum";
-import {
-  Button,
-  ArrowButton,
-  MusicCard,
-  AnimatedBox,
-  ThemeProvider,
-} from "tharikida-ui";
+import { AnimatedBox } from "tharikida-ui";
 
 export default function Docs() {
   return (
@@ -19,7 +13,6 @@ export default function Docs() {
       }}
     >
       <Navbar />
-      HY
       <div style={{ top: 100, position: "fixed", zIndex: 10 }}>
         <AnimatedBox color="yellow" width={800} />
         <AnimatedBox color="black" width={800} />
@@ -28,11 +21,6 @@ export default function Docs() {
       <div style={{ top: 100, position: "fixed", zIndex: -5 }}>
         <AnimatedBox color="yellowgreen" width={800} />
       </div>
-      <ThemeProvider>
-        <Button> TEST </Button>
-        <ArrowButton />
-        <MusicCard />
-      </ThemeProvider>
     </div>
   );
 }

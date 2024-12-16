@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import Dropdown from "./DropDown";
 
@@ -5,7 +6,7 @@ interface calendarProps {
   handleDateClick?: (day: number | null) => void;
   size?: string;
 }
-const CustomCalendar = ({ size }: calendarProps) => {
+const Calendar = ({ size }: calendarProps) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
@@ -225,4 +226,4 @@ const styles = {
   },
 };
 
-export default CustomCalendar;
+export default Calendar;

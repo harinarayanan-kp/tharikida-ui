@@ -1,7 +1,8 @@
+"use client";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState } from "react";
 import Dropdown from "./DropDown";
-const CustomCalendar = ({ size }) => {
+const Calendar = ({ size }) => {
     const [showCalendar, setShowCalendar] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
     const generateCalendar = (month, year) => {
@@ -163,4 +164,4 @@ const styles = {
         cursor: "pointer",
     },
 };
-export default CustomCalendar;
+export default Calendar;
