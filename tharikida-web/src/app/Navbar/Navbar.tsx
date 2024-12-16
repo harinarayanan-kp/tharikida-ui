@@ -38,10 +38,7 @@ const Navbar = () => {
         fontSize: "2rem",
       }}
     >
-      <style>
-        @import
-        url(&aposhttps://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap&apos);
-      </style>
+      
 
       <Link
         href="/"

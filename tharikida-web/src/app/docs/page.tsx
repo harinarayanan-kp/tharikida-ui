@@ -4,7 +4,6 @@ import Navbar from "../Navbar/Navbar";
 import { ArrowButton, Button } from "tharikida-ui";
 import Code from "./Code";
 
-
 const Page = () => {
   const [activeTab, setActiveTab] = useState("Getting Started");
 
@@ -21,7 +20,7 @@ const Page = () => {
       return (
         <div>
           <h1>Button Component</h1>
-          <Button>Click Here</Button>
+          {/* <Button>Click Here</Button> */}
           <h2>Usage</h2>
           <Code>{`<Button>Click Here</Button>`}</Code>
         </div>
@@ -30,7 +29,7 @@ const Page = () => {
       return (
         <div>
           <h1>Button Component</h1>
-          <ArrowButton />
+          {/* <ArrowButton /> */}
           <h2>Usage</h2>
           <Code>{`<ArrowButton/>`}</Code>
         </div>

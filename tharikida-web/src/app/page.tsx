@@ -19,6 +19,7 @@ export default function Docs() {
       }}
     >
       <Navbar />
+      HY
       <div style={{ top: 100, position: "fixed", zIndex: 10 }}>
         <AnimatedBox color="yellow" width={800} />
         <AnimatedBox color="black" width={800} />
