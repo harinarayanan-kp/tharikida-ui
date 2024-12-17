@@ -1,13 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Button,
-  ArrowButton,
-  MusicCard,
-  AnimatedBox,
-  ThemeProvider,
-} from "tharikida-ui";
+import { Button } from "tharikida-ui";
 import ButtonDocs from "./ButtonDocs";
 import ArrowButtonDocs from "./ArrowButtonDocs";
 import MusicCardDocs from "./MusicCardDocs";
