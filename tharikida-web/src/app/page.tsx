@@ -142,14 +142,15 @@ export default function Docs() {
               maxWidth: 800,
             }}
           >
-            Welcome to Tharikida-UI &ndash; the adipoli UI library that makes your
-            projects look kiduvee and keeps you chill while coding! 😎
-            Tharikida-UI isn&rsquo;t just another boring library. It&apos;s your pwoli-mood
-            development buddy, giving you stylish, modern components with zero
-            kachra setup. With nalla flexible theming and full-on customization
-            options, it&rsquo;s all about making your app look like a superstar. 🎇
-            Sit back, relax with some kaapi ☕, and let Tharikida-UI handle the
-            boring stuff while you build the next level project. Appo eth vibe?
+            Welcome to Tharikida-UI &ndash; the adipoli UI library that makes
+            your projects look kiduvee and keeps you chill while coding! 😎
+            Tharikida-UI isn&rsquo;t just another boring library. It&apos;s your
+            pwoli-mood development buddy, giving you stylish, modern components
+            with zero kachra setup. With nalla flexible theming and full-on
+            customization options, it&rsquo;s all about making your app look
+            like a superstar. 🎇 Sit back, relax with some kaapi ☕, and let
+            Tharikida-UI handle the boring stuff while you build the next level
+            project. Appo eth vibe?
           </div>
         </div>
       </section>
