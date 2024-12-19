@@ -1,5 +1,6 @@
 import React from "react";
-interface RandomDivsProps {
+export interface RandomDivsProps {
+    children?: React.ReactNode;
     height?: number;
     width?: number;
     frequency?: number;
@@ -8,5 +9,5 @@ interface RandomDivsProps {
     starSize?: number;
     color?: string;
 }
-declare const RandomDivs: React.FC<RandomDivsProps>;
+declare const RandomDivs: ({ height, width, frequency, maxDivs, animationSpeed, starSize, color, }: RandomDivsProps) => import("react/jsx-runtime").JSX.Element;
 export default RandomDivs;

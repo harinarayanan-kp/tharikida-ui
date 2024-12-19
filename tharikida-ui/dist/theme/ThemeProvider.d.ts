@@ -21,4 +21,4 @@ export declare const useTheme: () => {
     fontFamily: string;
     spacingfactor: number;
 };
-export {};
+export default ThemeProvider;

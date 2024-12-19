@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Navbar from "./Navbar/Navbar";
 import Polikkum from "./Navbar/Polikkum";
-import { AnimatedBox, ArrowButton, Button } from "tharikida-ui";
+import { AnimatedBox, ArrowButton, Button, ThemeProvider } from "tharikida-ui";
+import "./globals.css";
 
 export default function Docs() {
   return (
@@ -134,6 +135,7 @@ export default function Docs() {
             About Tharikida-UI 🌟
           </div>
           <div
+            className="about-text"
             style={{
               fontFamily: "Montserrat",
               fontSize: "1.5rem",
@@ -161,6 +163,9 @@ export default function Docs() {
           alignItems: "center",
         }}
       >
+        <ThemeProvider primaryColor="red">
+          <Button>HELLO</Button>
+        </ThemeProvider>
         <Button
           styles={{
             backgroundColor: "white",

@@ -1,6 +1,5 @@
-"use client"
+"use client";
 import React from "react";
-
 
 /**
  * `ArrowButton` is a customizable button component that displays an arrow.
@@ -30,7 +29,7 @@ import React from "react";
 
 // Define the Props interface with detailed descriptions for each prop.
 export interface Props {
-  type?: "box" | "rounded" | "hybrid"; 
+  type?: "box" | "rounded" | "hybrid";
   initialDirection?:
     | "topleft"
     | "topright"
@@ -68,7 +67,7 @@ export interface Props {
  * @param {Props} props - The properties to customize the `ArrowButton` component.
  * @returns {JSX.Element} A styled button element with an arrow inside.
  */
-const ArrowButton: React.FC<Props> = ({
+const ArrowButton = ({
   // Destructure props with default values
   type = "hybrid",
   initialDirection = "topright",
@@ -81,8 +80,7 @@ const ArrowButton: React.FC<Props> = ({
   arrowFillColor = "black",
   arrowStrokeColor = "transparent",
   borderRadiusPercentage = 25,
-}) => {
-
+}: Props) => {
   // Helper function to calculate the rotation angle between initial and final direction
   const getRotationAngle = () => {
     const directionMap: { [key: string]: number } = {
@@ -103,11 +101,12 @@ const ArrowButton: React.FC<Props> = ({
   };
 
   // Compute border-radius value based on the type ('rounded', 'box', or 'hybrid')
-  const borderRadiusValue = type === "hybrid"
-    ? (size * borderRadiusPercentage) / 100 // 'hybrid' uses percentage-based rounding
-    : type === "rounded"
-    ? size / 2 // 'rounded' makes the button a perfect circle
-    : 0; // 'box' has sharp corners (no border-radius)
+  const borderRadiusValue =
+    type === "hybrid"
+      ? (size * borderRadiusPercentage) / 100 // 'hybrid' uses percentage-based rounding
+      : type === "rounded"
+      ? size / 2 // 'rounded' makes the button a perfect circle
+      : 0; // 'box' has sharp corners (no border-radius)
 
   return (
     <div

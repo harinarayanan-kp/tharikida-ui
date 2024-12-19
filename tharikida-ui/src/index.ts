@@ -4,7 +4,7 @@ import MusicCard from "./components/MusicCard";
 import AnimatedBox from "./components/AnimatedBox";
 import Calendar from "./components/Calender";
 import Dropdown from "./components/DropDown";
-import { ThemeProvider, useTheme } from "./theme/ThemeProvider";
+import ThemeProvider from "./theme/ThemeProvider";
 
 export {
   Button,
@@ -14,5 +14,4 @@ export {
   Calendar,
   Dropdown,
   ThemeProvider,
-  useTheme,
 };

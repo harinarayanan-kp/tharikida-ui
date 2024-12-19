@@ -1,8 +1,9 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import Star from "./Shapes/Star";
 
-interface RandomDivsProps {
+export interface RandomDivsProps {
+  children?: React.ReactNode;
   height?: number;
   width?: number;
   frequency?: number; // Frequency of new divs per second
@@ -12,7 +13,7 @@ interface RandomDivsProps {
   color?: string;
 }
 
-const RandomDivs: React.FC<RandomDivsProps> = ({
+const RandomDivs = ({
   height = 200,
   width = 200,
   frequency = 5, // Default frequency to 5 divs per second
@@ -20,7 +21,7 @@ const RandomDivs: React.FC<RandomDivsProps> = ({
   animationSpeed = 2, // Default animation speed (1 second)
   starSize = 40, // Default size of the star and wrapper div
   color = "white",
-}) => {
+}: RandomDivsProps) => {
   const [divs, setDivs] = useState<
     { id: number; x: number; y: number; delay: number; visible: boolean }[]
   >([]);

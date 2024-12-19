@@ -1,4 +1,3 @@
-import React from "react";
 /**
  * `ArrowButton` is a customizable button component that displays an arrow.
  * The button can have various shapes, directions, and colors, and it rotates on hover.
@@ -45,5 +44,5 @@ export interface Props {
  * @param {Props} props - The properties to customize the `ArrowButton` component.
  * @returns {JSX.Element} A styled button element with an arrow inside.
  */
-declare const ArrowButton: React.FC<Props>;
+declare const ArrowButton: ({ type, initialDirection, finalDirection, backgroundColor, shadowColor, borderColor, size, onClick, arrowFillColor, arrowStrokeColor, borderRadiusPercentage, }: Props) => import("react/jsx-runtime").JSX.Element;
 export default ArrowButton;

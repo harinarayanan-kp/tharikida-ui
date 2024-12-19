@@ -30,3 +30,4 @@ export const useTheme = () => {
     const context = useContext(ThemeContext);
     return context; // The context will either return the custom theme or the default theme
 };
+export default ThemeProvider;

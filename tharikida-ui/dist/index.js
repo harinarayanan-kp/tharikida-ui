@@ -4,5 +4,5 @@ import MusicCard from "./components/MusicCard";
 import AnimatedBox from "./components/AnimatedBox";
 import Calendar from "./components/Calender";
 import Dropdown from "./components/DropDown";
-import { ThemeProvider, useTheme } from "./theme/ThemeProvider";
-export { Button, ArrowButton, MusicCard, AnimatedBox, Calendar, Dropdown, ThemeProvider, useTheme, };
+import ThemeProvider from "./theme/ThemeProvider";
+export { Button, ArrowButton, MusicCard, AnimatedBox, Calendar, Dropdown, ThemeProvider, };
