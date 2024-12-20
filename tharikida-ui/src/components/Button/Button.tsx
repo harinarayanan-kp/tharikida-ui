@@ -12,13 +12,14 @@ export interface ButtonProps {
 }
 
 const Button = ({
-  type,
+  type = "primary",
   children,
   onClick,
   styles,
   className = "",
 }: ButtonProps) => {
   const theme = useTheme();
+  
   const [isActive, setIsActive] = useState(false);
 
   const buttonStyles: React.CSSProperties = {

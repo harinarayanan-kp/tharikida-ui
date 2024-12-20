@@ -21,7 +21,6 @@ export default function RootLayout({
           @import
           url(&quot;https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap&quot;);
         </style>
-        <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/tharikida-logo.png" />
       </head>
       <body>{children}</body>

@@ -163,8 +163,8 @@ export default function Docs() {
           alignItems: "center",
         }}
       >
-        <ThemeProvider primaryColor="red">
-          <Button>HELLO</Button>
+        <ThemeProvider primaryColor="yellow">
+          <Button >Click Me</Button>
         </ThemeProvider>
         <Button
           styles={{
