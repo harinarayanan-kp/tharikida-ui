@@ -1,10 +1,26 @@
+"use client";
 import Link from "next/link";
 import Navbar from "./Navbar/Navbar";
 import Polikkum from "./Navbar/Polikkum";
 import { AnimatedBox, ArrowButton, Button, ThemeProvider } from "tharikida-ui";
 import "./globals.css";
+import { useEffect, useState } from "react";
 
 export default function Docs() {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    // Update window width when the component is mounted
+    setWindowWidth(window.innerWidth);
+
+    // Optional: Add a resize event listener if dynamic resizing is needed
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div
       style={{
@@ -19,19 +35,29 @@ export default function Docs() {
         className=""
         style={{
           minHeight: "100svh",
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          backgroundColor: "beige",
           gap: 50,
         }}
       >
-        <div style={{ top: 100, position: "fixed", zIndex: 10 }}>
-          <AnimatedBox color="yellow" width={800} />
-          <AnimatedBox color="black" width={800} />
-        </div>
+        <div style={{ height: "10svh" }}></div>
         <Polikkum />
-        <div
+        <AnimatedBox
+          styles={{ position: "absolute" }}
+          color="yellow"
+          width={windowWidth}
+        />
+        <AnimatedBox
+          styles={{ position: "absolute" }}
+          color="black"
+          width={windowWidth}
+        />
+
+        {/* <div
           style={{
             fontFamily: "Inter",
             fontSize: 50,
@@ -40,7 +66,8 @@ export default function Docs() {
           }}
         >
           “ith scene aan macha!”
-        </div>
+        </div> */}
+
         <div
           style={{
             backgroundColor: "beige",
@@ -101,9 +128,6 @@ export default function Docs() {
             Playground
           </div>
         </div>
-        <div style={{ top: 100, position: "fixed", zIndex: -5 }}>
-          <AnimatedBox color="yellowgreen" width={800} />
-        </div>
       </section>
       <section
         style={{
@@ -163,9 +187,6 @@ export default function Docs() {
           alignItems: "center",
         }}
       >
-        <ThemeProvider primaryColor="yellow">
-          <Button >Click Me</Button>
-        </ThemeProvider>
         <Button
           styles={{
             backgroundColor: "white",

@@ -4,6 +4,7 @@ import Star from "./Shapes/Star";
 
 export interface RandomDivsProps {
   children?: React.ReactNode;
+  styles?: React.CSSProperties;
   height?: number;
   width?: number;
   frequency?: number; // Frequency of new divs per second
@@ -14,6 +15,7 @@ export interface RandomDivsProps {
 }
 
 const RandomDivs = ({
+  styles = {},
   height = 200,
   width = 200,
   frequency = 5, // Default frequency to 5 divs per second
@@ -69,6 +71,7 @@ const RandomDivs = ({
         height: `${height}px`,
         position: "relative",
         overflow: "hidden",
+        ...styles,
       }}
     >
       {divs.map((div) => (

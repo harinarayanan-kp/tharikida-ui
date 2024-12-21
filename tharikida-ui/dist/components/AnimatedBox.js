@@ -2,7 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
 import Star from "./Shapes/Star";
-const RandomDivs = ({ height = 200, width = 200, frequency = 5, // Default frequency to 5 divs per second
+const RandomDivs = ({ styles = {}, height = 200, width = 200, frequency = 5, // Default frequency to 5 divs per second
 maxDivs = 5, // Default maximum number of divs
 animationSpeed = 2, // Default animation speed (1 second)
 starSize = 40, // Default size of the star and wrapper div
@@ -41,6 +41,7 @@ color = "white", }) => {
             height: `${height}px`,
             position: "relative",
             overflow: "hidden",
+            ...styles,
         }, children: [divs.map((div) => (_jsx("div", { style: {
                     position: "absolute",
                     top: `${div.y}px`,

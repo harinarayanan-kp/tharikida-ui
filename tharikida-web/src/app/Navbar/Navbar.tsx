@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div
       style={{
-        width: "100%",
+        width: "100vw",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -38,8 +38,6 @@ const Navbar = () => {
         fontSize: "2rem",
       }}
     >
-      
-
       <Link
         href="/"
         style={{
@@ -62,7 +60,14 @@ const Navbar = () => {
             fill="black"
           />
         </svg>
-        Tharikida-ui
+        <div
+          style={{
+            display: "inline-block", // Shrinks to fit the content
+            whiteSpace: "nowrap", // Prevents text from wrapping to the next line
+          }}
+        >
+          Tharikida-ui
+        </div>
       </Link>
 
       <div
@@ -72,10 +77,8 @@ const Navbar = () => {
           gap: 16,
         }}
       >
-        <ThemeProvider primaryColor="red">
-          <Link href={"/docs"}>
-            <Button className="bg-change">Docs</Button>
-          </Link>
+        <ThemeProvider primaryColor="lightgreen">
+          <Button href="/docs">Docs</Button>
         </ThemeProvider>
         {githubIcon}
       </div>

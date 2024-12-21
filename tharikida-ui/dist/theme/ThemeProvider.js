@@ -1,9 +1,9 @@
 "use client";
 import { jsx as _jsx } from "react/jsx-runtime";
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from "react";
 const defaultTheme = {
-    primaryColor: "#3498db",
-    secondaryColor: "#2ecc71",
+    primaryColor: "#2ecc71",
+    secondaryColor: "#3498db",
     tertiaryColor: "#4dff00",
     textColor: "#000000",
     backgroundColor: "#fff",

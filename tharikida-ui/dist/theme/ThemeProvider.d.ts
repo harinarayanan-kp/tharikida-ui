@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 interface ThemeProviderProps {
     children: ReactNode;
     primaryColor?: string;

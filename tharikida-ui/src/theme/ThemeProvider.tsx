@@ -1,11 +1,10 @@
 "use client";
 
-
-import React, { createContext, useContext, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode } from "react";
 
 const defaultTheme = {
-  primaryColor: "#3498db",
-  secondaryColor: "#2ecc71",
+  primaryColor: "#2ecc71",
+  secondaryColor: "#3498db",
   tertiaryColor: "#4dff00",
   textColor: "#000000",
   backgroundColor: "#fff",
@@ -51,9 +50,7 @@ export const ThemeProvider = ({
   };
 
   return (
-    <ThemeContext.Provider value={theme}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
   );
 };
 
@@ -62,6 +59,5 @@ export const useTheme = () => {
   const context = useContext(ThemeContext);
   return context; // The context will either return the custom theme or the default theme
 };
-
 
 export default ThemeProvider;
