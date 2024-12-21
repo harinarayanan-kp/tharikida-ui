@@ -17,10 +17,70 @@ const Page = () => {
     switch (activeTab) {
       case "Getting Started":
         return (
-          <div>
+          <div
+            style={{
+              gap: 20,
+              fontFamily: "Montserrat",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <h1>Getting Started</h1>
-            <br />
+            <p>
+              Welcome to Tharikida UI Docs! 🎉 Here&apos;s how you can quickly
+              set up and start using our component library to build awesome
+              interfaces effortlessly.
+            </p>
+            <h2>Installation</h2>
+            First things first, install the library via npm:
             <Code>npm install tharikida-ui</Code>
+            <h2>Setup ThemeProvider</h2>
+            To enable theming across your app, wrap your root component with the
+            ThemeProvider:
+            <Code>
+              {`import { ThemeProvider } from 'tharikida-ui';
+
+function App() {
+  return (
+    <ThemeProvider>
+      <Button> Hello, Tharikida UI! </Button>
+    </ThemeProvider>
+  );
+}
+
+export default App;`}
+            </Code>
+            <h2>Using Components</h2>
+            Start using components in your app right away!
+            <Code>{`import { Button } from 'tharikida-ui';
+
+export default function Example() {
+  return (
+    <div>
+      <Button type="primary">Primary Button</Button>
+      <Button type="secondary">Secondary Button</Button>
+    </div>
+  );
+}
+`}</Code>
+            <h2>Customizing the Theme</h2>
+            Want to make it your own? Pass custom theme props to ThemeProvider:
+            <Code>
+              {`<ThemeProvider 
+  primaryColor="#ff5733" 
+  secondaryColor="#33c1ff" 
+  fontFamily="'Poppins', sans-serif"
+>
+  <Button type="primary">Custom Themed Button</Button>
+</ThemeProvider>
+`}
+            </Code>
+            <h2>Explore Components</h2>
+            Dive deeper into Components to discover what you can build with
+            Tharikida UI.
+            <h3>Need Help?</h3>
+            Check out our FAQ, or connect with us on GitHub. Let’s create
+            something tharikida together! 🚀
           </div>
         );
       case "Button":
@@ -43,9 +103,7 @@ const Page = () => {
   return (
     <div>
       <Navbar />
-      <div
-        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
-      >
+      <div style={{ display: "flex", flexDirection: "row", height: "100%" }}>
         <div
           style={{
             display: "flex",
@@ -56,6 +114,7 @@ const Page = () => {
             borderRight: "1px solid black",
             width: "25%",
             maxWidth: "300px",
+            height: "100%",
             minHeight: "100vh",
           }}
         >
@@ -106,9 +165,11 @@ const Page = () => {
           style={{
             backgroundColor: "white",
             width: "100%",
-            minHeight: "100vh",
+            height: "100vh",
+            overflow: "auto",
             padding: "10px",
             boxSizing: "border-box",
+            fontFamily: "Montserrat",
           }}
         >
           {renderContent()}

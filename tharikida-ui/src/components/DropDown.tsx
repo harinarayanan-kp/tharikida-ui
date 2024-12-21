@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef, useState } from "react";
 
 interface DropdownProps {
@@ -6,16 +5,18 @@ interface DropdownProps {
   defaultOption?: string;
   onChange?: (value: string) => void;
   width?: string;
+  styles?: React.CSSProperties; // Add the styles property
 }
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Dropdown = ({
   options,
   defaultOption,
   onChange,
   width,
-}) => {
-  const [selected, setSelected] = useState(defaultOption || options[0]);
-  const [isOpen, setIsOpen] = useState(false);
+  styles, // Destructure the styles prop
+}: DropdownProps) => {
+  const [selected, setSelected] = useState<string>(defaultOption || options[0]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLUListElement | null>(null);
 
   const handleSelect = (value: string) => {
@@ -23,6 +24,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     setIsOpen(false);
     onChange && onChange(value);
   };
+
   useEffect(() => {
     if (isOpen && dropdownRef.current) {
       const selectedOptionIndex = options.indexOf(selected);
@@ -39,7 +41,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   }, [isOpen, selected, options]);
 
   return (
-    <div style={{ position: "relative", width: width || "100%" }}>
+    <div style={{ position: "relative", width: width || "100%", ...styles }}>
       <div
         style={{
           fontFamily: "montserrat",
@@ -53,6 +55,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           alignItems: "center",
           display: "inline-flex",
           height: "40px",
+          ...styles, // Apply the custom styles here
         }}
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -71,7 +74,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           <path
             d="M1.37565 0.499999L7.43782 6.5L13.5 0.5"
             stroke="black"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
         </svg>
       </div>

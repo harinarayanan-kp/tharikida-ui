@@ -4,6 +4,7 @@ interface DropdownProps {
     defaultOption?: string;
     onChange?: (value: string) => void;
     width?: string;
+    styles?: React.CSSProperties;
 }
-declare const Dropdown: React.FC<DropdownProps>;
+declare const Dropdown: ({ options, defaultOption, onChange, width, styles, }: DropdownProps) => import("react/jsx-runtime").JSX.Element;
 export default Dropdown;

@@ -1,7 +1,7 @@
-"use client";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useRef, useState } from "react";
-const Dropdown = ({ options, defaultOption, onChange, width, }) => {
+const Dropdown = ({ options, defaultOption, onChange, width, styles, // Destructure the styles prop
+ }) => {
     const [selected, setSelected] = useState(defaultOption || options[0]);
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
@@ -22,7 +22,7 @@ const Dropdown = ({ options, defaultOption, onChange, width, }) => {
             }
         }
     }, [isOpen, selected, options]);
-    return (_jsxs("div", { style: { position: "relative", width: width || "100%" }, children: [_jsxs("div", { style: {
+    return (_jsxs("div", { style: { position: "relative", width: width || "100%", ...styles }, children: [_jsxs("div", { style: {
                     fontFamily: "montserrat",
                     width: "100%",
                     boxSizing: "border-box",
@@ -34,10 +34,11 @@ const Dropdown = ({ options, defaultOption, onChange, width, }) => {
                     alignItems: "center",
                     display: "inline-flex",
                     height: "40px",
+                    ...styles, // Apply the custom styles here
                 }, onClick: () => setIsOpen(!isOpen), children: [selected, _jsx("svg", { style: {
                             transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                             transition: "transform 0.3s",
-                        }, width: "14", height: "8", viewBox: "0 0 14 8", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: _jsx("path", { d: "M1.37565 0.499999L7.43782 6.5L13.5 0.5", stroke: "black", "stroke-linecap": "round" }) })] }), isOpen && (_jsx("ul", { ref: dropdownRef, style: {
+                        }, width: "14", height: "8", viewBox: "0 0 14 8", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: _jsx("path", { d: "M1.37565 0.499999L7.43782 6.5L13.5 0.5", stroke: "black", strokeLinecap: "round" }) })] }), isOpen && (_jsx("ul", { ref: dropdownRef, style: {
                     boxSizing: "border-box",
                     zIndex: 1000,
                     margin: 0,

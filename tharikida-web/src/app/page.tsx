@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Navbar from "./Navbar/Navbar";
 import Polikkum from "./Navbar/Polikkum";
-import { AnimatedBox, ArrowButton, Button, ThemeProvider } from "tharikida-ui";
+import { AnimatedBox, ArrowButton, Button } from "tharikida-ui";
 import "./globals.css";
 import { useEffect, useState } from "react";
 
@@ -44,17 +44,18 @@ export default function Docs() {
           gap: 50,
         }}
       >
-        <div style={{ height: "10svh" }}></div>
         <Polikkum />
         <AnimatedBox
-          styles={{ position: "absolute" }}
+          height={150}
+          styles={{ zIndex: 10, position: "absolute" }}
           color="yellow"
-          width={windowWidth}
+          width={windowWidth < 800 ? windowWidth : 800}
         />
         <AnimatedBox
-          styles={{ position: "absolute" }}
+          height={150}
+          styles={{ zIndex: 1, position: "absolute" }}
           color="black"
-          width={windowWidth}
+          width={windowWidth < 800 ? windowWidth : 800}
         />
 
         {/* <div

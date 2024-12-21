@@ -60,14 +60,7 @@ const Navbar = () => {
             fill="black"
           />
         </svg>
-        <div
-          style={{
-            display: "inline-block", // Shrinks to fit the content
-            whiteSpace: "nowrap", // Prevents text from wrapping to the next line
-          }}
-        >
-          Tharikida-ui
-        </div>
+        <div>Tharikida-ui</div>
       </Link>
 
       <div
