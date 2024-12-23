@@ -136,20 +136,7 @@ export default function Docs() {
           </div>
         </div>
       </section>
-      <div
-        style={{
-          width: "500px",
-          height: "500px",
-          boxSizing: "border-box" as "border-box",
-          backgroundColor: "grey",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "space-around",
-        }}
-      >
-        <Dropdown options={["Option 1", "Option 2", "Option 3"]} />
-      </div>
+      
       <section
         style={{
           minHeight: "100svh",
