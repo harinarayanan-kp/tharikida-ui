@@ -3,7 +3,8 @@ import ArrowButton from "./components/Button/ArrowButton";
 import MusicCard from "./components/MusicCard";
 import AnimatedBox from "./components/AnimatedBox";
 import Calendar from "./components/Calender";
-import Dropdown from "./components/DropDown";
+import Dropdown from "./components/Inputs/DropDown";
+import TextInput from "./components/Inputs/TextInput";
 import ThemeProvider from "./theme/ThemeProvider";
 
 export {
@@ -14,4 +15,5 @@ export {
   Calendar,
   Dropdown,
   ThemeProvider,
+  TextInput
 };

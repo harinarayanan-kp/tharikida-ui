@@ -2,7 +2,13 @@
 import Link from "next/link";
 import Navbar from "./Navbar/Navbar";
 import Polikkum from "./Navbar/Polikkum";
-import { AnimatedBox, ArrowButton, Button } from "tharikida-ui";
+import {
+  AnimatedBox,
+  ArrowButton,
+  Button,
+  Dropdown,
+  TextInput,
+} from "tharikida-ui";
 import "./globals.css";
 import { useEffect, useState } from "react";
 
@@ -130,6 +136,20 @@ export default function Docs() {
           </div>
         </div>
       </section>
+      <div
+        style={{
+          width: "500px",
+          height: "500px",
+          boxSizing: "border-box" as "border-box",
+          backgroundColor: "grey",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-around",
+        }}
+      >
+        <Dropdown options={["Option 1", "Option 2", "Option 3"]} />
+      </div>
       <section
         style={{
           minHeight: "100svh",
@@ -145,8 +165,8 @@ export default function Docs() {
         <div
           style={{
             border: "2px solid black ",
-            margin: 20,
             boxSizing: "border-box",
+            margin: 20,
           }}
         >
           <div
@@ -159,6 +179,7 @@ export default function Docs() {
           >
             About Tharikida-UI 🌟
           </div>
+
           <div
             className="about-text"
             style={{
