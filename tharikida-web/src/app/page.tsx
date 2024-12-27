@@ -7,10 +7,12 @@ import {
   ArrowButton,
   Button,
   Dropdown,
+  IconButton,
   TextInput,
 } from "tharikida-ui";
 import "./globals.css";
 import { useEffect, useState } from "react";
+import Footer from "./Footer/Footer";
 
 export default function Docs() {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -136,7 +138,7 @@ export default function Docs() {
           </div>
         </div>
       </section>
-      
+
       <section
         style={{
           minHeight: "100svh",
@@ -177,13 +179,14 @@ export default function Docs() {
               maxWidth: 800,
             }}
           >
-            Welcome to Tharikida-UI &ndash; the adipoli UI library that makes
-            your projects look kiduvee and keeps you chill while coding! 😎
-            Tharikida-UI isn&rsquo;t just another boring library. It&apos;s your
-            pwoli-mood development buddy, giving you stylish, modern components
-            with zero kachra setup. With nalla flexible theming and full-on
-            customization options, it&rsquo;s all about making your app look
-            like a superstar. 🎇 Sit back, relax with some kaapi ☕, and let
+            Welcome to Tharikida-UI &ndash; the <span>adipoli</span> UI library
+            that makes your projects look <span>kiduvee</span> and keeps you
+            chill while coding! 😎 Tharikida-UI isn&rsquo;t just another boring
+            library. It&apos;s your pwoli-mood development buddy, giving you
+            stylish, modern components with zero <span>kachra</span> setup. With{" "}
+            <span>nalla</span> flexible theming and full-on customization
+            options, it&rsquo;s all about making your app look like a superstar.
+            🎇 Sit back, relax with some <span>kaapi</span> ☕, and let
             Tharikida-UI handle the boring stuff while you build the next level
             project. Appo eth vibe?
           </div>
@@ -237,6 +240,25 @@ export default function Docs() {
           <ArrowButton />
         </a>
       </div>
+      <IconButton
+        icon={
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M10 20C15.5228 20 20 15.5228 20 10C25.5228 10 30 14.4772 30 20C30 25.5228 25.5228 30 20 30C14.4772 30 10 25.5228 10 20ZM10 20C10 14.4772 14.4772 10 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+              fill="black"
+            />
+          </svg>
+        }
+      />
+      <Footer />
     </div>
   );
 }

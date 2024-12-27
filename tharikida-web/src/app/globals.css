@@ -44,3 +44,7 @@ a {
     color-scheme: light;
   }
 }
+
+.about-text span {
+  text-decoration: underline wavy red;
+}
