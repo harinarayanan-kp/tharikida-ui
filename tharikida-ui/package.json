@@ -42,5 +42,8 @@
   "files": [
     "dist/**/*",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "styled-components": "^6.1.13"
+  }
 }

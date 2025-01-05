@@ -8,6 +8,7 @@ import {
   Button,
   Dropdown,
   IconButton,
+  ImageCarousel,
   TextInput,
 } from "tharikida-ui";
 import "./globals.css";
@@ -38,6 +39,17 @@ export default function Docs() {
         alignItems: "center",
       }}
     >
+      <ImageCarousel
+        animationtype="slide-down"
+        width="300px"
+        height="300px"
+        images={[
+          "https://cdn.pixabay.com/photo/2022/08/09/13/11/ireland-7374959_1280.jpg",
+          "https://cdn.pixabay.com/photo/2024/11/24/06/33/fireworks-9220290_960_720.jpg",
+          "https://cdn.pixabay.com/photo/2017/12/13/22/01/crystal-3017830_1280.jpg",
+          "https://cdn.pixabay.com/photo/2024/12/14/15/37/aurora-borealis-9267515_1280.jpg",
+        ]}
+      />
       <Navbar />
       <section
         className=""

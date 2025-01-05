@@ -7,6 +7,7 @@ import Calendar from "./components/Calender";
 import Dropdown from "./components/Inputs/DropDown";
 import TextInput from "./components/Inputs/TextInput";
 import ThemeProvider from "./theme/ThemeProvider";
+import ImageCarousel from "./components/ImageCarrosel";
 import Row from "./components/layout/Row";
 import Column from "./components/layout/Column";
-export { Button, ArrowButton, IconButton, MusicCard, AnimatedBox, Calendar, Dropdown, ThemeProvider, TextInput, Row, Column };
+export { Button, ArrowButton, IconButton, MusicCard, AnimatedBox, Calendar, Dropdown, ThemeProvider, TextInput, ImageCarousel, Row, Column };
