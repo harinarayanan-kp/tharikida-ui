@@ -99,20 +99,20 @@ const CarouselImage = styled.img `
     else {
         switch (props.animationtype) {
             case "slide-in-left":
-                return css `${slideOutRight} 0.5s ease-out forwards`;
+                return css `${slideOutRight} ease-out forwards`;
             case "slide-in-right":
-                return css `${slideOutLeft} 0.5s ease-out forwards`;
+                return css `${slideOutLeft} ease-out forwards`;
             case "slide-up":
-                return css `${slideOutDown} 0.5s ease-out forwards`;
+                return css `${slideOutDown} ease-out forwards`;
             case "slide-down":
-                return css `${slideOutUp} 0.5s ease-out forwards`;
+                return css `${slideOutUp} ease-out forwards`;
             default:
                 return "none";
         }
     }
 }};
 `;
-const ImageCarousel = ({ images, height, width, containerStyle, delay = 2000, animationtype = "slide-in-left", // Default animation type
+const ImageCarousel = ({ images, height, width, containerStyle, delay = 2000, animationtype = "slide-up", // Default animation type
  }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [nextIndex, setNextIndex] = useState(1);

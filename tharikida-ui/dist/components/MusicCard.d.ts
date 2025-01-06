@@ -1,8 +1,3 @@
-/**
- * MusicCardProps Interface
- *
- * Represents the properties passed to the `MusicCard` component.
- */
 interface MusicCardProps {
     /** The name of the music track. */
     musicName?: string;
