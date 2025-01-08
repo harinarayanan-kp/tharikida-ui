@@ -39,17 +39,7 @@ export default function Docs() {
         alignItems: "center",
       }}
     >
-      <ImageCarousel
-        animationtype="slide-down"
-        width="300px"
-        height="300px"
-        images={[
-          "https://cdn.pixabay.com/photo/2022/08/09/13/11/ireland-7374959_1280.jpg",
-          "https://cdn.pixabay.com/photo/2024/11/24/06/33/fireworks-9220290_960_720.jpg",
-          "https://cdn.pixabay.com/photo/2017/12/13/22/01/crystal-3017830_1280.jpg",
-          "https://cdn.pixabay.com/photo/2024/12/14/15/37/aurora-borealis-9267515_1280.jpg",
-        ]}
-      />
+  
       <Navbar />
       <section
         className=""
@@ -252,24 +242,7 @@ export default function Docs() {
           <ArrowButton />
         </a>
       </div>
-      <IconButton
-        icon={
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M10 20C15.5228 20 20 15.5228 20 10C25.5228 10 30 14.4772 30 20C30 25.5228 25.5228 30 20 30C14.4772 30 10 25.5228 10 20ZM10 20C10 14.4772 14.4772 10 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
-              fill="black"
-            />
-          </svg>
-        }
-      />
+      <div style={{height: "50px"}}></div>
       <Footer />
     </div>
   );

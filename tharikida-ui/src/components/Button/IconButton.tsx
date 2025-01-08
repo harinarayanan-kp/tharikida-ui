@@ -40,6 +40,7 @@ const IconButton = ({
     justifyContent: "center",
     border: "1px solid black",
     boxShadow: isActive ? "1px 1px 0px grey" : "2px 2px 0px black",
+    width: "fit-content",
     ...styles,
   };
 

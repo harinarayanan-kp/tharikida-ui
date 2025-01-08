@@ -10,8 +10,11 @@ import CalendarDocs from "./CalenderDocs";
 import DropdownDocs from "./DropDownDocs";
 import Code from "./Code";
 import Navbar from "../Navbar/Navbar";
+import TextInputDocs from "./TextinputDocs";
+import IconButtonDocs from "./IconButtonDocs";
 const Page = () => {
   const [activeTab, setActiveTab] = useState("Getting Started");
+  
 
   const renderContent = () => {
     switch (activeTab) {
@@ -95,6 +98,10 @@ export default function Example() {
         return <CalendarDocs />;
       case "Dropdown":
         return <DropdownDocs />;
+      case "TextInput":
+        return <TextInputDocs />;
+      case "IconButton":
+        return <IconButtonDocs />;
       default:
         return null;
     }
@@ -138,6 +145,12 @@ export default function Example() {
           </Button>
           <Button
             styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("IconButton")}
+          >
+            Icon Button
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
             onClick={() => setActiveTab("MusicCard")}
           >
             Music Card
@@ -160,6 +173,13 @@ export default function Example() {
           >
             Dropdown
           </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("TextInput")}
+          >
+            Text Input
+          </Button>
+          
         </div>
         <div
           style={{
@@ -180,3 +200,6 @@ export default function Example() {
 };
 
 export default Page;
+
+
+
