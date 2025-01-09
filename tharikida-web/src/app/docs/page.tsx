@@ -86,6 +86,8 @@ export default function Example() {
             something tharikida together! 🚀
           </div>
         );
+      case "Accordion":
+        return <AccordionDocs />;
       case "Button":
         return <ButtonDocs />;
       case "ArrowButton":
@@ -130,6 +132,12 @@ export default function Example() {
             onClick={() => setActiveTab("Getting Started")}
           >
             Getting Started
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Accordion")}
+          >
+            Accordion
           </Button>
           <Button
             styles={{ width: "100%", backgroundColor: "white" }}

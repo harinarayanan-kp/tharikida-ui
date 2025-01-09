@@ -3,6 +3,7 @@ import ArrowButton from "./components/Button/ArrowButton";
 import IconButton from "./components/Button/IconButton";
 import MusicCard from "./components/MusicCard";
 import AnimatedBox from "./components/AnimatedBox";
+import Accordion from "./components/Accordion";
 import Calendar from "./components/Calender";
 import Dropdown from "./components/Inputs/DropDown";
 import TextInput from "./components/Inputs/TextInput";
@@ -12,16 +13,17 @@ import Row from "./components/layout/Row";
 import Column from "./components/layout/Column";
 
 export {
-  Button,
-  ArrowButton,
-  IconButton,
-  MusicCard,
+  Accordion,
   AnimatedBox,
+  ArrowButton,
+  Button,
   Calendar,
+  Column,
   Dropdown,
-  ThemeProvider,
-  TextInput,
+  IconButton,
   ImageCarousel,
+  MusicCard,
   Row,
-  Column
+  TextInput,
+  ThemeProvider,
 };

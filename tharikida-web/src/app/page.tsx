@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "./Navbar/Navbar";
 import Polikkum from "./Navbar/Polikkum";
 import {
+  Accordion,
   AnimatedBox,
   ArrowButton,
   Button,
