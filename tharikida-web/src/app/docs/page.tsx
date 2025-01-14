@@ -12,6 +12,7 @@ import Code from "./Code";
 import Navbar from "../Navbar/Navbar";
 import TextInputDocs from "./TextinputDocs";
 import IconButtonDocs from "./IconButtonDocs";
+import AccordionDocs from "./AccordionDocs";
 const Page = () => {
   const [activeTab, setActiveTab] = useState("Getting Started");
   

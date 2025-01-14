@@ -1,7 +1,7 @@
 {
   "name": "tharikida-ui",
   "author": "Harinarayanan K P harikpaug18@gmail.com",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "A lightweight, customizable React UI component library designed for simplicity and flexibility.",
   "license": "MIT",
   "main": "dist/index.js",

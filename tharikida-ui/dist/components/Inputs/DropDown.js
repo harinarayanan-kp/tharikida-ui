@@ -24,12 +24,14 @@ const Dropdown = ({ options, defaultOption, onChange, width, styles, // Destruct
         }
     }, [isOpen, selected, options]);
     return (_jsxs("div", { style: { position: "relative", width: width || "100%", ...styles }, children: [_jsxs("div", { style: {
+                    transition: "0.3s ease",
+                    boxShadow: isOpen ? "1px 1px 0px black" : "2px 2px 0px black",
                     fontFamily: "montserrat",
                     width: "100%",
                     boxSizing: "border-box",
                     padding: "6px 10px",
-                    border: "1px solid black",
-                    borderRadius: "500px",
+                    border: "2px solid black",
+                    borderRadius: "15px",
                     cursor: "pointer",
                     justifyContent: "space-between",
                     alignItems: "center",
@@ -46,7 +48,7 @@ const Dropdown = ({ options, defaultOption, onChange, width, styles, // Destruct
                     padding: "10px",
                     listStyle: "none",
                     background: "white",
-                    border: "1px solid black",
+                    border: "2px solid black",
                     borderRadius: "15px",
                     position: "absolute",
                     top: "100%",

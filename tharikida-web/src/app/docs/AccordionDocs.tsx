@@ -2,26 +2,14 @@ import React from "react";
 import { Accordion } from "tharikida-ui";
 import Code from "./Code"; // Assuming you have a Code component for displaying code snippets
 
-const AccordionDocs: React.FC = () => {
-  const items = [
-    {
-      title: "Section 1",
-      content: <p>This is the content of section 1.</p>,
-    },
-    {
-      title: "Section 2",
-      content: <p>This is the content of section 2.</p>,
-    },
-    {
-      title: "Section 3",
-      content: <p>This is the content of section 3.</p>,
-    },
-  ];
-
+const AccordionDocs = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
       <h1>Accordion Component</h1>
-      <Accordion items={}/>
+      <Accordion
+        title="Accordion Title"
+        content={<p>This is the content of the accordion.</p>}
+      />
 
       <h2>Usage</h2>
       <p>
@@ -32,25 +20,21 @@ const AccordionDocs: React.FC = () => {
 import Accordion from "./Accordion";
 
 const App: React.FC = () => {
-  const items = [
-    {
-      title: "Section 1",
-      content: <p>This is the content of section 1.</p>,
-    },
-    {
-      title: "Section 2",
-      content: <p>This is the content of section 2.</p>,
-    },
-    {
-      title: "Section 3",
-      content: <p>This is the content of section 3.</p>,
-    },
-  ];
-
   return (
     <div>
       <h1>Accordion Example</h1>
-      <Accordion items={items} />
+      <Accordion
+        title="Section 1"
+        content={<p>This is the content of section 1.</p>}
+      />
+      <Accordion
+        title="Section 2"
+        content={<p>This is the content of section 2.</p>}
+      />
+      <Accordion
+        title="Section 3"
+        content={<p>This is the content of section 3.</p>}
+      />
     </div>
   );
 };
@@ -115,7 +99,7 @@ export default App;
                 borderRight: "2px solid #ddd",
               }}
             >
-              <strong>items</strong>
+              <strong>title</strong>
             </td>
             <td
               style={{
@@ -123,14 +107,101 @@ export default App;
                 padding: "10px 15px",
               }}
             >
-              AccordionItem[]
+              string
             </td>
             <td
               style={{
                 padding: "10px 15px",
               }}
             >
-              An array of accordion items, where each item has a title and content.
+              The title of the accordion section.
+            </td>
+          </tr>
+          <tr
+            style={{
+              borderBottom: "2px solid #ddd",
+            }}
+          >
+            <td
+              style={{
+                padding: "10px 15px",
+                borderRight: "2px solid #ddd",
+              }}
+            >
+              <strong>content</strong>
+            </td>
+            <td
+              style={{
+                borderRight: "2px solid #ddd",
+                padding: "10px 15px",
+              }}
+            >
+              React.ReactNode
+            </td>
+            <td
+              style={{
+                padding: "10px 15px",
+              }}
+            >
+              The content of the accordion section.
+            </td>
+          </tr>
+          <tr
+            style={{
+              borderBottom: "2px solid #ddd",
+            }}
+          >
+            <td
+              style={{
+                padding: "10px 15px",
+                borderRight: "2px solid #ddd",
+              }}
+            >
+              <strong>styles</strong>
+            </td>
+            <td
+              style={{
+                borderRight: "2px solid #ddd",
+                padding: "10px 15px",
+              }}
+            >
+              React.CSSProperties
+            </td>
+            <td
+              style={{
+                padding: "10px 15px",
+              }}
+            >
+              Optional inline styles for the accordion.
+            </td>
+          </tr>
+          <tr
+            style={{
+              borderBottom: "2px solid #ddd",
+            }}
+          >
+            <td
+              style={{
+                padding: "10px 15px",
+                borderRight: "2px solid #ddd",
+              }}
+            >
+              <strong>className</strong>
+            </td>
+            <td
+              style={{
+                borderRight: "2px solid #ddd",
+                padding: "10px 15px",
+              }}
+            >
+              string
+            </td>
+            <td
+              style={{
+                padding: "10px 15px",
+              }}
+            >
+              Optional additional CSS class names for the accordion.
             </td>
           </tr>
         </tbody>
@@ -141,13 +212,9 @@ export default App;
         You can customize the accordion&apos;s appearance using inline styles.
       </p>
       <Code>{`<Accordion
-  items={[
-    {
-      title: "Custom Section",
-      content: <p>This is custom content.</p>,
-    },
-  ]}
-  style={{ border: "2px solid blue", borderRadius: "8px" }}
+  title="Custom Section"
+  content={<p>This is custom content.</p>}
+  styles={{ border: "2px solid blue", borderRadius: "8px" }}
 />
 `}</Code>
 
@@ -158,28 +225,21 @@ export default App;
         giving users a clear visual feedback.
       </p>
       <Code>{`<Accordion
-  items={[
-    {
-      title: "Interactive Section",
-      content: <p>This content toggles on click.</p>,
-    },
-  ]}
+  title="Interactive Section"
+  content={<p>This content toggles on click.</p>}
 />
 `}</Code>
 
       <h2>Theming</h2>
       <p>
         The accordion automatically inherits styles from the parent component.
-        You can customize the styles by passing inline styles to the Accordion component.
+        You can customize the styles by passing inline styles to the Accordion
+        component.
       </p>
       <Code>{`<Accordion
-  items={[
-    {
-      title: "Themed Section",
-      content: <p>This is themed content.</p>,
-    },
-  ]}
-  style={{ backgroundColor: "#f9f9f9", color: "#333" }}
+  title="Themed Section"
+  content={<p>This is themed content.</p>}
+  styles={{ backgroundColor: "#f9f9f9", color: "#333" }}
 />
 `}</Code>
     </div>
