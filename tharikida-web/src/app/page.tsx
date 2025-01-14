@@ -2,14 +2,11 @@
 import Link from "next/link";
 import Navbar from "./Navbar/Navbar";
 import Polikkum from "./Navbar/Polikkum";
-import {
-  AnimatedBox,
-  ArrowButton,
-  Button,
-} from "tharikida-ui";
+import { AnimatedBox, ArrowButton, Button } from "tharikida-ui";
 import "./globals.css";
 import { useEffect, useState } from "react";
 import Footer from "./Footer/Footer";
+import ChatbotScreen from "./ChatBotScreen";
 
 export default function Docs() {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -35,7 +32,7 @@ export default function Docs() {
         alignItems: "center",
       }}
     >
-  
+      <ChatbotScreen />
       <Navbar />
       <section
         className=""
@@ -238,7 +235,7 @@ export default function Docs() {
           <ArrowButton />
         </a>
       </div>
-      <div style={{height: "50px"}}></div>
+      <div style={{ height: "50px" }}></div>
       <Footer />
     </div>
   );
