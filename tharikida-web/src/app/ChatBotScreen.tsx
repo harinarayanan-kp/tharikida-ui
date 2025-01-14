@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { FaCommentDots, FaTimes } from "react-icons/fa";
-import { Mistral } from '@mistralai/mistralai';
 
-// Load the API key from environment variables
-const apiKey = process.env.MISTRAL_API_KEY;
-// const apiKey = '';
+type Message = {
+  text: string;
+  sender: "user" | "assistant";
+};
 
-
-// Initialize the Mistral client
-const client = new Mistral({ apiKey: apiKey });
+type ChatCompletionResponse = {
+  choices: {
+    message: {
+      content: string;
+    };
+  }[];
+};
 
 const ChatbotScreen: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [messages, setMessages] = useState<{ text: string; sender: "user" | "bot" }[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
 
   const handleToggle = () => {
@@ -22,34 +26,43 @@ const ChatbotScreen: React.FC = () => {
   const handleSendMessage = async () => {
     if (inputValue.trim() === "") return;
 
-    setMessages([...messages, { text: inputValue, sender: "user" }]);
+    const newMessages: Message[] = [
+      ...messages,
+      { text: inputValue, sender: "user" },
+    ];
+    setMessages(newMessages);
     setInputValue("");
 
     try {
-      const chatResponse = await client.agents.complete({
-        agentId: "ag:305d2485:20250114:tharikida-ui:9ae94d61",
-        messages: [{ role: 'user', content: inputValue }],
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ messages: newMessages.map(msg => ({ role: msg.sender, content: msg.text })) }),
       });
 
-      if (chatResponse.choices && chatResponse.choices.length > 0) {
-        const botMessage = chatResponse.choices[0].message.content;
+      const data: ChatCompletionResponse = await response.json();
+
+      if (data.choices && data.choices.length > 0) {
+        const botMessage = data.choices[0].message.content;
         const sanitizedBotMessage = typeof botMessage === 'string' ? botMessage : 'Sorry, I encountered an error. Please try again.';
 
         setMessages((prevMessages) => [
           ...prevMessages,
-          { text: sanitizedBotMessage, sender: "bot" },
+          { text: sanitizedBotMessage, sender: "assistant" },
         ]);
       } else {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { text: "Sorry, I encountered an error. Please try again.", sender: "bot" },
+          { text: "Sorry, I encountered an error. Please try again.", sender: "assistant" },
         ]);
       }
     } catch (error) {
       console.error('Error making API call:', error);
       setMessages((prevMessages) => [
         ...prevMessages,
-        { text: "Sorry, I encountered an error. Please try again.", sender: "bot" },
+        { text: "Sorry, I encountered an error. Please try again.", sender: "assistant" },
       ]);
     }
   };
