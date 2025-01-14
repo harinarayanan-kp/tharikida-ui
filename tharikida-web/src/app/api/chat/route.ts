@@ -6,14 +6,6 @@ type Message = {
   content: string;
 };
 
-// type ChatCompletionResponse = {
-//   choices: {
-//     message: {
-//       content: string;
-//     };
-//   }[];
-// };
-
 export async function POST(req: NextRequest) {
   if (req.method !== 'POST') {
     return NextResponse.json({ message: 'Method Not Allowed' }, { status: 405 });
