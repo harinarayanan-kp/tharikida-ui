@@ -6,13 +6,13 @@ type Message = {
   content: string;
 };
 
-type ChatCompletionResponse = {
-  choices: {
-    message: {
-      content: string;
-    };
-  }[];
-};
+// type ChatCompletionResponse = {
+//   choices: {
+//     message: {
+//       content: string;
+//     };
+//   }[];
+// };
 
 export async function POST(req: NextRequest, res: NextResponse) {
   if (req.method !== 'POST') {
