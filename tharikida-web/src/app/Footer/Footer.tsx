@@ -1,8 +1,7 @@
 import React from "react";
 
-type Props = {};
 
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <div
       style={{
@@ -18,7 +17,7 @@ const Footer = (props: Props) => {
       }}
     >
       built by HueShift
-      <a href="/">
+      <a href="https://hueshift.in">
         <svg
           width="50"
           height="50"

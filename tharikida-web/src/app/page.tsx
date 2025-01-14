@@ -3,14 +3,9 @@ import Link from "next/link";
 import Navbar from "./Navbar/Navbar";
 import Polikkum from "./Navbar/Polikkum";
 import {
-  Accordion,
   AnimatedBox,
   ArrowButton,
   Button,
-  Dropdown,
-  IconButton,
-  ImageCarousel,
-  TextInput,
 } from "tharikida-ui";
 import "./globals.css";
 import { useEffect, useState } from "react";

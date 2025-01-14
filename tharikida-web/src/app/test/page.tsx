@@ -8,7 +8,7 @@ const page = () => {
         style={{
           width: "500px",
           height: "500px",
-          boxSizing: "border-box" as "border-box",
+          boxSizing: "border-box",
           backgroundColor: "grey",
           display: "flex",
           flexDirection: "column",
