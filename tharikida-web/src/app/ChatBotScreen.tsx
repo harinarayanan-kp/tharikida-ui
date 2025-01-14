@@ -6,6 +6,7 @@ import { Mistral } from '@mistralai/mistralai';
 const apiKey = process.env.MISTRAL_API_KEY;
 // const apiKey = '';
 
+
 // Initialize the Mistral client
 const client = new Mistral({ apiKey: apiKey });
 
