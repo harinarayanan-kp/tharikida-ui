@@ -7,6 +7,7 @@ import Accordion from "./components/Accordion";
 import Calendar from "./components/Calender";
 import Dropdown from "./components/Inputs/DropDown";
 import TextInput from "./components/Inputs/TextInput";
+import ToggleSwitch from "./components/Inputs/ToggleSwitch";
 import ThemeProvider from "./theme/ThemeProvider";
 import ImageCarousel from "./components/ImageCarrosel";
 import Row from "./components/layout/Row";
@@ -25,5 +26,6 @@ export {
   MusicCard,
   Row,
   TextInput,
+  ToggleSwitch,
   ThemeProvider,
 };

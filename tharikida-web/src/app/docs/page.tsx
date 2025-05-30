@@ -13,9 +13,9 @@ import Navbar from "../Navbar/Navbar";
 import TextInputDocs from "./TextinputDocs";
 import IconButtonDocs from "./IconButtonDocs";
 import AccordionDocs from "./AccordionDocs";
+import ToggleSwitchDocs from "./ToggleSwitchDocs";
 const Page = () => {
   const [activeTab, setActiveTab] = useState("Getting Started");
-  
 
   const renderContent = () => {
     switch (activeTab) {
@@ -105,6 +105,8 @@ export default function Example() {
         return <TextInputDocs />;
       case "IconButton":
         return <IconButtonDocs />;
+      case "ToggleSwitch":
+        return <ToggleSwitchDocs />;
       default:
         return null;
     }
@@ -188,7 +190,12 @@ export default function Example() {
           >
             Text Input
           </Button>
-          
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("ToggleSwitch")}
+          >
+            Toggle Switch
+          </Button>
         </div>
         <div
           style={{
@@ -209,6 +216,3 @@ export default function Example() {
 };
 
 export default Page;
-
-
-

@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown } from "tharikida-ui";
+import { Dropdown, ToggleSwitch } from "tharikida-ui";
 
 const page = () => {
   return (
@@ -16,7 +16,8 @@ const page = () => {
           justifyContent: "space-around",
         }}
       >
-        <Dropdown options={["Option 1", "Option 2", "Option 3"]} />
+        {/* <Dropdown options={["Option 1", "Option 2", "Option 3"]} /> */}
+        <ToggleSwitch />
       </div>
     </div>
   );
