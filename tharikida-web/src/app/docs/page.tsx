@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "tharikida-ui";
+import { Button } from "tharikida-ui/button";
 import ButtonDocs from "./ButtonDocs";
 import ArrowButtonDocs from "./ArrowButtonDocs";
 import MusicCardDocs from "./MusicCardDocs";
@@ -14,6 +14,12 @@ import TextInputDocs from "./TextinputDocs";
 import IconButtonDocs from "./IconButtonDocs";
 import AccordionDocs from "./AccordionDocs";
 import ToggleSwitchDocs from "./ToggleSwitchDocs";
+import RadioButtonDocs from "./RadioButtonDocs";
+import CardDocs from "./CardDocs";
+import ListDocs from "./ListDocs";
+import LoaderDocs from "./LoaderDocs";
+import ProgressBarDocs from "./ProgressBarDocs";
+import TableDocs from "./TableDocs";
 const Page = () => {
   const [activeTab, setActiveTab] = useState("Getting Started");
 
@@ -107,6 +113,18 @@ export default function Example() {
         return <IconButtonDocs />;
       case "ToggleSwitch":
         return <ToggleSwitchDocs />;
+      case "RadioButton":
+        return <RadioButtonDocs />;
+      case "Card":
+        return <CardDocs />;
+      case "List":
+        return <ListDocs />;
+      case "Loader":
+        return <LoaderDocs />;
+      case "ProgressBar":
+        return <ProgressBarDocs />;
+      case "Table":
+        return <TableDocs />;
       default:
         return null;
     }
@@ -130,59 +148,24 @@ export default function Example() {
             minHeight: "100vh",
           }}
         >
-          <Button
-            styles={{ width: "100%" }}
-            onClick={() => setActiveTab("Getting Started")}
-          >
-            Getting Started
-          </Button>
+          <div style={{ margin: "20px 0 10px 0", fontWeight: 600 }}>Inputs</div>
           <Button
             styles={{ width: "100%", backgroundColor: "white" }}
-            onClick={() => setActiveTab("Accordion")}
+            onClick={() => setActiveTab("Checkbox")}
           >
-            Accordion
-          </Button>
-          <Button
-            styles={{ width: "100%", backgroundColor: "white" }}
-            onClick={() => setActiveTab("Button")}
-          >
-            Button
-          </Button>
-          <Button
-            styles={{ width: "100%", backgroundColor: "white" }}
-            onClick={() => setActiveTab("ArrowButton")}
-          >
-            Arrow Button
-          </Button>
-          <Button
-            styles={{ width: "100%", backgroundColor: "white" }}
-            onClick={() => setActiveTab("IconButton")}
-          >
-            Icon Button
-          </Button>
-          <Button
-            styles={{ width: "100%", backgroundColor: "white" }}
-            onClick={() => setActiveTab("MusicCard")}
-          >
-            Music Card
-          </Button>
-          <Button
-            styles={{ width: "100%", backgroundColor: "white" }}
-            onClick={() => setActiveTab("AnimatedBox")}
-          >
-            Animated Box
-          </Button>
-          <Button
-            styles={{ width: "100%", backgroundColor: "white" }}
-            onClick={() => setActiveTab("Calendar")}
-          >
-            Calendar
+            Checkbox
           </Button>
           <Button
             styles={{ width: "100%", backgroundColor: "white" }}
             onClick={() => setActiveTab("Dropdown")}
           >
-            Dropdown
+            Dropdown/Select
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("RadioButton")}
+          >
+            Radio Buttons
           </Button>
           <Button
             styles={{ width: "100%", backgroundColor: "white" }}
@@ -192,9 +175,185 @@ export default function Example() {
           </Button>
           <Button
             styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Textarea")}
+          >
+            Textarea
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
             onClick={() => setActiveTab("ToggleSwitch")}
           >
             Toggle Switch
+          </Button>
+          <div style={{ margin: "20px 0 10px 0", fontWeight: 600 }}>
+            Buttons
+          </div>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("ArrowButton")}
+          >
+            Arrow Button
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Button")}
+          >
+            Primary/Secondary Button
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("IconButton")}
+          >
+            Icon Button
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("LoadingButton")}
+          >
+            Loading Button
+          </Button>
+          <div style={{ margin: "20px 0 10px 0", fontWeight: 600 }}>
+            Navigation
+          </div>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Breadcrumb")}
+          >
+            Breadcrumb
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Navbar")}
+          >
+            Navbar
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Pagination")}
+          >
+            Pagination
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Sidebar")}
+          >
+            Sidebar
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Tabs")}
+          >
+            Tabs
+          </Button>
+          <div style={{ margin: "20px 0 10px 0", fontWeight: 600 }}>
+            Feedback
+          </div>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Alert")}
+          >
+            Alert
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Modal")}
+          >
+            Modal
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Snackbar")}
+          >
+            Snackbar/Toast
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Tooltip")}
+          >
+            Tooltip
+          </Button>
+          <div style={{ margin: "20px 0 10px 0", fontWeight: 600 }}>
+            Data Display
+          </div>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Accordion")}
+          >
+            Accordion
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Badge")}
+          >
+            Badge
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Card")}
+          >
+            Card
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("List")}
+          >
+            List
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Loader")}
+          >
+            Spinner/Loader
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("ProgressBar")}
+          >
+            Progress Bar
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Table")}
+          >
+            Table
+          </Button>
+          <div style={{ margin: "20px 0 10px 0", fontWeight: 600 }}>Layout</div>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Container")}
+          >
+            Container
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Divider")}
+          >
+            Divider
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Grid")}
+          >
+            Grid System
+          </Button>
+          <div style={{ margin: "20px 0 10px 0", fontWeight: 600 }}>Media</div>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Icons")}
+          >
+            Icons
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("Image")}
+          >
+            Image
+          </Button>
+          <Button
+            styles={{ width: "100%", backgroundColor: "white" }}
+            onClick={() => setActiveTab("VideoPlayer")}
+          >
+            Video Player
           </Button>
         </div>
         <div

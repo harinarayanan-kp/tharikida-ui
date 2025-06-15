@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Code from "./Code";
-import { TextInput, ThemeProvider } from "tharikida-ui";
+import { ThemeProvider } from "tharikida-ui";
+import { TextInput } from "tharikida-ui/input";
 
 const TextInputDocs = () => {
   const tableRows = [
@@ -236,9 +237,10 @@ export default function App() {
       <h2>Input Variations</h2>
       <p>
         You can create different input field styles by changing the{" "}
-        <code>type</code> prop. The default value is <code>&quot;text&quot;</code>,
-        but you can also set it to <code>&quot;password&quot;</code> or{" "}
-        <code>&quot;email&quot;</code> for different input types.
+        <code>type</code> prop. The default value is{" "}
+        <code>&quot;text&quot;</code>, but you can also set it to{" "}
+        <code>&quot;password&quot;</code> or <code>&quot;email&quot;</code> for
+        different input types.
       </p>
       <Code>{`<TextInput type="text" placeholder="Text Input" />
 <TextInput type="password" placeholder="Password Input" />

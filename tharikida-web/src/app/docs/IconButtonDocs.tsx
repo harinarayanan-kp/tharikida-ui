@@ -1,6 +1,7 @@
 import React from "react";
 import Code from "./Code";
-import { IconButton, ThemeProvider } from "tharikida-ui";
+import { ThemeProvider } from "tharikida-ui";
+import { IconButton } from "tharikida-ui/button";
 import { FaHome } from "react-icons/fa";
 
 const IconButtonDocs = () => {
@@ -15,19 +16,22 @@ const IconButtonDocs = () => {
       prop: "type",
       type: '"primary" | "secondary"',
       default: '"primary"',
-      description: "Defines the type of the button, which changes its background color.",
+      description:
+        "Defines the type of the button, which changes its background color.",
     },
     {
       prop: "href",
       type: "string",
       default: "undefined",
-      description: "If specified, the button renders as a link (<code><a></code>), otherwise, it renders as a regular <code><button></code>.",
+      description:
+        "If specified, the button renders as a link (<code><a></code>), otherwise, it renders as a regular <code><button></code>.",
     },
     {
       prop: "children",
       type: "React.ReactNode",
       default: "undefined",
-      description: "The content inside the button, usually text that accompanies the icon.",
+      description:
+        "The content inside the button, usually text that accompanies the icon.",
     },
     {
       prop: "styles",
@@ -56,8 +60,8 @@ const IconButtonDocs = () => {
 
       <h2>Usage</h2>
       <p>
-        Here&apos;s a basic example of how to use the <strong>IconButton</strong>{" "}
-        component in your application:
+        Here&apos;s a basic example of how to use the{" "}
+        <strong>IconButton</strong> component in your application:
       </p>
       <Code>{`import { IconButton } from 'tharikida-ui';
 import { FaHome } from 'react-icons/fa';
@@ -71,11 +75,15 @@ export default function App() {
   );
 }
 `}</Code>
-      <IconButton icon={<FaHome />} type="primary">Home</IconButton>
-      <IconButton icon={<FaHome />} type="secondary">Home</IconButton>
+      <IconButton icon={<FaHome />} type="primary">
+        Home
+      </IconButton>
+      <IconButton icon={<FaHome />} type="secondary">
+        Home
+      </IconButton>
       <p>
-        In this example, two icon buttons are displayed: one with the default primary
-        style, and one with the secondary style.
+        In this example, two icon buttons are displayed: one with the default
+        primary style, and one with the secondary style.
       </p>
 
       <h2>Props</h2>
@@ -200,8 +208,8 @@ export default function App() {
         Example with <code>href</code> Prop
       </h2>
       <p>
-        To use the <strong>IconButton</strong> component as a link, simply set the{" "}
-        <code>href</code> prop:
+        To use the <strong>IconButton</strong> component as a link, simply set
+        the <code>href</code> prop:
       </p>
       <Code>{`<IconButton
   icon={<FaHome />}
@@ -221,8 +229,8 @@ export default function App() {
       <h2>Interactive Effects</h2>
       <p>
         The <strong>IconButton</strong> component includes an interactive effect
-        when clicked. When you press the button, it appears to be &quot;active&quot;
-        (pressed), giving users a clear visual feedback.
+        when clicked. When you press the button, it appears to be
+        &quot;active&quot; (pressed), giving users a clear visual feedback.
       </p>
       <Code>{`<IconButton
   icon={<FaHome />}
@@ -251,19 +259,26 @@ export default function App() {
 </ThemeProvider>
 `}</Code>
       <ThemeProvider primaryColor="#ff5733" secondaryColor="#33c1ff">
-        <IconButton icon={<FaHome />} type="primary">Custom Themed Button</IconButton>
+        <IconButton icon={<FaHome />} type="primary">
+          Custom Themed Button
+        </IconButton>
       </ThemeProvider>
 
       <h2>Button Variations</h2>
       <p>
         You can create different button styles by changing the <code>type</code>{" "}
-        prop. The default value is <code>&quot;primary&quot;</code>, but you can also set
-        it to <code>&quot;secondary&quot;</code> for an alternative style.
+        prop. The default value is <code>&quot;primary&quot;</code>, but you can
+        also set it to <code>&quot;secondary&quot;</code> for an alternative
+        style.
       </p>
       <Code>{`<IconButton icon={<FaHome />} type="primary">Primary Button</IconButton>
 <IconButton icon={<FaHome />} type="secondary">Secondary Button</IconButton>`}</Code>
-      <IconButton icon={<FaHome />} type="primary">Primary Button</IconButton>
-      <IconButton icon={<FaHome />} type="secondary">Secondary Button</IconButton>
+      <IconButton icon={<FaHome />} type="primary">
+        Primary Button
+      </IconButton>
+      <IconButton icon={<FaHome />} type="secondary">
+        Secondary Button
+      </IconButton>
     </div>
   );
 };

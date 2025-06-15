@@ -1,6 +1,7 @@
 import React from "react";
 import Code from "./Code";
-import { Button, ThemeProvider } from "tharikida-ui";
+import { ThemeProvider } from "tharikida-ui";
+import { Button } from "tharikida-ui/button";
 
 const ButtonDocs = () => {
   const tableRows = [

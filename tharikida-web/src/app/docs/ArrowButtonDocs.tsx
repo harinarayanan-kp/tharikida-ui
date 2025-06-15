@@ -1,6 +1,7 @@
 import React from "react";
 import Code from "./Code";
-import { ArrowButton, ThemeProvider } from "tharikida-ui";
+import { ThemeProvider } from "tharikida-ui";
+import { ArrowButton } from "tharikida-ui/button";
 
 const ArrowButtonDocs = () => {
   const tableRows = [
@@ -79,8 +80,8 @@ const ArrowButtonDocs = () => {
 
       <h2>Usage</h2>
       <p>
-        Here&apos;s a basic example of how to use the <strong>ArrowButton</strong>{" "}
-        component in your application:
+        Here&apos;s a basic example of how to use the{" "}
+        <strong>ArrowButton</strong> component in your application:
       </p>
       <Code>{`import { ArrowButton } from 'tharikida-ui';
 
@@ -198,8 +199,8 @@ export default function App() {
 
       <h2>Customization</h2>
       <p>
-        You can customize the arrow button&apos;s appearance using various props like{" "}
-        <code>type</code>, <code>backgroundColor</code>,{" "}
+        You can customize the arrow button&apos;s appearance using various props
+        like <code>type</code>, <code>backgroundColor</code>,{" "}
         <code>arrowFillColor</code>, and more.
       </p>
       <Code>{`<ArrowButton

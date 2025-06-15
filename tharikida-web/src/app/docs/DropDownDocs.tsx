@@ -1,6 +1,7 @@
 import React from "react";
 import Code from "./Code";
-import { Dropdown, ThemeProvider } from "tharikida-ui"; // Adjust the import if needed
+import { ThemeProvider } from "tharikida-ui";
+import { Dropdown } from "tharikida-ui/input";
 
 const DropdownDocs = () => {
   const tableRows = [
@@ -73,7 +74,8 @@ export default function App() {
         onChange={(value) => console.log(value)}
       />
       <p>
-        In this example, a dropdown is displayed with a list of options, a default selected option, and a change handler.
+        In this example, a dropdown is displayed with a list of options, a
+        default selected option, and a change handler.
       </p>
 
       <h2>Props</h2>
@@ -174,9 +176,9 @@ export default function App() {
 
       <h2>Customization</h2>
       <p>
-        You can customize the dropdown&apos;s appearance using various props like{" "}
-        <code>options</code>, <code>defaultOption</code>, <code>onChange</code>,{" "}
-        <code>width</code>, and <code>styles</code>.
+        You can customize the dropdown&apos;s appearance using various props
+        like <code>options</code>, <code>defaultOption</code>,{" "}
+        <code>onChange</code>, <code>width</code>, and <code>styles</code>.
       </p>
       <Code>{`<Dropdown
   options={["Custom Option 1", "Custom Option 2", "Custom Option 3"]}

@@ -2,18 +2,27 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
-const ToggleSwitch = ({ checked, onChange, styles, className = "", disabled = false, }) => {
+const ToggleSwitch = ({ checked, // Controlled checked state
+onChange, // Change handler
+styles, // Custom styles
+className = "", // Custom className
+disabled = false, // Disabled state
+ }) => {
     const theme = useTheme();
-    // If checked is undefined, manage state internally
+    // Internal state for uncontrolled usage
     const [internalChecked, setInternalChecked] = useState(false);
+    // Determine if the component is controlled
     const isControlled = typeof checked === "boolean";
+    // Use controlled or internal state
     const currentChecked = isControlled ? checked : internalChecked;
+    // Handles toggle action
     const handleChange = (event) => {
         if (!isControlled) {
             setInternalChecked(event.target.checked);
         }
         onChange?.(event);
     };
+    // Switch dimensions
     const switchWidth = 40;
     const switchHeight = 22;
     const knobSize = 15;
@@ -46,9 +55,7 @@ const ToggleSwitch = ({ checked, onChange, styles, className = "", disabled = fa
                 } }), _jsx("span", { style: {
                     position: "absolute",
                     top: spacing,
-                    left: currentChecked
-                        ? switchWidth - knobSize - spacing
-                        : spacing,
+                    left: currentChecked ? switchWidth - knobSize - spacing : spacing,
                     width: knobSize,
                     height: knobSize,
                     background: theme.textColor || "#fff",

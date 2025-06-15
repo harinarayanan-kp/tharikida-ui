@@ -1,5 +1,13 @@
 import React from "react";
-import { Dropdown, ToggleSwitch } from "tharikida-ui";
+import { ThemeProvider } from "tharikida-ui";
+import {
+  Card,
+  List,
+  ListTile,
+  Loader,
+  ProgressBar,
+  Table,
+} from "tharikida-ui/datadisplay";
 
 const page = () => {
   return (
@@ -15,10 +23,7 @@ const page = () => {
           alignItems: "center",
           justifyContent: "space-around",
         }}
-      >
-        {/* <Dropdown options={["Option 1", "Option 2", "Option 3"]} /> */}
-        <ToggleSwitch />
-      </div>
+      ></div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import Code from "./Code";
-import { ToggleSwitch, ThemeProvider } from "tharikida-ui";
+import { ThemeProvider } from "tharikida-ui";
+import { ToggleSwitch } from "tharikida-ui/input";
 
 const ToggleSwitchDocs = () => {
   const tableRows = [

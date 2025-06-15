@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import { Button, ThemeProvider } from "tharikida-ui";
+import { ThemeProvider } from "tharikida-ui";
+import { Button } from "tharikida-ui/button";
 import "./Navbar.css";
 
 const Navbar = () => {

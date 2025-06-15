@@ -22,6 +22,18 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.js"
+    },
+    "./button": {
+      "import": "./dist/button.js",
+      "require": "./dist/button.js"
+    },
+    "./datadisplay": {
+      "import": "./dist/datadisplay.js",
+      "require": "./dist/datadisplay.js"
+    },
+    "./input": {
+      "import": "./dist/input.js",
+      "require": "./dist/input.js"
     }
   },
   "scripts": {

@@ -2,7 +2,8 @@
 import Link from "next/link";
 import Navbar from "./Navbar/Navbar";
 import Polikkum from "./Navbar/Polikkum";
-import { AnimatedBox, ArrowButton, Button } from "tharikida-ui";
+import { AnimatedBox } from "tharikida-ui";
+import { Button, ArrowButton } from "tharikida-ui/button";
 import "./globals.css";
 import { useEffect, useState } from "react";
 import Footer from "./Footer/Footer";
@@ -118,19 +119,21 @@ export default function Docs() {
               Docs
             </div>
           </Link>
-          <div
-            style={{
-              fontFamily: "Montserrat",
-              borderRadius: 40,
-              padding: 10,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-            }}
-          >
-            Playground
-          </div>
+          <Link href="/playground">
+            <div
+              style={{
+                fontFamily: "Montserrat",
+                borderRadius: 40,
+                padding: 10,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+              }}
+            >
+              Playground
+            </div>
+          </Link>
         </div>
       </section>
 
