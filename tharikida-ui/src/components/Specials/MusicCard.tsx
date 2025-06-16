@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useTheme } from "../theme/ThemeProvider";
-import ImageCarousel from "./ImageCarrosel";
+import { useTheme } from "../../theme/ThemeProvider";
 
 interface MusicCardProps {
   /** The name of the music track. */
@@ -17,7 +16,7 @@ interface MusicCardProps {
   musicUrl?: string;
 
   /** The URL of the image associated with the music track. */
-  images?: string[];
+  image?: string;
 
   /** The current playback position as a percentage (0-100). */
   currentPosition?: number;
@@ -41,7 +40,7 @@ const MusicCard = ({
   musicName,
   artist,
   musicUrl,
-  images,
+  image,
   currentPosition,
 }: MusicCardProps) => {
   const [isPlaying, setisPlaying] = useState(false);
@@ -61,9 +60,8 @@ const MusicCard = ({
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
-  
+
   useEffect(() => {
-    
     if (musicUrl) {
       const newAudio = new Audio(musicUrl);
       setAudio(newAudio);
@@ -178,19 +176,32 @@ const MusicCard = ({
           gap: theme.spacingfactor * 2,
         }}
       >
-        {images ? (
+        {image ? (
           <div
             style={{
               width: "100%",
               height: "250px",
               border: "3px solid black",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              borderRadius: 12,
+              marginBottom: theme.spacingfactor * 2,
             }}
           >
-            <ImageCarousel width="100%" height="100%" images={images} />
+            <img
+              src={image}
+              alt={musicName || "Music cover"}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: 10,
+              }}
+            />
           </div>
-        ) : (
-          <></>
-        )}
+        ) : null}
 
         <div
           style={{

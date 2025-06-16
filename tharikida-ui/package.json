@@ -34,6 +34,22 @@
     "./input": {
       "import": "./dist/input.js",
       "require": "./dist/input.js"
+    },
+    "./navigation": {
+      "import": "./dist/navigation.js",
+      "require": "./dist/navigation.js"
+    },
+    "./specials": {
+      "import": "./dist/specials.js",
+      "require": "./dist/specials.js"
+    },
+    "./media": {
+      "import": "./dist/media.js",
+      "require": "./dist/media.js"
+    },
+    "./feedback": {
+      "import": "./dist/feedback.js",
+      "require": "./dist/feedback.js"
     }
   },
   "scripts": {

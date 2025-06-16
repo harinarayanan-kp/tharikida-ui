@@ -11,6 +11,14 @@ const defaultTheme = {
   fontSize: 16,
   fontFamily: "Montserrat, sans-serif",
   spacingfactor: 4,
+  borderColor: "#000000",
+  shadowColor: "#000000",
+  // Sidebar specific
+  sidebarBg: "#f5e9d7",
+  sidebarBorder: "#d1bfa3",
+  sidebarActiveBg: "#d1bfa3",
+  sidebarText: "#222",
+  sidebarActiveBorder: "#bfa77a",
 };
 
 const ThemeContext = createContext(defaultTheme);
@@ -25,6 +33,13 @@ interface ThemeProviderProps {
   fontSize?: number;
   fontFamily?: string;
   spacingfactor?: number;
+  borderColor?: string;
+  shadowColor?: string;
+  sidebarBg?: string;
+  sidebarBorder?: string;
+  sidebarActiveBg?: string;
+  sidebarText?: string;
+  sidebarActiveBorder?: string;
 }
 
 export const ThemeProvider = ({
@@ -37,6 +52,13 @@ export const ThemeProvider = ({
   fontSize,
   fontFamily,
   spacingfactor,
+  borderColor,
+  shadowColor,
+  sidebarBg,
+  sidebarBorder,
+  sidebarActiveBg,
+  sidebarText,
+  sidebarActiveBorder,
 }: ThemeProviderProps) => {
   const theme = {
     primaryColor: primaryColor || defaultTheme.primaryColor,
@@ -47,6 +69,14 @@ export const ThemeProvider = ({
     fontSize: fontSize || defaultTheme.fontSize,
     fontFamily: fontFamily || defaultTheme.fontFamily,
     spacingfactor: spacingfactor || defaultTheme.spacingfactor,
+    borderColor: borderColor || defaultTheme.borderColor,
+    shadowColor: shadowColor || defaultTheme.shadowColor,
+    sidebarBg: sidebarBg || defaultTheme.sidebarBg,
+    sidebarBorder: sidebarBorder || defaultTheme.sidebarBorder,
+    sidebarActiveBg: sidebarActiveBg || defaultTheme.sidebarActiveBg,
+    sidebarText: sidebarText || defaultTheme.sidebarText,
+    sidebarActiveBorder:
+      sidebarActiveBorder || defaultTheme.sidebarActiveBorder,
   };
 
   return (
@@ -54,10 +84,9 @@ export const ThemeProvider = ({
   );
 };
 
-// Custom hook to use the theme in other components
 export const useTheme = () => {
   const context = useContext(ThemeContext);
-  return context; // The context will either return the custom theme or the default theme
+  return context;
 };
 
 export default ThemeProvider;

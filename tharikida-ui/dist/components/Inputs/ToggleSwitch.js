@@ -50,18 +50,19 @@ disabled = false, // Disabled state
                         ? theme.primaryColor || "#4caf50"
                         : theme.backgroundColor || "#ccc",
                     borderRadius: switchHeight / 2,
-                    transition: "background 0.3s",
+                    transitionDuration: "0.3s",
                     border: `2px solid ${theme.textColor || "#000"}`,
-                } }), _jsx("span", { style: {
-                    position: "absolute",
-                    top: spacing,
-                    left: currentChecked ? switchWidth - knobSize - spacing : spacing,
-                    width: knobSize,
-                    height: knobSize,
-                    background: theme.textColor || "#fff",
-                    borderRadius: "50%",
-                    transition: "left 0.3s",
-                    boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
-                } })] }));
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: currentChecked ? "flex-end" : "flex-start",
+                    padding: spacing,
+                }, children: _jsx("span", { style: {
+                        width: knobSize,
+                        height: knobSize,
+                        background: theme.textColor || "#fff",
+                        borderRadius: "50%",
+                        transition: "all 0.3s",
+                        boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
+                    } }) })] }));
 };
 export default ToggleSwitch;

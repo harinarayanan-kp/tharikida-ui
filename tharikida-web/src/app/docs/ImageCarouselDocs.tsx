@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ImageCarousel } from "tharikida-ui";
+import { ImageCarousel } from "tharikida-ui/media";
 import Code from "./Code";
 
 const images = [

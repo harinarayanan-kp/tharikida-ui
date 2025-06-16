@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { ThemeProvider } from "tharikida-ui";
 import {
   Card,
@@ -8,8 +9,17 @@ import {
   ProgressBar,
   Table,
 } from "tharikida-ui/datadisplay";
-
+import { CheckBox } from "tharikida-ui/input";
+import { LoadingButton } from "tharikida-ui/button";
+import {
+  Breadcrumb,
+  Navbar,
+  Pagination,
+  SideBar,
+  Tabs,
+} from "tharikida-ui/navigation";
 const page = () => {
+  const [page, setPage] = useState(1);
   return (
     <div>
       <div

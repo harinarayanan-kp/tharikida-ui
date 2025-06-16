@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import { ThemeProvider } from "tharikida-ui";
 import { Button } from "tharikida-ui/button";
 import { Card } from "tharikida-ui/datadisplay";
-import { TextInput } from "tharikida-ui/input";
+import { Dropdown, TextInput } from "tharikida-ui/input";
 import { ToggleSwitch } from "tharikida-ui/input";
 import { Table } from "tharikida-ui/datadisplay";
+import Navbar from "../Navbar/Navbar";
 
 const Playground = () => {
   const [primaryColor, setPrimaryColor] = useState("#4caf50");
@@ -29,72 +30,149 @@ const Playground = () => {
 </ThemeProvider>`;
 
   return (
-    <div style={{ padding: 24, fontFamily: "Montserrat" }}>
-      <h1>Tharikida UI Playground</h1>
-      <div style={{ display: "flex", gap: 24, marginBottom: 24 }}>
-        <div>
-          <label>Primary Color: </label>
-          <input
-            type="color"
-            value={primaryColor}
-            onChange={(e) => setPrimaryColor(e.target.value)}
-          />
+    <div
+      style={{
+        fontFamily: "Montserrat",
+        background: "#f8fafc",
+        minHeight: "100vh",
+      }}
+    >
+      <Navbar />
+      <div style={{ maxWidth: 900, margin: "0 auto", padding: 32 }}>
+        <h1
+          style={{
+            fontWeight: 700,
+            fontSize: 36,
+            marginBottom: 8,
+            color: primaryColor,
+          }}
+        >
+          Tharikida UI Playground
+        </h1>
+        <p style={{ color: "#555", marginBottom: 32, fontSize: 18 }}>
+          Experiment with theme and components. Tweak colors, font, and see live
+          code updates!
+        </p>
+        <div
+          style={{
+            display: "flex",
+            gap: 32,
+            marginBottom: 32,
+            flexWrap: "wrap",
+            alignItems: "center",
+            background: "#fff",
+            borderRadius: 16,
+            boxShadow: "0 2px 12px #0001",
+            padding: 24,
+          }}
+        >
+          <div>
+            <label style={{ fontWeight: 500 }}>Primary Color: </label>
+            <input
+              type="color"
+              value={primaryColor}
+              onChange={(e) => setPrimaryColor(e.target.value)}
+              style={{
+                marginLeft: 8,
+                width: 32,
+                height: 32,
+                border: "none",
+                background: "none",
+              }}
+            />
+          </div>
+          <div>
+            <label style={{ fontWeight: 500 }}>Secondary Color: </label>
+            <input
+              type="color"
+              value={secondaryColor}
+              onChange={(e) => setSecondaryColor(e.target.value)}
+              style={{
+                marginLeft: 8,
+                width: 32,
+                height: 32,
+                border: "none",
+                background: "none",
+              }}
+            />
+          </div>
+          <div>
+            <label style={{ fontWeight: 500 }}>Font Family: </label>
+            <Dropdown
+              width="200px"
+              options={["Montserrat", "Poppins", "Roboto", "Arial"]}
+              defaultOption="Montserrat"
+              onChange={(value) => setFontFamily(value)}
+            />
+          </div>
         </div>
-        <div>
-          <label>Secondary Color: </label>
-          <input
-            type="color"
-            value={secondaryColor}
-            onChange={(e) => setSecondaryColor(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Font Family: </label>
-          <select
-            value={fontFamily}
-            onChange={(e) => setFontFamily(e.target.value)}
+        <ThemeProvider
+          primaryColor={primaryColor}
+          secondaryColor={secondaryColor}
+          fontFamily={fontFamily}
+        >
+          <div
+            style={{
+              display: "flex",
+              gap: 32,
+              marginBottom: 32,
+              flexWrap: "wrap",
+              alignItems: "flex-start",
+              background: "#fff",
+              borderRadius: 16,
+              boxShadow: "0 2px 12px #0001",
+              padding: 24,
+            }}
           >
-            <option value="'Montserrat', sans-serif">Montserrat</option>
-            <option value="'Poppins', sans-serif">Poppins</option>
-            <option value="'Roboto', sans-serif">Roboto</option>
-            <option value="'Arial', sans-serif">Arial</option>
-          </select>
-        </div>
+            <Card title="Playground Card">Hello World</Card>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <Button>Primary</Button>
+              <ToggleSwitch
+                checked={toggle}
+                onChange={() => setToggle((t) => !t)}
+              />
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <TextInput
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type here..."
+              />
+              <Table
+                columns={["Name", "Value"]}
+                data={[
+                  ["Primary Color", primaryColor],
+                  ["Secondary Color", secondaryColor],
+                  ["Font Family", fontFamily],
+                ]}
+              />
+            </div>
+          </div>
+        </ThemeProvider>
+        <h2
+          style={{
+            fontWeight: 600,
+            fontSize: 24,
+            marginTop: 40,
+            marginBottom: 12,
+          }}
+        >
+          Generated Code
+        </h2>
+        <pre
+          style={{
+            background: "#23272e",
+            color: "#e5e7eb",
+            padding: 20,
+            borderRadius: 10,
+            overflowX: "auto",
+            fontSize: 15,
+            lineHeight: 1.6,
+          }}
+        >
+          {code}
+        </pre>
       </div>
-      <ThemeProvider
-        primaryColor={primaryColor}
-        secondaryColor={secondaryColor}
-        fontFamily={fontFamily}
-      >
-        <div style={{ display: "flex", gap: 24, marginBottom: 24 }}>
-          <Card title="Playground Card">Hello World</Card>
-          <Button>Primary</Button>
-          <TextInput value={input} onChange={(e) => setInput(e.target.value)} />
-          <ToggleSwitch
-            checked={toggle}
-            onChange={() => setToggle((t) => !t)}
-          />
-        </div>
-        <Table
-          columns={["Name", "Value"]}
-          data={[
-            ["Primary Color", primaryColor],
-            ["Secondary Color", secondaryColor],
-            ["Font Family", fontFamily],
-          ]}
-        />
-      </ThemeProvider>
-      <h2>Generated Code</h2>
-      <pre
-        style={{
-          background: "#f4f4f4",
-          padding: 16,
-          borderRadius: 8,
-          overflowX: "auto",
-        }}
-      >
-        {code}
-      </pre>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Navbar from "./Navbar/Navbar";
 import Polikkum from "./Navbar/Polikkum";
-import { AnimatedBox } from "tharikida-ui";
+import { AnimatedBox } from "tharikida-ui/specials";
 import { Button, ArrowButton } from "tharikida-ui/button";
 import "./globals.css";
 import { useEffect, useState } from "react";

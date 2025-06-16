@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Star from "./Shapes/Star";
+import Star from "../Shapes/Star";
 
 export interface RandomDivsProps {
   children?: React.ReactNode;

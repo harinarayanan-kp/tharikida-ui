@@ -109,26 +109,42 @@ const CarouselImage = styled.img<{ animationtype: string; entering: string }>`
     if (props.entering === "true") {
       switch (props.animationtype) {
         case "slide-in-left":
-          return css`${slideInLeft} 0.5s ease-out forwards`;
+          return css`
+            ${slideInLeft} 0.5s ease-out forwards
+          `;
         case "slide-in-right":
-          return css`${slideInRight} 0.5s ease-out forwards`;
+          return css`
+            ${slideInRight} 0.5s ease-out forwards
+          `;
         case "slide-up":
-          return css`${slideUp} 0.5s ease-out forwards`;
+          return css`
+            ${slideUp} 0.5s ease-out forwards
+          `;
         case "slide-down":
-          return css`${slideDown} 0.5s ease-out forwards`;
+          return css`
+            ${slideDown} 0.5s ease-out forwards
+          `;
         default:
           return "none";
       }
     } else {
       switch (props.animationtype) {
         case "slide-in-left":
-          return css`${slideOutRight} ease-out forwards`;
+          return css`
+            ${slideOutRight} ease-out forwards
+          `;
         case "slide-in-right":
-          return css`${slideOutLeft} ease-out forwards`;
+          return css`
+            ${slideOutLeft} ease-out forwards
+          `;
         case "slide-up":
-          return css`${slideOutDown} ease-out forwards`;
+          return css`
+            ${slideOutDown} ease-out forwards
+          `;
         case "slide-down":
-          return css`${slideOutUp} ease-out forwards`;
+          return css`
+            ${slideOutUp} ease-out forwards
+          `;
         default:
           return "none";
       }

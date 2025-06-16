@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Dropdown from "./Inputs/DropDown";
+import Dropdown from "./DropDown";
 
 interface calendarProps {
   handleDateClick?: (day: number | null) => void;

@@ -95,24 +95,25 @@ const ToggleSwitch = ({
             ? theme.primaryColor || "#4caf50"
             : theme.backgroundColor || "#ccc",
           borderRadius: switchHeight / 2,
-          transition: "background 0.3s",
+          transitionDuration: "0.3s",
           border: `2px solid ${theme.textColor || "#000"}`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: currentChecked ? "flex-end" : "flex-start",
+          padding: spacing,
         }}
-      />
-      {/* Knob of the switch */}
-      <span
-        style={{
-          position: "absolute",
-          top: spacing,
-          left: currentChecked ? switchWidth - knobSize - spacing : spacing,
-          width: knobSize,
-          height: knobSize,
-          background: theme.textColor || "#fff",
-          borderRadius: "50%",
-          transition: "left 0.3s",
-          boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
-        }}
-      />
+      >
+        <span
+          style={{
+            width: knobSize,
+            height: knobSize,
+            background: theme.textColor || "#fff",
+            borderRadius: "50%",
+            transition: "all 0.3s",
+            boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
+          }}
+        />
+      </span>
     </label>
   );
 };
