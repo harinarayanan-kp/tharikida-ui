@@ -6,8 +6,8 @@ const BreadcrumbDocs = () => (
     <h1>Breadcrumb</h1>
     <p>
       <b>Breadcrumb</b> displays the current navigation path and allows users to
-      navigate back to previous sections. It uses your theme's primary color and
-      spacing for a consistent look.
+      navigate back to previous sections. It uses your theme&apos;s primary
+      color and spacing for a consistent look.
     </p>
     <h2>Basic Usage</h2>
     <Breadcrumb

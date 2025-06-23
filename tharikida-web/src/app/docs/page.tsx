@@ -32,9 +32,6 @@ import AlertDocs from "./AlertDocs";
 import ModalDocs from "./ModalDocs";
 import TooltipDocs from "./TooltipDocs";
 import SnackbarDocs from "./SnackbarDocs";
-// import ColumnDocs from "./ColumnDocs";
-// import ContainerDocs from "./ContainerDocs";
-// import RowDocs from "./RowDocs";
 
 const SIDEBAR = [
   {

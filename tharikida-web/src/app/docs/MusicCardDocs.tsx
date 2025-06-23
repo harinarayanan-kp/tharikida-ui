@@ -29,10 +29,10 @@ const MusicCardDocs = () => {
       description: "The URL of the music track.",
     },
     {
-      prop: "images",
-      type: "string[]",
-      default: '[]',
-      description: "The URLs of the images associated with the music track.",
+      prop: "image",
+      type: "string",
+      default: '""',
+      description: "The URL of the image associated with the music track.",
     },
     {
       prop: "currentPosition",
@@ -50,10 +50,7 @@ const MusicCardDocs = () => {
         currentPosition={50}
         musicName="Song Title"
         musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        images={[
-          "https://via.placeholder.com/150",
-          "https://via.placeholder.com/150",
-        ]}
+        image="https://via.placeholder.com/150"
       />
 
       <h2>Usage</h2>
@@ -71,10 +68,7 @@ export default function App() {
         currentPosition={50}
         musicName="Song Title"
         musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        images={[
-          "https://via.placeholder.com/150",
-          "https://via.placeholder.com/150",
-        ]}
+        image="https://via.placeholder.com/150"
       />
     </div>
   );
@@ -85,10 +79,7 @@ export default function App() {
         currentPosition={50}
         musicName="Song Title"
         musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        images={[
-          "https://via.placeholder.com/150",
-          "https://via.placeholder.com/150",
-        ]}
+        image="https://via.placeholder.com/150"
       />
       <p>
         In this example, a music card is displayed with the artist name, song
@@ -193,18 +184,15 @@ export default function App() {
 
       <h2>Customization</h2>
       <p>
-        You can customize the music card&apos;s appearance using various props like{" "}
-        <code>musicName</code>, <code>artist</code>, <code>images</code>, and
-        more.
+        You can customize the music card&apos;s appearance using various props
+        like <code>musicName</code>, <code>artist</code>, <code>images</code>,
+        and more.
       </p>
       <Code>{`<MusicCard
   musicName="Custom Song Title"
   artist="Custom Artist"
   musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-  images={[
-    "https://via.placeholder.com/150",
-    "https://via.placeholder.com/150",
-  ]}
+  image="https://via.placeholder.com/150"
   currentPosition={75}
 />
 `}</Code>
@@ -212,27 +200,21 @@ export default function App() {
         musicName="Custom Song Title"
         artist="Custom Artist"
         musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-        images={[
-          "https://via.placeholder.com/150",
-          "https://via.placeholder.com/150",
-        ]}
+        image="https://via.placeholder.com/150"
         currentPosition={75}
       />
 
       <h2>Interactive Effects</h2>
       <p>
-        The <strong>MusicCard</strong> component includes an interactive
-        effect when the play button is clicked. When you press the play button,
-        it triggers the <code>onPlay</code> callback function.
+        The <strong>MusicCard</strong> component includes an interactive effect
+        when the play button is clicked. When you press the play button, it
+        triggers the <code>onPlay</code> callback function.
       </p>
       <Code>{`<MusicCard
   musicName="Interactive Song"
   artist="Interactive Artist"
   musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-  images={[
-    "https://via.placeholder.com/150",
-    "https://via.placeholder.com/150",
-  ]}
+  image="https://via.placeholder.com/150"
   currentPosition={25}
   onPlay={() => alert("Play button clicked!")}
 />
@@ -241,10 +223,7 @@ export default function App() {
         musicName="Interactive Song"
         artist="Interactive Artist"
         musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-        images={[
-          "https://via.placeholder.com/150",
-          "https://via.placeholder.com/150",
-        ]}
+        image="https://via.placeholder.com/150"
         currentPosition={25}
         onPlay={() => alert("Play button clicked!")}
       />
@@ -261,10 +240,7 @@ export default function App() {
     musicName="Themed Song"
     artist="Themed Artist"
     musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
-    images={[
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-    ]}
+    image="https://via.placeholder.com/150"
     currentPosition={50}
   />
 </ThemeProvider>
@@ -274,10 +250,7 @@ export default function App() {
           musicName="Themed Song"
           artist="Themed Artist"
           musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
-          images={[
-            "https://via.placeholder.com/150",
-            "https://via.placeholder.com/150",
-          ]}
+          image="https://via.placeholder.com/150"
           currentPosition={50}
         />
       </ThemeProvider>
@@ -292,20 +265,14 @@ export default function App() {
   musicName="Variation Song 1"
   artist="Variation Artist 1"
   musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
-  images={[
-    "https://via.placeholder.com/150",
-    "https://via.placeholder.com/150",
-  ]}
+  image="https://via.placeholder.com/150"
   currentPosition={30}
 />
 <MusicCard
   musicName="Variation Song 2"
   artist="Variation Artist 2"
   musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
-  images={[
-    "https://via.placeholder.com/150",
-    "https://via.placeholder.com/150",
-  ]}
+  image="https://via.placeholder.com/150"
   currentPosition={60}
 />
 `}</Code>
@@ -313,20 +280,14 @@ export default function App() {
         musicName="Variation Song 1"
         artist="Variation Artist 1"
         musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
-        images={[
-          "https://via.placeholder.com/150",
-          "https://via.placeholder.com/150",
-        ]}
+        image="https://via.placeholder.com/150"
         currentPosition={30}
       />
       <MusicCard
         musicName="Variation Song 2"
         artist="Variation Artist 2"
         musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
-        images={[
-          "https://via.placeholder.com/150",
-          "https://via.placeholder.com/150",
-        ]}
+        image="https://via.placeholder.com/150"
         currentPosition={60}
       />
     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar } from "tharikida-ui/navigation";
 import { FaUserCircle } from "react-icons/fa";
+import Image from "next/image";
 
 const NavbarDocs = () => (
   <div style={{ fontFamily: "Montserrat", maxWidth: 700 }}>
@@ -11,7 +12,9 @@ const NavbarDocs = () => (
     </p>
     <h2>Basic Usage</h2>
     <Navbar
-      logo={<img src="/tharikida-logo.png" alt="Logo" style={{ height: 32 }} />}
+      logo={
+        <Image src="/tharikida-logo.png" alt="Logo" height={32} width={32} />
+      }
       links={[
         { label: "Home", href: "/", active: true },
         { label: "Docs", href: "/docs" },
@@ -21,7 +24,7 @@ const NavbarDocs = () => (
     />
     <pre style={{ background: "#f6f6f6", padding: 12, borderRadius: 6 }}>
       {`<Navbar
-  logo={<img src="/tharikida-logo.png" alt="Logo" style={{ height: 32 }} />}
+  logo={<Image src="/tharikida-logo.png" alt="Logo" height={32} width={32} />}
   links={[
     { label: "Home", href: "/", active: true },
     { label: "Docs", href: "/docs" },

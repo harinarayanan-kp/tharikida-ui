@@ -106,7 +106,7 @@ const SnackbarDocs = () => {
           </tr>
           <tr>
             <td>position</td>
-            <td>"top" | "bottom"</td>
+            <td>&quot;top&quot; | &quot;bottom&quot;</td>
             <td>Where to show the snackbar.</td>
           </tr>
         </tbody>
@@ -136,8 +136,8 @@ function Example() {
       <h2>Accessibility</h2>
       <ul>
         <li>
-          Snackbar uses <code>role="status"</code> and{" "}
-          <code>aria-live="polite"</code> for screen readers.
+          Snackbar uses <code>role=&quot;status&quot;</code> and{" "}
+          <code>aria-live=&quot;polite&quot;</code> for screen readers.
         </li>
         <li>Close button is keyboard accessible and labelled.</li>
       </ul>

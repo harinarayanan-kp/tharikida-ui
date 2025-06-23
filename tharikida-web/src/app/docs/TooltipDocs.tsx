@@ -84,7 +84,10 @@ import { Button } from 'tharikida-ui/button';
           <tr>
             <td style={{ border: "1px solid #ccc", padding: 6 }}>position</td>
             <td style={{ border: "1px solid #ccc", padding: 6 }}>
-              'top' | 'bottom' | 'left' | 'right'
+              <code>
+                &apos;top&apos; | &apos;bottom&apos; | &apos;left&apos; |
+                &apos;right&apos;
+              </code>
             </td>
             <td style={{ border: "1px solid #ccc", padding: 6 }}>
               Tooltip position (default: top)
