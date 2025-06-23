@@ -13,6 +13,7 @@ import { useTheme } from "../../theme/ThemeProvider";
  * @param {(event: React.ChangeEvent<HTMLInputElement>) => void} [props.onChange] - Callback when the value changes.
  * @param {React.CSSProperties} [props.styles] - Custom styles for the input.
  * @param {string} [props.className] - Additional className for the input.
+ * @param {number} [props.cornerRadius] - Border radius for the input. Overrides theme.cornerRadius if provided.
  *
  * @returns {JSX.Element} A styled text input component.
  */
@@ -23,6 +24,8 @@ export interface TextInputProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   styles?: React.CSSProperties;
   className?: string;
+  /** Border radius for the input. Overrides theme.cornerRadius if provided. */
+  cornerRadius?: number;
 }
 
 const TextInput = ({
@@ -32,9 +35,11 @@ const TextInput = ({
   onChange,
   styles,
   className = "",
+  cornerRadius,
 }: TextInputProps) => {
   const theme = useTheme();
   const [isFocused, setIsFocused] = useState(false);
+  const radius = cornerRadius !== undefined ? cornerRadius : theme.cornerRadius;
 
   const inputStyles: React.CSSProperties = {
     backgroundColor: theme.backgroundColor,
@@ -42,7 +47,7 @@ const TextInput = ({
     fontSize: theme.fontSize,
     fontFamily: theme.fontFamily,
     padding: `${theme.spacingfactor}px ${theme.spacingfactor * 2}px`,
-    borderRadius: `${theme.spacingfactor}px`,
+    borderRadius: radius,
     border: "2px solid black",
     boxShadow: isFocused ? "1px 1px 0px black" : "2px 2px 0px black",
     boxSizing: "border-box" as "border-box",

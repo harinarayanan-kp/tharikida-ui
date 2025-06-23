@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useTheme } from "../../theme/ThemeProvider";
 
 /**
  * `TextArea` is a multi-line text input component supporting controlled/uncontrolled usage, theming, and custom styles.
@@ -14,6 +15,7 @@ import React, { useState } from "react";
  * @param {string} [props.className] - Additional className for the textarea container.
  * @param {boolean} [props.disabled] - Disables the textarea if true.
  * @param {string} [props.label] - Optional label to display above the textarea.
+ * @param {number} [props.cornerRadius] - Custom border radius for the textarea. Overrides theme.cornerRadius if provided.
  *
  * @returns {JSX.Element} A styled textarea component.
  */
@@ -26,6 +28,8 @@ export interface TextAreaProps {
   className?: string;
   disabled?: boolean;
   label?: string;
+  /** Custom border radius for the textarea. Overrides theme.cornerRadius if provided. */
+  cornerRadius?: number;
 }
 
 const TextArea = ({
@@ -37,10 +41,15 @@ const TextArea = ({
   className = "",
   disabled = false,
   label,
+  cornerRadius,
 }: TextAreaProps) => {
+  const theme = useTheme();
   const [internalValue, setInternalValue] = useState("");
   const isControlled = typeof value === "string";
   const currentValue = isControlled ? value : internalValue;
+
+  const borderRadius =
+    typeof cornerRadius === "number" ? cornerRadius : theme.cornerRadius ?? 12;
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (!isControlled) {
@@ -67,7 +76,7 @@ const TextArea = ({
           fontFamily: "Montserrat",
           fontSize: 16,
           border: "2px solid black",
-          borderRadius: 12,
+          borderRadius: borderRadius,
           padding: 10,
           resize: "vertical",
           outline: "none",

@@ -14,6 +14,8 @@ import { useTheme } from "../../theme/ThemeProvider";
  * @param {() => void} [props.onClick] - Click handler for the tile.
  * @param {React.CSSProperties} [props.styles] - Custom styles for the tile container.
  * @param {string} [props.className] - Additional className for the tile.
+ * @param {number} [props.cornerRadius] - Border radius for the tile. Overrides theme.cornerRadius if provided.
+ * @param {string} [props.hoverColor] - Background color on hover. Defaults to theme.secondaryColor.
  *
  * @returns {JSX.Element} A styled list tile component.
  */
@@ -32,6 +34,10 @@ export interface ListTileProps {
   styles?: React.CSSProperties;
   /** Additional className */
   className?: string;
+  /** Border radius for the tile. Overrides theme.cornerRadius if provided. */
+  cornerRadius?: number;
+  /** Background color on hover. Defaults to theme.secondaryColor. */
+  hoverColor?: string;
 }
 
 const ListTile = ({
@@ -42,8 +48,13 @@ const ListTile = ({
   onClick,
   styles,
   className = "",
+  cornerRadius,
+  hoverColor,
 }: ListTileProps) => {
   const theme = useTheme();
+  const radius = cornerRadius !== undefined ? cornerRadius : theme.cornerRadius;
+  const [isHovered, setIsHovered] = React.useState(false);
+  const hoverBg = hoverColor || theme.secondaryColor;
 
   return (
     <div
@@ -54,10 +65,14 @@ const ListTile = ({
         padding: `${theme.spacingfactor * 1.5}px ${theme.spacingfactor * 2}px`,
         borderBottom: "1px solid #ddd",
         cursor: onClick ? "pointer" : "default",
-        background: theme.backgroundColor,
+        background: isHovered ? hoverBg : theme.backgroundColor,
+        borderRadius: radius,
+        transition: "background 0.2s",
         ...styles,
       }}
       onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {leading && (
         <div style={{ marginRight: theme.spacingfactor * 2 }}>{leading}</div>

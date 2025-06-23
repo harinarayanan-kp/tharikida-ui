@@ -11,6 +11,7 @@ import { useTheme } from "../../theme/ThemeProvider";
  * @param {(string | number | React.ReactNode)[][]} props.data - Table data as array of rows.
  * @param {React.CSSProperties} [props.styles] - Custom styles for the table.
  * @param {string} [props.className] - Additional className for the table.
+ * @param {number} [props.cornerRadius] - Border radius for the table. Overrides theme.cornerRadius if provided.
  *
  * @returns {JSX.Element} A styled table component.
  */
@@ -23,10 +24,19 @@ export interface TableProps {
   styles?: React.CSSProperties;
   /** Additional className for the table */
   className?: string;
+  /** Border radius for the table. Overrides theme.cornerRadius if provided. */
+  cornerRadius?: number;
 }
 
-const Table = ({ columns, data, styles, className = "" }: TableProps) => {
+const Table = ({
+  columns,
+  data,
+  styles,
+  className = "",
+  cornerRadius,
+}: TableProps) => {
   const theme = useTheme();
+  const radius = cornerRadius !== undefined ? cornerRadius : theme.cornerRadius;
   return (
     <table
       className={`tharikida-table ${className}`}
@@ -38,6 +48,8 @@ const Table = ({ columns, data, styles, className = "" }: TableProps) => {
         fontFamily: theme.fontFamily,
         fontSize: theme.fontSize,
         border: "2px solid black",
+        borderRadius: radius,
+        overflow: "hidden",
         ...styles,
       }}
     >

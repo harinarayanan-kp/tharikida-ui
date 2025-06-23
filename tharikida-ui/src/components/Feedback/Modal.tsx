@@ -13,6 +13,7 @@ import { useTheme } from "../../theme/ThemeProvider";
  * @param {React.CSSProperties} [props.styles] - Custom styles for the modal container.
  * @param {string} [props.className] - Additional className for the modal container.
  * @param {boolean} [props.showCloseButton] - Whether to show the close (×) button. Defaults to true.
+ * @param {number} [props.cornerRadius] - Border radius for the modal. Overrides theme.cornerRadius if provided.
  *
  * @returns {JSX.Element | null} A styled modal dialog, or null if not open.
  */
@@ -24,6 +25,8 @@ export interface ModalProps {
   styles?: React.CSSProperties;
   className?: string;
   showCloseButton?: boolean;
+  /** Border radius for the modal. Overrides theme.cornerRadius if provided. */
+  cornerRadius?: number;
 }
 
 const Modal = ({
@@ -34,9 +37,11 @@ const Modal = ({
   styles = {},
   className = "",
   showCloseButton = true,
+  cornerRadius,
 }: ModalProps) => {
   const theme = useTheme();
   if (!open) return null;
+  const radius = cornerRadius !== undefined ? cornerRadius : theme.cornerRadius;
 
   return (
     <div
@@ -58,12 +63,13 @@ const Modal = ({
         style={{
           background: theme.backgroundColor,
           border: `2px solid ${theme.borderColor}`,
-          borderRadius: theme.spacingfactor * 2,
+          borderRadius: radius,
           boxShadow: `2px 2px 0px ${theme.shadowColor}`,
           minWidth: 320,
           maxWidth: 480,
           padding: theme.spacingfactor * 5,
           fontFamily: theme.fontFamily,
+          position: "relative",
           ...styles,
         }}
       >

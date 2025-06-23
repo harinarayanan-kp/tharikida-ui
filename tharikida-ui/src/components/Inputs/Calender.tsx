@@ -40,7 +40,7 @@ const Calendar = ({
   const generateCalendar = (month: number, year: number) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const firstDay = new Date(year, month, 1).getDay();
-    const dates: (number | null)[] = Array(firstDay).fill(null); // Fill empty spaces
+    const dates: (number | null)[] = Array(firstDay).fill(null);
     for (let i = 1; i <= daysInMonth; i++) dates.push(i);
     return dates;
   };
@@ -116,7 +116,9 @@ const Calendar = ({
 
   return (
     <div style={{ width: size || "300px" }}>
-      <div style={styles.container}>
+      <div
+        style={{ ...styles.container, backgroundColor: theme.backgroundColor }}
+      >
         <div
           style={styles.dateInput}
           onClick={() => setShowCalendar(!showCalendar)}
@@ -124,7 +126,13 @@ const Calendar = ({
           {formatDate(selectedDate)}
         </div>
         {showCalendar && (
-          <div style={{ ...styles.calendar, borderRadius: borderRadius }}>
+          <div
+            style={{
+              ...styles.calendar,
+              borderRadius: borderRadius,
+              backgroundColor: theme.backgroundColor,
+            }}
+          >
             <div style={styles.header}>
               <Dropdown
                 options={months}
@@ -149,26 +157,43 @@ const Calendar = ({
               ))}
             </div>
             <div style={styles.datesGrid}>
-              {dates.map((day, index) => (
-                <div
-                  key={index}
-                  style={{
-                    ...styles.dateCell,
-                    borderRadius: borderRadius,
-                    ...(day && { cursor: "pointer" }),
-                    ...(day !== null &&
-                      selectedDate &&
-                      selectedDate.toISOString().split("T")[0] ===
-                        new Date(currentYear, currentMonth, day)
-                          .toISOString()
-                          .split("T")[0] &&
-                      styles.selectedDate),
-                  }}
-                  onClick={() => handleDateClickInternal(day)}
-                >
-                  {day || ""}
-                </div>
-              ))}
+              {dates.map((day, index) => {
+                const isSelected =
+                  day !== null &&
+                  selectedDate &&
+                  selectedDate.toISOString().split("T")[0] ===
+                    new Date(currentYear, currentMonth, day)
+                      .toISOString()
+                      .split("T")[0];
+                const isToday =
+                  day !== null &&
+                  today.getDate() === day &&
+                  today.getMonth() === currentMonth &&
+                  today.getFullYear() === currentYear;
+                return (
+                  <div
+                    key={index}
+                    style={{
+                      ...styles.dateCell,
+                      borderRadius: borderRadius,
+                      ...(day && { cursor: "pointer" }),
+                      ...(isSelected && {
+                        backgroundColor: theme.primaryColor,
+                        color: "#fff",
+                        borderRadius: "50%",
+                        border: `2px solid ${theme.primaryColor}`,
+                      }),
+                      ...(!isSelected &&
+                        isToday && {
+                          border: `2px solid ${theme.primaryColor}`,
+                        }),
+                    }}
+                    onClick={() => handleDateClickInternal(day)}
+                  >
+                    {day || ""}
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

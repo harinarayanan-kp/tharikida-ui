@@ -1,74 +1,85 @@
 # Tharikida UI 🚀🔥
-**A Naadan React Component Library for Building Fast and Fun UIs**  
 
-Tharikida UI is a lightweight React component library packed with simplicity, style, and a touch of Kerala flair! Whether you're building personal projects or developing applications, Tharikida UI offers the perfect balance of performance and visual appeal.
+**A Naadan React Component Library for Fast, Fun, and Themed UIs**
+
+Tharikida UI is a lightweight React component library inspired by Kerala's vibrant yet simple aesthetic. It offers a growing set of accessible, customizable, and themeable components for building beautiful modern apps with ease.
 
 ---
 
 ## Features
-- 🥥 **Naadan Design:** A clean, minimalistic design inspired by Kerala's vibrant yet simple aesthetic.  
-- ⚡ **Fast and Lightweight:** Optimized for performance with minimal dependencies.  
-- 🛠️ **Customizable:** Easy-to-use components with built-in theming support.  
-- 🌴 **Ready to Use:** A growing list of pre-built, accessible components to enhance your UI.  
+
+- 🌴 **Naadan Design:** Minimal, clean, and Kerala-inspired UI components.
+- ⚡ **Fast & Lightweight:** Optimized for performance with minimal dependencies.
+- 🎨 **Theming Built-In:** Change colors, fonts, and corner radius globally with the `ThemeProvider`.
+- 🛠️ **Customizable:** All components support custom styles, theming, and flexible props.
+- 📦 **Ready-to-Use:** Includes Button, Modal, Card, Input, Alert, ProgressBar, List, Table, and more.
 
 ---
 
 ## Installation
 
-You can easily add **Tharikida UI** to your React project via npm or yarn:
+Install Tharikida UI in your React project:
 
-### Using npm:
 ```bash
 npm install tharikida-ui
 ```
-## Usage:
-Once installed, you can start using Tharikida UI components in your React project.
 
-Example:
+---
+
+## Usage Example
+
+Wrap your app (or a part of it) with the `ThemeProvider` to enable theming. Then use any component, such as `Button`:
 
 ```jsx
-import React from 'react';
-import { Button, Modal } from 'tharikida-ui';
+import React from "react";
+import { ThemeProvider } from "tharikida-ui";
+import { Button } from "tharikida-ui/button";
 
-const App = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-  return (
-    <div>
-      <h1>Welcome to Tharikida UI!</h1>
-      <Button onClick={() => setIsModalOpen(true)} type="primary">
-        Open Modal
-      </Button>
-
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2>Tharikida Modal</h2>
-        <p>This is a simple modal from Tharikida UI!</p>
-      </Modal>
-    </div>
-  );
-};
+const App = () => (
+  <ThemeProvider
+    primaryColor="#4caf50"
+    secondaryColor="#ff9800"
+    fontFamily="'Montserrat', sans-serif"
+    cornerRadius={16}
+  >
+    <h1>Welcome to Tharikida UI!</h1>
+    <Button type="primary" onClick={() => alert("Clicked!")}>
+      Themed Button
+    </Button>
+  </ThemeProvider>
+);
 
 export default App;
 ```
-## Components:
-Tharikida UI includes the following components:
 
-Button: Customizable buttons with various styles.
-Modal: Simple modal component for dialogs and pop-ups.
-Input: Standard input fields (text, select, checkbox, radio).
-Card: Display cards with customizable content.
-Alert: Show alerts for notifications and warnings.
-Progress Bar: Indicate progress of tasks with a sleek bar.
-Spinner: Visual loader to show waiting states.
-Badge: Display badges for status, counts, or tags.
-Customization
-Tharikida UI is built to be flexible! You can easily customize the look and feel of components through props and CSS overrides.
+---
 
-Here’s an example of customizing the primary button color:
+## Playground
 
-```jsx
-<Button style={{ backgroundColor: '#F1C40F' }} type="primary">
-  Custom Button
-</Button>
-```
-For more advanced theming and customization options, refer to the documentation.
+Want to experiment with theming and components live? **Visit the Playground on the homepage!** Tweak colors, font, and corner radius, and see instant updates with code samples.
+
+---
+
+## Components
+
+Tharikida UI includes:
+
+- **Button:** Customizable, theme-aware buttons
+- **Modal:** Simple modal dialogs
+- **Input:** TextInput, CheckBox, RadioButton, DropDown, TextArea, ToggleSwitch
+- **Card:** Flexible content containers
+- **Alert:** Popup alerts
+- **ProgressBar:** Sleek progress indicators
+- **List & ListTile:** Structured lists
+- **Table:** Themed data tables
+- **Snackbar, Tooltip, Loader, and more!**
+
+---
+
+## Customization & Theming
+
+All components support custom styles via props. For global theming, use the `ThemeProvider` to set primary/secondary colors, font, and corner radius. You can also override styles and corner radius per component.
+
+---
+
+For full documentation and advanced usage, see the docs site or explore the Playground!

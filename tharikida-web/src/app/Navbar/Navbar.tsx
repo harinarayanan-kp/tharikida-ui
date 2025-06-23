@@ -72,6 +72,7 @@ const Navbar = () => {
         }}
       >
         <ThemeProvider primaryColor="lightgreen">
+          <Button href="/playground">Playground</Button>
           <Button href="/docs">Docs</Button>
         </ThemeProvider>
         {githubIcon}

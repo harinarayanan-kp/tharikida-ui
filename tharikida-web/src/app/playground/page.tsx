@@ -15,6 +15,7 @@ const Playground = () => {
   const [fontFamily, setFontFamily] = useState("'Montserrat', sans-serif");
   const [toggle, setToggle] = useState(false);
   const [input, setInput] = useState("");
+  const [cornerRadius, setCornerRadius] = useState(16);
 
   const code = `import { ThemeProvider, Button, Card, TextInput, ToggleSwitch, Table } from 'tharikida-ui';
 
@@ -22,6 +23,7 @@ const Playground = () => {
   primaryColor=\"${primaryColor}\"
   secondaryColor=\"${secondaryColor}\"
   fontFamily=\"${fontFamily}\"
+  cornerRadius={${cornerRadius}}
 >
   <Card title=\"Playground Card\">Hello World</Card>
   <Button>Primary</Button>
@@ -105,11 +107,26 @@ const Playground = () => {
               onChange={(value) => setFontFamily(value)}
             />
           </div>
+          <div>
+            <label style={{ fontWeight: 500 }}>Corner Radius: </label>
+            <input
+              type="range"
+              min={0}
+              max={48}
+              value={cornerRadius}
+              onChange={(e) => setCornerRadius(Number(e.target.value))}
+              style={{ marginLeft: 8 }}
+            />
+            <span style={{ marginLeft: 8, fontWeight: 500 }}>
+              {cornerRadius}px
+            </span>
+          </div>
         </div>
         <ThemeProvider
           primaryColor={primaryColor}
           secondaryColor={secondaryColor}
           fontFamily={fontFamily}
+          cornerRadius={cornerRadius}
         >
           <div
             style={{

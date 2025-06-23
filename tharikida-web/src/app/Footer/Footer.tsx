@@ -1,5 +1,5 @@
 import React from "react";
-
+import Tooltip from "../../../../tharikida-ui/dist/components/Feedback/Tooltip";
 
 const Footer = () => {
   return (
@@ -16,8 +16,14 @@ const Footer = () => {
         gap: "10px",
       }}
     >
-      built by HueShift
-      <a href="https://hueshift.in">
+      built by{" "}
+      <a href="https://github.com/harinarayanan-kp" style={{ color: "black" }}>
+        <Tooltip content="github.com/harinarayanan-kp">
+          Harinarayanan K P
+        </Tooltip>
+      </a>{" "}
+      with ❤️
+      {/* <a href="https://hueshift.in">
         <svg
           width="50"
           height="50"
@@ -37,7 +43,7 @@ const Footer = () => {
             fill="#CC0100"
           />
         </svg>
-      </a>
+      </a> */}
     </div>
   );
 };

@@ -15,6 +15,7 @@ import { useTheme } from "../../theme/ThemeProvider";
  * @param {React.CSSProperties} [props.styles] - Custom styles for the snackbar container.
  * @param {string} [props.className] - Additional className for the snackbar.
  * @param {"top" | "bottom"} [props.position="bottom"] - Position of the snackbar on the screen.
+ * @param {number} [props.cornerRadius] - Border radius for the snackbar. Overrides theme.cornerRadius if provided.
  *
  * @returns {JSX.Element | null} A styled snackbar notification, or null if not open.
  */
@@ -27,6 +28,7 @@ export interface SnackbarProps {
   styles?: React.CSSProperties;
   className?: string;
   position?: "top" | "bottom";
+  cornerRadius?: number;
 }
 
 const Snackbar = ({
@@ -38,8 +40,10 @@ const Snackbar = ({
   styles = {},
   className = "",
   position = "bottom",
+  cornerRadius,
 }: SnackbarProps) => {
   const theme = useTheme();
+  const radius = cornerRadius !== undefined ? cornerRadius : theme.cornerRadius;
 
   useEffect(() => {
     if (open && duration > 0) {
@@ -61,7 +65,7 @@ const Snackbar = ({
         background: theme.backgroundColor,
         color: theme.textColor,
         border: `1px solid ${theme.borderColor}`,
-        borderRadius: theme.spacingfactor * 2,
+        borderRadius: radius,
         boxShadow: `2px 2px 0px ${theme.shadowColor}`,
         padding: `${theme.spacingfactor * 2}px ${theme.spacingfactor * 4}px`,
         fontFamily: theme.fontFamily,

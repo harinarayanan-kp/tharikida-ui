@@ -12,6 +12,7 @@ import { useTheme } from "../../theme/ThemeProvider";
  * @param {string} [props.buttonText] - The text for the button that opens the alert.
  * @param {React.CSSProperties} [props.styles] - Custom styles for the alert popup content.
  * @param {string} [props.className] - Additional className for the alert container.
+ * @param {number} [props.cornerRadius] - Border radius for the alert popup. Overrides theme.cornerRadius if provided.
  *
  * @returns {JSX.Element} A styled popup alert component.
  */
@@ -21,6 +22,8 @@ export interface AlertProps {
   buttonText?: string;
   styles?: React.CSSProperties;
   className?: string;
+  /** Border radius for the alert popup. Overrides theme.cornerRadius if provided. */
+  cornerRadius?: number;
 }
 
 const Alert = ({
@@ -29,10 +32,12 @@ const Alert = ({
   buttonText = "Show Alert",
   styles = {},
   className = "",
+  cornerRadius,
 }: AlertProps) => {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const radius = cornerRadius !== undefined ? cornerRadius : theme.cornerRadius;
 
   const alertButtonStyles: React.CSSProperties = {
     padding: `${theme.spacingfactor * 2}px ${theme.spacingfactor * 4}px`,
@@ -69,7 +74,7 @@ const Alert = ({
     border: `2px solid ${theme.borderColor}`,
     textAlign: "center",
     width: 300,
-    borderRadius: `${theme.spacingfactor * 2}px`,
+    borderRadius: radius,
     boxShadow: `2px 2px 0px ${theme.shadowColor}`,
     ...styles,
   };

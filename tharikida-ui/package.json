@@ -1,12 +1,12 @@
 {
   "name": "tharikida-ui",
   "author": "Harinarayanan K P harikpaug18@gmail.com",
-  "version": "1.0.15",
+  "version": "2.0.0",
   "description": "A lightweight, customizable React UI component library designed for simplicity and flexibility.",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
-  "homepage": "https://harinarayanan-kp.github.io/tharikida-ui/",
+  "homepage": "https://tharikida-ui.vercel.app/",
   "repository": {
     "type": "git",
     "url": "https://github.com/harinarayanan-kp/tharikida-ui"
