@@ -1,5 +1,5 @@
 import React from "react";
-import Tooltip from "../../../../tharikida-ui/dist/components/Feedback/Tooltip";
+import { Tooltip } from "tharikida-ui/feedback";
 
 const Footer = () => {
   return (
