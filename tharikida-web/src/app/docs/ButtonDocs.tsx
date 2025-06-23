@@ -202,8 +202,8 @@ export default function App() {
       <h2>Interactive Effects</h2>
       <p>
         The <strong>Button</strong> component includes an interactive effect
-        when clicked. When you press the button, it appears to be &quot;active&quot;
-        (pressed), giving users a clear visual feedback.
+        when clicked. When you press the button, it appears to be
+        &quot;active&quot; (pressed), giving users a clear visual feedback.
       </p>
       <Code>{`<Button type="primary" onClick={() => alert("Button clicked!")}>
   Click Me
@@ -230,8 +230,9 @@ export default function App() {
       <h2>Button Variations</h2>
       <p>
         You can create different button styles by changing the <code>type</code>{" "}
-        prop. The default value is <code>&quot;primary&quot;</code>, but you can also set
-        it to <code>&quot;secondary&quot;</code> for an alternative style.
+        prop. The default value is <code>&quot;primary&quot;</code>, but you can
+        also set it to <code>&quot;secondary&quot;</code> for an alternative
+        style.
       </p>
       <Code>{`<Button type="primary">Primary Button</Button>
 <Button type="secondary">Secondary Button</Button>`}</Code>

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useTheme } from "../../theme/ThemeProvider";
 
 /**
  * `ArrowButton` is a customizable button component that displays an arrow.
@@ -7,10 +8,6 @@ import React from "react";
  * The button's appearance and behavior can be controlled using props.
  *
  * @param {object} props - The properties to customize the `ArrowButton` component.
- * @param {'box' | 'rounded' | 'hybrid'} [props.type='hybrid'] - Defines the border style of the button.
- *   - `box`: A square button with sharp corners.
- *   - `rounded`: A circular button with rounded corners.
- *   - `hybrid`: A hybrid between box and rounded with a customizable border radius percentage.
  * @param {'topleft' | 'topright' | 'bottomleft' | 'bottomright' | 'left' | 'right' | 'top' | 'bottom'} [props.initialDirection='topright'] - The initial direction of the arrow.
  *   - Controls the direction of the arrow before hover and rotation.
  * @param {'topleft' | 'topright' | 'bottomleft' | 'bottomright' | 'left' | 'right' | 'top' | 'bottom'} [props.finalDirection='right'] - The final direction of the arrow after rotation.
@@ -29,7 +26,6 @@ import React from "react";
 
 // Define the Props interface with detailed descriptions for each prop.
 export interface Props {
-  type?: "box" | "rounded" | "hybrid";
   initialDirection?:
     | "topleft"
     | "topright"
@@ -56,8 +52,11 @@ export interface Props {
   borderColor?: string;
   shadowColor?: string;
   size?: number;
-  borderRadiusPercentage?: number;
   onClick?: () => void;
+  /**
+   * Custom border radius for the button. Overrides theme.cornerRadius if provided.
+   */
+  cornerRadius?: number;
 }
 /**
  * `ArrowButton` is a customizable button component that displays an arrow.
@@ -69,7 +68,6 @@ export interface Props {
  */
 const ArrowButton = ({
   // Destructure props with default values
-  type = "hybrid",
   initialDirection = "topright",
   finalDirection = "right",
   backgroundColor = "transparent",
@@ -79,8 +77,9 @@ const ArrowButton = ({
   onClick,
   arrowFillColor = "black",
   arrowStrokeColor = "transparent",
-  borderRadiusPercentage = 25,
+  cornerRadius,
 }: Props) => {
+  const theme = useTheme();
   // Helper function to calculate the rotation angle between initial and final direction
   const getRotationAngle = () => {
     const directionMap: { [key: string]: number } = {
@@ -100,13 +99,9 @@ const ArrowButton = ({
     return finalAngle - initialAngle;
   };
 
-  // Compute border-radius value based on the type ('rounded', 'box', or 'hybrid')
+  // Use prop cornerRadius if provided, else theme.cornerRadius
   const borderRadiusValue =
-    type === "hybrid"
-      ? (size * borderRadiusPercentage) / 100 // 'hybrid' uses percentage-based rounding
-      : type === "rounded"
-      ? size / 2 // 'rounded' makes the button a perfect circle
-      : 0; // 'box' has sharp corners (no border-radius)
+    typeof cornerRadius === "number" ? cornerRadius : theme.cornerRadius ?? 0;
 
   return (
     <div

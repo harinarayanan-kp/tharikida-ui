@@ -1,7 +1,5 @@
-import Accordion from "./components/Data Display/Accordion";
 import ThemeProvider from "./theme/ThemeProvider";
+import AnimatedBox from "./components/Specials/AnimatedBox";
+import MusicCard from "./components/Specials/MusicCard";
 
-import Row from "./components/layout/Row";
-import Column from "./components/layout/Column";
-
-export { Accordion, Column, Row, ThemeProvider };
+export { ThemeProvider, AnimatedBox, MusicCard };

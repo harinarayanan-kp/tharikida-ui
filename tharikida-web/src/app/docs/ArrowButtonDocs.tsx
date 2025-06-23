@@ -6,64 +6,59 @@ import { ArrowButton } from "tharikida-ui/button";
 const ArrowButtonDocs = () => {
   const tableRows = [
     {
-      prop: "type",
-      type: '"box" | "rounded" | "hybrid"',
-      default: '"box"',
-      description: "Defines the shape of the button.",
+      prop: "cornerRadius",
+      type: "number",
+      default: "theme.cornerRadius",
+      description:
+        "Custom border radius for the button. Overrides the theme's cornerRadius if provided.",
     },
     {
       prop: "initialDirection",
       type: '"topleft" | "topright" | "bottomleft" | "bottomright" | "left" | "right" | "top" | "bottom"',
-      default: '"bottomright"',
+      default: '"topright"',
       description: "Sets the initial direction of the arrow.",
     },
     {
       prop: "finalDirection",
       type: '"topleft" | "topright" | "bottomleft" | "bottomright" | "left" | "right" | "top" | "bottom"',
-      default: '"bottomright"',
-      description: "Sets the final direction of the arrow.",
+      default: '"right"',
+      description: "Sets the final direction of the arrow after hover.",
     },
     {
       prop: "backgroundColor",
       type: "string",
-      default: '"#ffffff"',
+      default: '"transparent"',
       description: "Background color of the button.",
     },
     {
       prop: "arrowFillColor",
       type: "string",
-      default: '"#000000"',
+      default: '"black"',
       description: "Fill color of the arrow.",
     },
     {
       prop: "arrowStrokeColor",
       type: "string",
-      default: '"#000000"',
+      default: '"transparent"',
       description: "Stroke color of the arrow.",
     },
     {
       prop: "borderColor",
       type: "string",
-      default: '"#000000"',
+      default: '"black"',
       description: "Border color of the button.",
     },
     {
       prop: "shadowColor",
       type: "string",
-      default: '"rgba(0, 0, 0, 0.1)"',
+      default: '"black"',
       description: "Shadow color of the button.",
     },
     {
       prop: "size",
       type: "number",
-      default: "40",
-      description: "Size of the button.",
-    },
-    {
-      prop: "borderRadiusPercentage",
-      type: "number",
-      default: "50",
-      description: "Border radius percentage of the button.",
+      default: "48",
+      description: "Size of the button (width and height in px).",
     },
     {
       prop: "onClick",
@@ -88,17 +83,17 @@ const ArrowButtonDocs = () => {
 export default function App() {
   return (
     <div>
-      <ArrowButton type="box" initialDirection="bottomright" />
-      <ArrowButton type="rounded" initialDirection="topleft" />
+      <ArrowButton initialDirection="bottomright" />
+      <ArrowButton initialDirection="topleft" cornerRadius={24} />
     </div>
   );
 }
 `}</Code>
-      <ArrowButton type="box" initialDirection="bottomright" />
-      <ArrowButton type="rounded" initialDirection="topleft" />
+      <ArrowButton initialDirection="bottomright" />
+      <ArrowButton initialDirection="topleft" cornerRadius={24} />
       <p>
-        In this example, two arrow buttons are displayed: one with a box shape
-        and another with a rounded shape.
+        In this example, two arrow buttons are displayed: one with the default
+        theme border radius and another with a custom <code>cornerRadius</code>.
       </p>
 
       <h2>Props</h2>
@@ -120,78 +115,31 @@ export default function App() {
               fontWeight: "bold",
             }}
           >
-            <th
-              style={{
-                padding: "10px 15px",
-                textAlign: "left",
-              }}
-            >
-              Prop
-            </th>
-            <th
-              style={{
-                padding: "10px 15px",
-                textAlign: "left",
-              }}
-            >
-              Type
-            </th>
-            <th
-              style={{
-                padding: "10px 15px",
-                textAlign: "left",
-              }}
-            >
-              Default
-            </th>
-            <th
-              style={{
-                padding: "10px 15px",
-              }}
-            >
-              Description
-            </th>
+            <th style={{ padding: "10px 15px", textAlign: "left" }}>Prop</th>
+            <th style={{ padding: "10px 15px", textAlign: "left" }}>Type</th>
+            <th style={{ padding: "10px 15px", textAlign: "left" }}>Default</th>
+            <th style={{ padding: "10px 15px" }}>Description</th>
           </tr>
         </thead>
         <tbody>
           {tableRows.map((row) => (
-            <tr
-              key={row.prop}
-              style={{
-                borderBottom: "2px solid #ddd",
-              }}
-            >
+            <tr key={row.prop} style={{ borderBottom: "2px solid #ddd" }}>
               <td
-                style={{
-                  padding: "10px 15px",
-                  borderRight: "2px solid #ddd",
-                }}
+                style={{ padding: "10px 15px", borderRight: "2px solid #ddd" }}
               >
                 <strong>{row.prop}</strong>
               </td>
               <td
-                style={{
-                  borderRight: "2px solid #ddd",
-                  padding: "10px 15px",
-                }}
+                style={{ borderRight: "2px solid #ddd", padding: "10px 15px" }}
               >
                 {row.type}
               </td>
               <td
-                style={{
-                  borderRight: "2px solid #ddd",
-                  padding: "10px 15px",
-                }}
+                style={{ borderRight: "2px solid #ddd", padding: "10px 15px" }}
               >
                 {row.default}
               </td>
-              <td
-                style={{
-                  padding: "10px 15px",
-                }}
-              >
-                {row.description}
-              </td>
+              <td style={{ padding: "10px 15px" }}>{row.description}</td>
             </tr>
           ))}
         </tbody>
@@ -200,23 +148,23 @@ export default function App() {
       <h2>Customization</h2>
       <p>
         You can customize the arrow button&apos;s appearance using various props
-        like <code>type</code>, <code>backgroundColor</code>,{" "}
+        like <code>cornerRadius</code>, <code>backgroundColor</code>,{" "}
         <code>arrowFillColor</code>, and more.
       </p>
       <Code>{`<ArrowButton
-  type="hybrid"
   initialDirection="top"
   backgroundColor="#ffcc00"
   arrowFillColor="#ffffff"
   size={50}
+  cornerRadius={16}
 />
 `}</Code>
       <ArrowButton
-        type="hybrid"
         initialDirection="top"
         backgroundColor="#ffcc00"
         arrowFillColor="#ffffff"
         size={50}
+        cornerRadius={16}
       />
 
       <h2>Interactive Effects</h2>
@@ -226,13 +174,11 @@ export default function App() {
         &quot;active&quot; (pressed), giving users a clear visual feedback.
       </p>
       <Code>{`<ArrowButton
-  type="rounded"
   initialDirection="right"
   onClick={() => alert("Arrow Button clicked!")}
 />
 `}</Code>
       <ArrowButton
-        type="rounded"
         initialDirection="right"
         onClick={() => alert("Arrow Button clicked!")}
       />
@@ -244,26 +190,17 @@ export default function App() {
         <code>ThemeProvider</code>, the button will use those theme values (like
         colors, fonts, and spacing).
       </p>
-      <Code>{`<ThemeProvider primaryColor="#ff5733" secondaryColor="#33c1ff">
-  <ArrowButton type="box" initialDirection="bottomleft" />
+      <Code>{`<ThemeProvider primaryColor="#ff5733" secondaryColor="#33c1ff" cornerRadius={20}>
+  <ArrowButton initialDirection="bottomleft" />
 </ThemeProvider>
 `}</Code>
-      <ThemeProvider primaryColor="#ff5733" secondaryColor="#33c1ff">
-        <ArrowButton type="box" initialDirection="bottomleft" />
+      <ThemeProvider
+        primaryColor="#ff5733"
+        secondaryColor="#33c1ff"
+        cornerRadius={20}
+      >
+        <ArrowButton initialDirection="bottomleft" />
       </ThemeProvider>
-
-      <h2>Button Variations</h2>
-      <p>
-        You can create different arrow button styles by changing the{" "}
-        <code>type</code> and <code>initialDirection</code> props.
-      </p>
-      <Code>{`<ArrowButton type="box" initialDirection="topleft" />
-<ArrowButton type="rounded" initialDirection="bottomright" />
-<ArrowButton type="hybrid" initialDirection="left" />
-`}</Code>
-      <ArrowButton type="box" initialDirection="topleft" />
-      <ArrowButton type="rounded" initialDirection="bottomright" />
-      <ArrowButton type="hybrid" initialDirection="left" />
     </div>
   );
 };

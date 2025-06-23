@@ -32,6 +32,9 @@ import AlertDocs from "./AlertDocs";
 import ModalDocs from "./ModalDocs";
 import TooltipDocs from "./TooltipDocs";
 import SnackbarDocs from "./SnackbarDocs";
+// import ColumnDocs from "./ColumnDocs";
+// import ContainerDocs from "./ContainerDocs";
+// import RowDocs from "./RowDocs";
 
 const SIDEBAR = [
   {
@@ -82,22 +85,6 @@ const SIDEBAR = [
       { label: "Spinner/Loader", key: "Loader" },
       { label: "Progress Bar", key: "ProgressBar" },
       { label: "Table", key: "Table" },
-    ],
-  },
-  {
-    category: "Layout",
-    items: [
-      { label: "Container", key: "Container" },
-      { label: "Divider", key: "Divider" },
-      { label: "Grid System", key: "Grid" },
-    ],
-  },
-  {
-    category: "Media",
-    items: [
-      { label: "Icons", key: "Icons" },
-      { label: "Image", key: "Image" },
-      { label: "Video Player", key: "VideoPlayer" },
     ],
   },
 ];

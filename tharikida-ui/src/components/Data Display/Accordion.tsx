@@ -3,14 +3,47 @@
 import React, { useState } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `Accordion` is a collapsible content panel that supports theming, custom styles, and smooth transitions.
+ *
+ * @param {object} props - The properties to customize the Accordion component.
+ * @param {string} props.title - The title displayed in the Accordion header.
+ * @param {React.ReactNode} props.content - The content to show when expanded.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the Accordion container.
+ * @param {string} [props.className] - Custom class name for the Accordion container.
+ * @param {number} [props.cornerRadius] - Custom border radius for the Accordion. Overrides theme.cornerRadius if provided.
+ * @returns {JSX.Element} A styled, collapsible Accordion component.
+ */
 export interface AccordionProps {
+  /**
+   * The title displayed in the Accordion header.
+   */
   title: string;
+  /**
+   * The content to show when expanded.
+   */
   content: React.ReactNode;
+  /**
+   * Custom styles for the Accordion container.
+   */
   styles?: React.CSSProperties;
+  /**
+   * Custom class name for the Accordion container.
+   */
   className?: string;
+  /**
+   * Custom border radius for the Accordion. Overrides theme.cornerRadius if provided.
+   */
+  cornerRadius?: number;
 }
 
-const Accordion = ({ title, content, styles, className = "" }: AccordionProps) => {
+const Accordion = ({
+  title,
+  content,
+  styles,
+  className = "",
+  cornerRadius,
+}: AccordionProps) => {
   const theme = useTheme();
   const [isActive, setIsActive] = useState<boolean>(false);
 
@@ -22,9 +55,11 @@ const Accordion = ({ title, content, styles, className = "" }: AccordionProps) =
     overflow: "hidden",
     transition: "0.3s ease",
     border: `2px solid black`,
-    borderRadius: `${theme.spacingfactor * 4}px`,
+    borderRadius:
+      typeof cornerRadius === "number"
+        ? cornerRadius
+        : theme.cornerRadius ?? theme.spacingfactor,
     boxShadow: isActive ? "2px 2px 0px black" : "4px 4px 0px black",
-    
     ...styles,
   };
 
@@ -78,9 +113,7 @@ const Accordion = ({ title, content, styles, className = "" }: AccordionProps) =
           />
         </svg>
       </div>
-      {isActive && (
-        <div style={contentStyles}>{content}</div>
-      )}
+      {isActive && <div style={contentStyles}>{content}</div>}
     </div>
   );
 };

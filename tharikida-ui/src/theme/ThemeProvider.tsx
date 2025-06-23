@@ -13,12 +13,12 @@ const defaultTheme = {
   spacingfactor: 4,
   borderColor: "#000000",
   shadowColor: "#000000",
-  // Sidebar specific
   sidebarBg: "#f5e9d7",
   sidebarBorder: "#d1bfa3",
   sidebarActiveBg: "#d1bfa3",
   sidebarText: "#222",
   sidebarActiveBorder: "#bfa77a",
+  cornerRadius: 0,
 };
 
 const ThemeContext = createContext(defaultTheme);
@@ -40,6 +40,7 @@ interface ThemeProviderProps {
   sidebarActiveBg?: string;
   sidebarText?: string;
   sidebarActiveBorder?: string;
+  cornerRadius?: number;
 }
 
 export const ThemeProvider = ({
@@ -59,6 +60,7 @@ export const ThemeProvider = ({
   sidebarActiveBg,
   sidebarText,
   sidebarActiveBorder,
+  cornerRadius,
 }: ThemeProviderProps) => {
   const theme = {
     primaryColor: primaryColor || defaultTheme.primaryColor,
@@ -77,6 +79,10 @@ export const ThemeProvider = ({
     sidebarText: sidebarText || defaultTheme.sidebarText,
     sidebarActiveBorder:
       sidebarActiveBorder || defaultTheme.sidebarActiveBorder,
+    cornerRadius:
+      typeof cornerRadius === "number"
+        ? cornerRadius
+        : defaultTheme.cornerRadius,
   };
 
   return (

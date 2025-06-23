@@ -24,7 +24,7 @@ const IconButtonDocs = () => {
       type: "string",
       default: "undefined",
       description:
-        "If specified, the button renders as a link (<code><a></code>), otherwise, it renders as a regular <code><button></code>.",
+        "If specified, the button renders as a link (<a>), otherwise, it renders as a regular <button>.",
     },
     {
       prop: "children",
@@ -51,6 +51,13 @@ const IconButtonDocs = () => {
       default: '""',
       description: "Additional CSS class for custom styling.",
     },
+    {
+      prop: "cornerRadius",
+      type: "number",
+      default: "theme.cornerRadius",
+      description:
+        "Custom border radius for the button. Overrides the theme's cornerRadius if provided.",
+    },
   ];
 
   return (
@@ -71,6 +78,7 @@ export default function App() {
     <div>
       <IconButton icon={<FaHome />} type="primary">Home</IconButton>
       <IconButton icon={<FaHome />} type="secondary">Home</IconButton>
+      <IconButton icon={<FaHome />} cornerRadius={16}>Rounded Home</IconButton>
     </div>
   );
 }
@@ -81,9 +89,13 @@ export default function App() {
       <IconButton icon={<FaHome />} type="secondary">
         Home
       </IconButton>
+      <IconButton icon={<FaHome />} cornerRadius={16}>
+        Rounded Home
+      </IconButton>
       <p>
-        In this example, two icon buttons are displayed: one with the default
-        primary style, and one with the secondary style.
+        In this example, three icon buttons are displayed: one with the default
+        primary style, one with the secondary style, and one with a custom{" "}
+        <code>cornerRadius</code>.
       </p>
 
       <h2>Props</h2>
@@ -105,78 +117,31 @@ export default function App() {
               fontWeight: "bold",
             }}
           >
-            <th
-              style={{
-                padding: "10px 15px",
-                textAlign: "left",
-              }}
-            >
-              Prop
-            </th>
-            <th
-              style={{
-                padding: "10px 15px",
-                textAlign: "left",
-              }}
-            >
-              Type
-            </th>
-            <th
-              style={{
-                padding: "10px 15px",
-                textAlign: "left",
-              }}
-            >
-              Default
-            </th>
-            <th
-              style={{
-                padding: "10px 15px",
-              }}
-            >
-              Description
-            </th>
+            <th style={{ padding: "10px 15px", textAlign: "left" }}>Prop</th>
+            <th style={{ padding: "10px 15px", textAlign: "left" }}>Type</th>
+            <th style={{ padding: "10px 15px", textAlign: "left" }}>Default</th>
+            <th style={{ padding: "10px 15px" }}>Description</th>
           </tr>
         </thead>
         <tbody>
           {tableRows.map((row) => (
-            <tr
-              key={row.prop}
-              style={{
-                borderBottom: "2px solid #ddd",
-              }}
-            >
+            <tr key={row.prop} style={{ borderBottom: "2px solid #ddd" }}>
               <td
-                style={{
-                  padding: "10px 15px",
-                  borderRight: "2px solid #ddd",
-                }}
+                style={{ padding: "10px 15px", borderRight: "2px solid #ddd" }}
               >
                 <strong>{row.prop}</strong>
               </td>
               <td
-                style={{
-                  borderRight: "2px solid #ddd",
-                  padding: "10px 15px",
-                }}
+                style={{ borderRight: "2px solid #ddd", padding: "10px 15px" }}
               >
                 {row.type}
               </td>
               <td
-                style={{
-                  borderRight: "2px solid #ddd",
-                  padding: "10px 15px",
-                }}
+                style={{ borderRight: "2px solid #ddd", padding: "10px 15px" }}
               >
                 {row.default}
               </td>
-              <td
-                style={{
-                  padding: "10px 15px",
-                }}
-              >
-                {row.description}
-              </td>
+              <td style={{ padding: "10px 15px" }}>{row.description}</td>
             </tr>
           ))}
         </tbody>
@@ -184,13 +149,15 @@ export default function App() {
 
       <h2>Customization</h2>
       <p>
-        You can customize the icon button&apos;s appearance using both the{" "}
-        <code>type</code> prop (which sets the button color based on the theme)
-        and the <code>styles</code> prop to apply custom styles.
+        You can customize the icon button&apos;s appearance using the{" "}
+        <code>type</code> prop (which sets the button color based on the theme),
+        the <code>cornerRadius</code> prop, and the <code>styles</code> prop to
+        apply custom styles.
       </p>
       <Code>{`<IconButton
   icon={<FaHome />}
   type="primary"
+  cornerRadius={20}
   styles={{ padding: "12px", fontSize: "18px" }}
 >
   Custom Primary Button
@@ -199,6 +166,7 @@ export default function App() {
       <IconButton
         icon={<FaHome />}
         type="primary"
+        cornerRadius={20}
         styles={{ padding: "12px", fontSize: "18px" }}
       >
         Custom Primary Button
@@ -254,31 +222,19 @@ export default function App() {
         <code>ThemeProvider</code>, the button will use those theme values (like
         colors, fonts, and spacing).
       </p>
-      <Code>{`<ThemeProvider primaryColor="#ff5733" secondaryColor="#33c1ff">
+      <Code>{`<ThemeProvider primaryColor="#ff5733" secondaryColor="#33c1ff" cornerRadius={20}>
   <IconButton icon={<FaHome />} type="primary">Custom Themed Button</IconButton>
 </ThemeProvider>
 `}</Code>
-      <ThemeProvider primaryColor="#ff5733" secondaryColor="#33c1ff">
+      <ThemeProvider
+        primaryColor="#ff5733"
+        secondaryColor="#33c1ff"
+        cornerRadius={20}
+      >
         <IconButton icon={<FaHome />} type="primary">
           Custom Themed Button
         </IconButton>
       </ThemeProvider>
-
-      <h2>Button Variations</h2>
-      <p>
-        You can create different button styles by changing the <code>type</code>{" "}
-        prop. The default value is <code>&quot;primary&quot;</code>, but you can
-        also set it to <code>&quot;secondary&quot;</code> for an alternative
-        style.
-      </p>
-      <Code>{`<IconButton icon={<FaHome />} type="primary">Primary Button</IconButton>
-<IconButton icon={<FaHome />} type="secondary">Secondary Button</IconButton>`}</Code>
-      <IconButton icon={<FaHome />} type="primary">
-        Primary Button
-      </IconButton>
-      <IconButton icon={<FaHome />} type="secondary">
-        Secondary Button
-      </IconButton>
     </div>
   );
 };

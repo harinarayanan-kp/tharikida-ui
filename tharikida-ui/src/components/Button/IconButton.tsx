@@ -3,14 +3,57 @@
 import React, { useState } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `IconButton` is a customizable button component for displaying an icon (and optional label) with theming and custom styles.
+ *
+ * @param {object} props - The properties to customize the `IconButton` component.
+ * @param {React.ReactNode} props.icon - The icon to display inside the button.
+ * @param {"primary" | "secondary"} [props.type='primary'] - The button style variant.
+ *   - `primary`: Uses the theme's primary color.
+ *   - `secondary`: Uses the theme's secondary color.
+ * @param {string} [props.href] - If provided, renders an anchor (`<a>`) instead of a `<button>`.
+ * @param {React.ReactNode} [props.children] - Optional label or content next to the icon.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the button.
+ * @param {() => void} [props.onClick] - Click handler for the button.
+ * @param {string} [props.className] - Custom class name for the button.
+ * @param {number} [props.cornerRadius] - Custom border radius for the button. Overrides theme.cornerRadius if provided.
+ *
+ * @returns {JSX.Element} A styled button or anchor element with an icon.
+ */
 export interface IconButtonProps {
+  /**
+   * The icon to display inside the button.
+   */
   icon: React.ReactNode;
+  /**
+   * The button style variant.
+   * @default 'primary'
+   */
   type?: "primary" | "secondary";
+  /**
+   * If provided, renders an anchor (`<a>`) instead of a `<button>`.
+   */
   href?: string;
+  /**
+   * Optional label or content next to the icon.
+   */
   children?: React.ReactNode;
+  /**
+   * Custom styles for the button.
+   */
   styles?: React.CSSProperties;
+  /**
+   * Click handler for the button.
+   */
   onClick?: () => void;
+  /**
+   * Custom class name for the button.
+   */
   className?: string;
+  /**
+   * Custom border radius for the button. Overrides theme.cornerRadius if provided.
+   */
+  cornerRadius?: number;
 }
 
 const IconButton = ({
@@ -21,6 +64,7 @@ const IconButton = ({
   onClick,
   styles,
   className = "",
+  cornerRadius,
 }: IconButtonProps) => {
   const theme = useTheme();
   const [isActive, setIsActive] = useState(false);
@@ -32,7 +76,8 @@ const IconButton = ({
     fontSize: theme.fontSize,
     fontFamily: theme.fontFamily,
     padding: `${theme.spacingfactor}px`,
-    borderRadius: `${theme.spacingfactor}px`,
+    borderRadius:
+      typeof cornerRadius === "number" ? cornerRadius : theme.cornerRadius,
     margin: `${theme.spacingfactor}px`,
     transition: "background-color 0.3s ease, box-shadow 0.2s ease",
     display: "flex",
@@ -59,7 +104,11 @@ const IconButton = ({
       onMouseUp={handleMouseUp}
     >
       {icon}
-      {children && <span style={{ marginLeft: `${theme.spacingfactor / 2}px` }}>{children}</span>}
+      {children && (
+        <span style={{ marginLeft: `${theme.spacingfactor / 2}px` }}>
+          {children}
+        </span>
+      )}
     </Component>
   );
 };
