@@ -3,6 +3,19 @@
 import React, { useState } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `ToggleSwitch` is a custom switch component supporting controlled/uncontrolled usage, theming, and custom styles.
+ *
+ * @param {object} props - The properties to customize the `ToggleSwitch` component.
+ * @param {boolean} [props.checked] - Controls the checked state (controlled component). If not provided, the switch manages its own state.
+ * @param {(event: React.ChangeEvent<HTMLInputElement>) => void} [props.onChange] - Called when the switch is toggled. Receives the change event.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the outer label.
+ * @param {string} [props.className] - Additional className for the outer label.
+ * @param {boolean} [props.disabled] - Disables the switch if true.
+ *
+ * @returns {JSX.Element} A styled toggle switch component.
+ */
+
 // Props for the ToggleSwitch component
 export interface ToggleSwitchProps {
   /**

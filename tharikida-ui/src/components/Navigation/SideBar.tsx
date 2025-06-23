@@ -2,6 +2,20 @@
 import React, { useState } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `SideBar` is a vertical navigation component supporting icons, active state, header/footer, theming, and custom styles.
+ *
+ * @param {object} props - The properties to customize the `SideBar` component.
+ * @param {{ label: string; key: string; icon?: React.ReactNode }[]} props.items - Array of sidebar items with label, key, and optional icon.
+ * @param {string} props.activeKey - The key of the currently active item.
+ * @param {(key: string) => void} props.onSelect - Callback when an item is selected.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the sidebar container.
+ * @param {string} [props.className] - Additional className for the sidebar container.
+ * @param {React.ReactNode} [props.header] - Optional header content for the sidebar.
+ * @param {React.ReactNode} [props.footer] - Optional footer content for the sidebar.
+ *
+ * @returns {JSX.Element} A styled sidebar navigation component.
+ */
 export interface SideBarProps {
   items: Array<{ label: string; key: string; icon?: React.ReactNode }>;
   activeKey: string;

@@ -2,6 +2,18 @@
 import React from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `Navbar` is a navigation bar component supporting logo, links, right content, theming, and custom styles.
+ *
+ * @param {object} props - The properties to customize the `Navbar` component.
+ * @param {React.ReactNode} [props.logo] - Logo element to display at the start of the navbar.
+ * @param {{ label: string; href: string; active?: boolean }[]} [props.links] - Array of navigation links with label, href, and optional active state.
+ * @param {React.ReactNode} [props.rightContent] - Content to display at the end of the navbar (e.g., user menu).
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the navbar container.
+ * @param {string} [props.className] - Additional className for the navbar container.
+ *
+ * @returns {JSX.Element} A styled navigation bar component.
+ */
 export interface NavbarProps {
   logo?: React.ReactNode;
   links?: { label: string; href: string; active?: boolean }[];

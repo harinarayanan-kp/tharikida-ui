@@ -3,6 +3,17 @@
 import React from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `ProgressBar` is a horizontal bar component for displaying progress, supporting theming and custom styles.
+ *
+ * @param {object} props - The properties to customize the `ProgressBar` component.
+ * @param {number} props.value - Progress value (0-100).
+ * @param {number} [props.height=12] - Height of the bar in px.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the progress bar container.
+ * @param {string} [props.className] - Additional className for the progress bar.
+ *
+ * @returns {JSX.Element} A styled progress bar component.
+ */
 export interface ProgressBarProps {
   /** Progress value (0-100) */
   value: number;

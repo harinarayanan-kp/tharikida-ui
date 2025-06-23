@@ -3,6 +3,19 @@
 import React, { useState } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `TextInput` is a single-line input component supporting controlled/uncontrolled usage, theming, and custom styles.
+ *
+ * @param {object} props - The properties to customize the `TextInput` component.
+ * @param {"text" | "password" | "email"} [props.type="text"] - The input type.
+ * @param {string} [props.placeholder] - Placeholder text for the input.
+ * @param {string} [props.value] - The value of the input (controlled component).
+ * @param {(event: React.ChangeEvent<HTMLInputElement>) => void} [props.onChange] - Callback when the value changes.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the input.
+ * @param {string} [props.className] - Additional className for the input.
+ *
+ * @returns {JSX.Element} A styled text input component.
+ */
 export interface TextInputProps {
   type?: "text" | "password" | "email";
   placeholder?: string;

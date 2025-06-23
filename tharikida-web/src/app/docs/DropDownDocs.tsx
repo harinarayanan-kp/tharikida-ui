@@ -35,6 +35,13 @@ const DropdownDocs = () => {
       default: "undefined",
       description: "Custom styles that will be applied to the dropdown.",
     },
+    {
+      prop: "cornerRadius",
+      type: "number",
+      default: "theme.cornerRadius",
+      description:
+        "Custom border radius for the dropdown and options. Overrides theme.cornerRadius if provided.",
+    },
   ];
 
   return (
@@ -178,7 +185,8 @@ export default function App() {
       <p>
         You can customize the dropdown&apos;s appearance using various props
         like <code>options</code>, <code>defaultOption</code>,{" "}
-        <code>onChange</code>, <code>width</code>, and <code>styles</code>.
+        <code>onChange</code>, <code>width</code>, <code>styles</code>, and{" "}
+        <code>cornerRadius</code>.
       </p>
       <Code>{`<Dropdown
   options={["Custom Option 1", "Custom Option 2", "Custom Option 3"]}
@@ -186,6 +194,7 @@ export default function App() {
   onChange={(value) => alert("Selected option: " + value)}
   width="250px"
   styles={{ border: "2px solid #ff5733", padding: "10px" }}
+  cornerRadius={25}
 />
 `}</Code>
       <Dropdown
@@ -194,6 +203,7 @@ export default function App() {
         onChange={(value) => alert("Selected option: " + value)}
         width="250px"
         styles={{ border: "2px solid #ff5733", padding: "10px" }}
+        cornerRadius={25}
       />
 
       <h2>Theming</h2>
@@ -201,9 +211,10 @@ export default function App() {
         The dropdown automatically inherits theme styles from the{" "}
         <code>ThemeProvider</code>. If a custom theme is passed to the{" "}
         <code>ThemeProvider</code>, the dropdown will use those theme values
-        (like colors, fonts, and spacing).
+        (like colors, fonts, spacing, and <code>cornerRadius</code> unless
+        overridden).
       </p>
-      <Code>{`<ThemeProvider primaryColor="#ff5733" secondaryColor="#33c1ff">
+      <Code>{`<ThemeProvider primaryColor="#ff5733" secondaryColor="#33c1ff" cornerRadius={30}>
   <Dropdown
     options={["Themed Option 1", "Themed Option 2", "Themed Option 3"]}
     defaultOption="Themed Option 1"
@@ -212,7 +223,11 @@ export default function App() {
   />
 </ThemeProvider>
 `}</Code>
-      <ThemeProvider primaryColor="#ff5733" secondaryColor="#33c1ff">
+      <ThemeProvider
+        primaryColor="#ff5733"
+        secondaryColor="#33c1ff"
+        cornerRadius={30}
+      >
         <Dropdown
           options={["Themed Option 1", "Themed Option 2", "Themed Option 3"]}
           defaultOption="Themed Option 1"
@@ -225,19 +240,22 @@ export default function App() {
       <p>
         You can create different dropdown styles by changing the{" "}
         <code>options</code>, <code>defaultOption</code>, <code>onChange</code>,{" "}
-        <code>width</code>, and <code>styles</code> props.
+        <code>width</code>, <code>styles</code>, and <code>cornerRadius</code>{" "}
+        props.
       </p>
       <Code>{`<Dropdown
   options={["Variation 1", "Variation 2", "Variation 3"]}
   defaultOption="Variation 1"
   onChange={(value) => console.log(value)}
   width="150px"
+  cornerRadius={8}
 />
 <Dropdown
   options={["Variation 4", "Variation 5", "Variation 6"]}
   defaultOption="Variation 4"
   onChange={(value) => console.log(value)}
   width="300px"
+  cornerRadius={40}
 />
 `}</Code>
       <Dropdown
@@ -245,12 +263,14 @@ export default function App() {
         defaultOption="Variation 1"
         onChange={(value) => console.log(value)}
         width="150px"
+        cornerRadius={8}
       />
       <Dropdown
         options={["Variation 4", "Variation 5", "Variation 6"]}
         defaultOption="Variation 4"
         onChange={(value) => console.log(value)}
         width="300px"
+        cornerRadius={40}
       />
     </div>
   );

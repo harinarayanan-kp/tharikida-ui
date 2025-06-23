@@ -2,6 +2,22 @@
 import React, { useEffect, useState } from "react";
 import Star from "../Shapes/Star";
 
+/**
+ * `RandomDivs` (AnimatedBox) is a component that animates random star shapes within a box, supporting custom styles and animation settings.
+ *
+ * @param {object} props - The properties to customize the `RandomDivs` component.
+ * @param {React.ReactNode} [props.children] - Optional children to render inside the box.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the container.
+ * @param {number} [props.height=200] - Height of the container in px.
+ * @param {number} [props.width=200] - Width of the container in px.
+ * @param {number} [props.frequency=5] - Frequency of new divs per second.
+ * @param {number} [props.maxDivs=5] - Maximum number of animated divs.
+ * @param {number} [props.animationSpeed=2] - Speed of the animation in seconds.
+ * @param {number} [props.starSize=40] - Size of the star and wrapper div in px.
+ * @param {string} [props.color="white"] - Color of the star.
+ *
+ * @returns {JSX.Element} A styled animated box with random stars.
+ */
 export interface RandomDivsProps {
   children?: React.ReactNode;
   styles?: React.CSSProperties;

@@ -2,6 +2,21 @@
 
 import React, { useState } from "react";
 
+/**
+ * `TextArea` is a multi-line text input component supporting controlled/uncontrolled usage, theming, and custom styles.
+ *
+ * @param {object} props - The properties to customize the `TextArea` component.
+ * @param {string} [props.value] - The value of the textarea (controlled component).
+ * @param {(e: React.ChangeEvent<HTMLTextAreaElement>) => void} [props.onChange] - Callback when the value changes.
+ * @param {string} [props.placeholder] - Placeholder text for the textarea.
+ * @param {number} [props.rows=4] - Number of visible text lines.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the textarea container.
+ * @param {string} [props.className] - Additional className for the textarea container.
+ * @param {boolean} [props.disabled] - Disables the textarea if true.
+ * @param {string} [props.label] - Optional label to display above the textarea.
+ *
+ * @returns {JSX.Element} A styled textarea component.
+ */
 export interface TextAreaProps {
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;

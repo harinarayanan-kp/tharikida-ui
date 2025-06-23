@@ -1,12 +1,45 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `Dropdown` is a customizable dropdown/select component that supports theming, custom styles, and controlled/uncontrolled usage.
+ *
+ * @param {object} props - The properties to customize the `Dropdown` component.
+ * @param {string[]} props.options - The list of options to display in the dropdown.
+ * @param {string} [props.defaultOption] - The default selected option.
+ * @param {(value: string) => void} [props.onChange] - Callback when the selected option changes.
+ * @param {string} [props.width] - Custom width for the dropdown.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the dropdown container.
+ * @param {number} [props.cornerRadius] - Custom border radius for the dropdown and options. Overrides theme.cornerRadius if provided.
+ *
+ * @returns {JSX.Element} A styled dropdown component.
+ */
 interface DropdownProps {
+  /**
+   * The list of options to display in the dropdown.
+   */
   options: string[];
+  /**
+   * The default selected option.
+   */
   defaultOption?: string;
+  /**
+   * Callback when the selected option changes.
+   */
   onChange?: (value: string) => void;
+  /**
+   * Custom width for the dropdown.
+   */
   width?: string;
-  styles?: React.CSSProperties; // Add the styles property
+  /**
+   * Custom styles for the dropdown container.
+   */
+  styles?: React.CSSProperties;
+  /**
+   * Custom border radius for the dropdown and options. Overrides theme.cornerRadius if provided.
+   */
+  cornerRadius?: number;
 }
 
 const Dropdown = ({
@@ -14,11 +47,18 @@ const Dropdown = ({
   defaultOption,
   onChange,
   width,
-  styles, // Destructure the styles prop
+  styles,
+  cornerRadius,
 }: DropdownProps) => {
+  const theme = useTheme();
   const [selected, setSelected] = useState<string>(defaultOption || options[0]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLUListElement | null>(null);
+
+  const borderRadius =
+    typeof cornerRadius === "number"
+      ? cornerRadius
+      : theme.cornerRadius ?? theme.spacingfactor;
 
   const handleSelect = (value: string) => {
     setSelected(value);
@@ -52,7 +92,7 @@ const Dropdown = ({
           boxSizing: "border-box" as "border-box",
           padding: "6px 10px",
           border: "2px solid black",
-          borderRadius: "15px",
+          borderRadius: borderRadius,
           cursor: "pointer",
           justifyContent: "space-between",
           alignItems: "center",
@@ -92,7 +132,7 @@ const Dropdown = ({
             listStyle: "none",
             background: "white",
             border: "2px solid black",
-            borderRadius: "15px",
+            borderRadius: borderRadius,
             position: "absolute",
             top: "100%",
             left: 0,
@@ -109,7 +149,7 @@ const Dropdown = ({
                 padding: "8px 10px",
                 cursor: "pointer",
                 background: selected === option ? "#e6e6e6" : "white",
-                borderRadius: "15px",
+                borderRadius: borderRadius,
                 transition: "background 0.2s",
               }}
               onClick={() => handleSelect(option)}

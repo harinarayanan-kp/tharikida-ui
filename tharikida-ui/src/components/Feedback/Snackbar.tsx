@@ -3,6 +3,21 @@
 import React, { useEffect } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `Snackbar` is a temporary notification component for brief messages, supporting theming, actions, and custom styles.
+ *
+ * @param {object} props - The properties to customize the `Snackbar` component.
+ * @param {boolean} props.open - Whether the snackbar is visible.
+ * @param {string} props.message - The message to display in the snackbar.
+ * @param {number} [props.duration=3000] - Duration in milliseconds before auto-close.
+ * @param {() => void} props.onClose - Function to call when closing the snackbar.
+ * @param {React.ReactNode} [props.action] - Optional action element (e.g., button) to display.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the snackbar container.
+ * @param {string} [props.className] - Additional className for the snackbar.
+ * @param {"top" | "bottom"} [props.position="bottom"] - Position of the snackbar on the screen.
+ *
+ * @returns {JSX.Element | null} A styled snackbar notification, or null if not open.
+ */
 export interface SnackbarProps {
   open: boolean;
   message: string;

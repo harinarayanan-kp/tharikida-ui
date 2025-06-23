@@ -2,12 +2,26 @@
 import React from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `Pagination` is a navigation component for paginated content, supporting theming, custom styles, and corner radius.
+ *
+ * @param {object} props - The properties to customize the `Pagination` component.
+ * @param {number} props.page - The current page number (1-based).
+ * @param {number} props.pageCount - The total number of pages.
+ * @param {(page: number) => void} props.onPageChange - Callback when the page changes.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the pagination container.
+ * @param {string} [props.className] - Additional className for the pagination container.
+ * @param {number} [props.cornerRadius] - Custom border radius for pagination buttons. Overrides theme.cornerRadius if provided.
+ *
+ * @returns {JSX.Element} A styled pagination navigation component.
+ */
 export interface PaginationProps {
   page: number;
   pageCount: number;
   onPageChange: (page: number) => void;
   styles?: React.CSSProperties;
   className?: string;
+  cornerRadius?: number;
 }
 
 const Pagination = ({
@@ -16,8 +30,13 @@ const Pagination = ({
   onPageChange,
   styles = {},
   className = "",
+  cornerRadius,
 }: PaginationProps) => {
   const theme = useTheme();
+  const borderRadius =
+    typeof cornerRadius === "number"
+      ? cornerRadius
+      : theme.cornerRadius ?? theme.spacingfactor;
 
   // Helper to generate page numbers with ellipsis
   const getPages = () => {
@@ -66,7 +85,7 @@ const Pagination = ({
           background: theme.primaryColor,
           color: theme.textColor,
           border: "1px solid black",
-          borderRadius: theme.spacingfactor,
+          borderRadius: borderRadius,
           padding: `4px 12px`,
           fontWeight: 600,
           cursor: page === 1 ? "not-allowed" : "pointer",
@@ -96,7 +115,7 @@ const Pagination = ({
               background: p === page ? theme.textColor : theme.primaryColor,
               color: p === page ? theme.primaryColor : theme.textColor,
               border: "1px solid black",
-              borderRadius: theme.spacingfactor,
+              borderRadius: borderRadius,
               padding: `4px 12px`,
               fontWeight: 700,
               cursor: "pointer",
@@ -116,7 +135,7 @@ const Pagination = ({
           background: theme.primaryColor,
           color: theme.textColor,
           border: "1px solid black",
-          borderRadius: theme.spacingfactor,
+          borderRadius: borderRadius,
           padding: `4px 12px`,
           fontWeight: 600,
           cursor: page === pageCount ? "not-allowed" : "pointer",

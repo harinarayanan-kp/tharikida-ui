@@ -3,6 +3,17 @@
 import React from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `Table` is a flexible table component for displaying tabular data, supporting theming and custom styles.
+ *
+ * @param {object} props - The properties to customize the `Table` component.
+ * @param {string[]} props.columns - Table column headers.
+ * @param {(string | number | React.ReactNode)[][]} props.data - Table data as array of rows.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the table.
+ * @param {string} [props.className] - Additional className for the table.
+ *
+ * @returns {JSX.Element} A styled table component.
+ */
 export interface TableProps {
   /** Table column headers */
   columns: string[];

@@ -1,14 +1,41 @@
 "use client";
 import React, { useState } from "react";
 import Dropdown from "./DropDown";
+import { useTheme } from "../../theme/ThemeProvider";
 
-interface calendarProps {
+/**
+ * `Calendar` is a date picker component with theming, custom styles, and initial date support.
+ *
+ * @param {object} props - The properties to customize the `Calendar` component.
+ * @param {(day: number | null) => void} [props.handleDateClick] - Callback when a date is selected.
+ * @param {string} [props.size] - Width of the calendar component.
+ * @param {Date} [props.initialDate] - The initial date to display as selected.
+ * @param {number} [props.cornerRadius] - Custom border radius for the calendar. Overrides theme.cornerRadius if provided.
+ *
+ * @returns {JSX.Element} A styled calendar date picker component.
+ */
+interface CalendarProps {
+  /** Callback when a date is selected */
   handleDateClick?: (day: number | null) => void;
+  /** Width of the calendar component */
   size?: string;
+  /** The initial date to display as selected */
+  initialDate?: Date;
+  /** Custom border radius for the calendar. Overrides theme.cornerRadius if provided. */
+  cornerRadius?: number;
 }
-const Calendar = ({ size }: calendarProps) => {
+
+const Calendar = ({
+  size,
+  handleDateClick,
+  initialDate,
+  cornerRadius,
+}: CalendarProps) => {
+  const theme = useTheme();
   const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(
+    initialDate || null
+  );
 
   const generateCalendar = (month: number, year: number) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -24,11 +51,12 @@ const Calendar = ({ size }: calendarProps) => {
 
   const dates = generateCalendar(currentMonth, currentYear);
 
-  const handleDateClick = (day: number | null) => {
+  const handleDateClickInternal = (day: number | null) => {
     if (day !== null) {
       const date = new Date(currentYear, currentMonth, day);
       setSelectedDate(date);
       setShowCalendar(false);
+      handleDateClick && handleDateClick(day);
     }
   };
 
@@ -81,6 +109,11 @@ const Calendar = ({ size }: calendarProps) => {
     return date.toLocaleDateString(undefined, options); // Formats to "Dec 2, 2024"
   };
 
+  const borderRadius =
+    typeof cornerRadius === "number"
+      ? cornerRadius
+      : theme.cornerRadius ?? theme.spacingfactor * 2;
+
   return (
     <div style={{ width: size || "300px" }}>
       <div style={styles.container}>
@@ -91,24 +124,23 @@ const Calendar = ({ size }: calendarProps) => {
           {formatDate(selectedDate)}
         </div>
         {showCalendar && (
-          <div style={styles.calendar}>
+          <div style={{ ...styles.calendar, borderRadius: borderRadius }}>
             <div style={styles.header}>
               <Dropdown
                 options={months}
                 defaultOption={months[currentMonth]}
-                onChange={handleMonthChange} // Directly handle as string
+                onChange={handleMonthChange}
               />
               <Dropdown
-                options={years.map(String)} // Ensure the values are strings
-                defaultOption={String(currentYear)} // Default year as a string
+                options={years.map(String)}
+                defaultOption={String(currentYear)}
                 onChange={(value) =>
                   handleYearChange({
                     target: { value },
                   } as React.ChangeEvent<HTMLSelectElement>)
-                } // Simulate ChangeEvent for consistency
+                }
               />
             </div>
-
             <div style={styles.daysRow}>
               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
                 <div key={day} style={styles.dayName}>
@@ -116,13 +148,13 @@ const Calendar = ({ size }: calendarProps) => {
                 </div>
               ))}
             </div>
-
             <div style={styles.datesGrid}>
               {dates.map((day, index) => (
                 <div
                   key={index}
                   style={{
                     ...styles.dateCell,
+                    borderRadius: borderRadius,
                     ...(day && { cursor: "pointer" }),
                     ...(day !== null &&
                       selectedDate &&
@@ -132,7 +164,7 @@ const Calendar = ({ size }: calendarProps) => {
                           .split("T")[0] &&
                       styles.selectedDate),
                   }}
-                  onClick={() => handleDateClick(day)}
+                  onClick={() => handleDateClickInternal(day)}
                 >
                   {day || ""}
                 </div>

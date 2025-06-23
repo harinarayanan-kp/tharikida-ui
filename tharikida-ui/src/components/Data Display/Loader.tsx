@@ -3,6 +3,17 @@
 import React from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `Loader` is a circular spinner component for indicating loading states, supporting theming and custom styles.
+ *
+ * @param {object} props - The properties to customize the `Loader` component.
+ * @param {number} [props.size=32] - Size of the loader in px.
+ * @param {string} [props.color] - Loader color. Defaults to theme primary color.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the loader container.
+ * @param {string} [props.className] - Additional className for the loader.
+ *
+ * @returns {JSX.Element} A styled loader spinner.
+ */
 export interface LoaderProps {
   /** Size of the loader in px */
   size?: number;

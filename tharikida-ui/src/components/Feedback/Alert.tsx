@@ -3,6 +3,18 @@
 import React, { useState } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `Alert` is a popup alert component with a customizable message, title, button text, theming, and custom styles.
+ *
+ * @param {object} props - The properties to customize the `Alert` component.
+ * @param {string} [props.message] - The message to display in the alert popup.
+ * @param {string} [props.title] - The title of the alert popup.
+ * @param {string} [props.buttonText] - The text for the button that opens the alert.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the alert popup content.
+ * @param {string} [props.className] - Additional className for the alert container.
+ *
+ * @returns {JSX.Element} A styled popup alert component.
+ */
 export interface AlertProps {
   message?: string;
   title?: string;

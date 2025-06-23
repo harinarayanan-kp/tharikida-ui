@@ -3,7 +3,19 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes, css } from "styled-components";
 
-// Define the props type
+/**
+ * `ImageCarousel` is a slideshow component for displaying images with animation, custom styles, and timing control.
+ *
+ * @param {object} props - The properties to customize the `ImageCarousel` component.
+ * @param {string[]} props.images - A list of image URLs to display in the carousel.
+ * @param {string} [props.height] - Height of the carousel container.
+ * @param {string} [props.width] - Width of the carousel container.
+ * @param {React.CSSProperties} [props.containerStyle] - Custom styles for the carousel container.
+ * @param {number} [props.delay=2000] - Delay in milliseconds between image transitions.
+ * @param {"slide-in-left" | "slide-in-right" | "slide-up" | "slide-down"} [props.animationtype="slide-up"] - Animation type for image transitions.
+ *
+ * @returns {JSX.Element} A styled image carousel component.
+ */
 export interface ImageCarouselProps {
   images: string[]; // A list of image URLs
   height?: string;

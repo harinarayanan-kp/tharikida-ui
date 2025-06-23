@@ -3,6 +3,19 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `Tooltip` is a hover/focus popup for displaying contextual information, supporting theming, position, and custom styles.
+ *
+ * @param {object} props - The properties to customize the `Tooltip` component.
+ * @param {React.ReactNode} props.content - The content to display inside the tooltip.
+ * @param {React.ReactNode} props.children - The element that triggers the tooltip on hover/focus.
+ * @param {"top" | "bottom" | "left" | "right"} [props.position="top"] - Position of the tooltip relative to the trigger.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the tooltip popup.
+ * @param {string} [props.className] - Additional className for the tooltip container.
+ * @param {number} [props.transitionDuration=180] - Duration of the tooltip fade/slide animation in ms.
+ *
+ * @returns {JSX.Element} A styled tooltip component.
+ */
 export interface TooltipProps {
   content: React.ReactNode;
   children: React.ReactNode;

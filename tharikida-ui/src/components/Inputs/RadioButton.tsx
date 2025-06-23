@@ -2,6 +2,21 @@
 
 import React, { useState } from "react";
 
+/**
+ * `RadioButton` is a custom radio/checkbox component supporting controlled/uncontrolled usage, theming, and custom styles.
+ *
+ * @param {object} props - The properties to customize the `RadioButton` component.
+ * @param {boolean} [props.checked] - Controls the checked state (controlled component). If not provided, the radio manages its own state.
+ * @param {(event: React.ChangeEvent<HTMLInputElement>) => void} [props.onChange] - Called when the radio is selected. Receives the change event.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the outer label.
+ * @param {string} [props.className] - Additional className for the outer label.
+ * @param {boolean} [props.disabled] - Disables the radio if true.
+ * @param {string} [props.name] - Name for the radio group (required for grouping radios).
+ * @param {string} [props.value] - Value for the radio input.
+ *
+ * @returns {JSX.Element} A styled radio button component.
+ */
+
 // Props for the RadioButton component
 export interface RadioButtonProps {
   /**

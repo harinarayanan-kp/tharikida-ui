@@ -1,6 +1,7 @@
 import React from "react";
 import Code from "./Code";
-import { Calendar, ThemeProvider } from "tharikida-ui"; // Adjust the import if needed
+import { ThemeProvider } from "tharikida-ui";
+import { Calendar } from "tharikida-ui/input";
 
 const CalendarDocs = () => {
   const tableRows = [
@@ -166,8 +167,8 @@ export default function App() {
 
       <h2>Customization</h2>
       <p>
-        You can customize the calendar&apos;s appearance using various props like{" "}
-        <code>selectedDate</code>, <code>onDateSelect</code>,{" "}
+        You can customize the calendar&apos;s appearance using various props
+        like <code>selectedDate</code>, <code>onDateSelect</code>,{" "}
         <code>minDate</code>, <code>maxDate</code>, <code>handleDateClick</code>
         , and <code>size</code>.
       </p>

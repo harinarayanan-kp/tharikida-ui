@@ -9,6 +9,19 @@ export interface TabItem {
   disabled?: boolean;
 }
 
+/**
+ * `Tabs` is a tab navigation component supporting icons, extra content, theming, and custom styles.
+ *
+ * @param {object} props - The properties to customize the `Tabs` component.
+ * @param {TabItem[]} props.items - Array of tab items with label, key, optional icon, and disabled state.
+ * @param {string} props.activeKey - The key of the currently active tab.
+ * @param {(key: string) => void} props.onChange - Callback when a tab is selected.
+ * @param {React.CSSProperties} [props.styles] - Custom styles for the tabs container.
+ * @param {string} [props.className] - Additional className for the tabs container.
+ * @param {React.ReactNode} [props.tabBarExtraContent] - Extra content to display at the end of the tab bar.
+ *
+ * @returns {JSX.Element} A styled tab navigation component.
+ */
 export interface TabsProps {
   items: TabItem[];
   activeKey: string;

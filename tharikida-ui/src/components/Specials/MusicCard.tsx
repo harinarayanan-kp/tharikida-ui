@@ -2,6 +2,19 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "../../theme/ThemeProvider";
 
+/**
+ * `MusicCard` is a visual card component to display music information such as name, artist, album image, and playback controls.
+ *
+ * @param {object} props - The properties to customize the `MusicCard` component.
+ * @param {string} [props.musicName] - The name of the music track.
+ * @param {string} [props.artist] - The name of the artist.
+ * @param {() => void} [props.onPlay] - Callback function triggered when play button is clicked.
+ * @param {string} [props.musicUrl] - The URL of the music track.
+ * @param {string} [props.image] - The URL of the image associated with the music track.
+ * @param {number} [props.currentPosition] - The current playback position as a percentage (0-100).
+ *
+ * @returns {JSX.Element} A styled React component that renders the music card.
+ */
 interface MusicCardProps {
   /** The name of the music track. */
   musicName?: string;
@@ -21,6 +34,7 @@ interface MusicCardProps {
   /** The current playback position as a percentage (0-100). */
   currentPosition?: number;
 }
+
 /**
  * MusicCard Component
  *
@@ -323,118 +337,45 @@ const MusicCard = ({
                   y1="17.6085"
                   x2="9.68874"
                   y2="17.6085"
-                  gradientUnits="userSpaceOnUse"
+                  gradientUnits="userSpace"
                 >
-                  <stop stopColor="#AA5C5C" />
-                  <stop offset="1" stopColor="#FFCCCC" />
+                  <stop offset="0%" stopColor="#F3FE9D" />
+                  <stop offset="100%" stopColor="#D1EA8D" />
                 </linearGradient>
               </defs>
             </svg>
           )}
-
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.94031 2.24692L18.6909 9.60846L5.94031 16.97L5.94031 2.24692Z"
-              fill="#F3FE9D"
-              stroke="black"
-              strokeWidth="1.00004"
-            />
-            <path
-              d="M3.19019 5.10826L3.19019 15.1087"
-              stroke="black"
-              strokeWidth="1.00004"
-              strokeLinecap="round"
-            />
-          </svg>
-
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 26 26"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="1.19067"
-              y="0.608437"
-              width="24"
-              height="24"
-              rx="12"
-              fill="#F3FE9D"
-            />
-            <rect
-              x="1.19067"
-              y="0.608437"
-              width="24"
-              height="24"
-              rx="12"
-              stroke="black"
-            />
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M13.1907 8.18031C11.8661 6.63667 9.65275 6.15962 7.99316 7.57313C6.33356 8.98664 6.09991 11.3499 7.40321 13.0217C8.4868 14.4116 11.7661 17.3432 12.8409 18.292C12.9611 18.3982 13.0213 18.4513 13.0914 18.4721C13.1526 18.4903 13.2196 18.4903 13.2808 18.4721C13.351 18.4513 13.4111 18.3982 13.5313 18.292C14.6061 17.3432 17.8854 14.4116 18.9691 13.0217C20.2723 11.3499 20.0672 8.97177 18.3791 7.57313C16.6909 6.17449 14.5152 6.63667 13.1907 8.18031Z"
-              fill="white"
-              stroke="black"
-              strokeWidth="1.47222"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
         </div>
-
-        {currentPosition ? (
-          <div
-            style={{
-              width: "100%",
-              height: theme.spacingfactor,
-              borderRadius: theme.spacingfactor * 2.5,
-              border: "2px solid black",
-            }}
-          >
-            <div
-              style={{
-                width: `${currentPosition}%`,
-                height: "100%",
-                backgroundColor: theme.primaryColor,
-                borderRadius: theme.spacingfactor * 5,
-                transition: "width 0.3s ease",
-              }}
-            />
-            <div
-              style={{
-                position: "relative",
-                left: `${currentPosition}%`,
-                transform: "translateY(-50%) translateX(-50%)",
-                width: theme.spacingfactor * 4,
-                height: theme.spacingfactor * 4,
-                backgroundColor: theme.primaryColor,
-                border: "2px solid black",
-                borderRadius: theme.spacingfactor * 5,
-              }}
-            />
-          </div>
-        ) : (
-          <></>
-        )}
 
         <div
           style={{
+            width: "100%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            fontFamily: theme.fontFamily,
+            gap: theme.spacingfactor * 0.5,
           }}
         >
-          <div style={{ fontSize: theme.fontSize }}>{musicName}</div>
-          <div style={{ fontSize: theme.fontSize * 0.7 }}>{artist}</div>
+          <span
+            style={{
+              fontSize: "18px",
+              fontWeight: "bold",
+              color: theme.textColor,
+              textAlign: "center",
+            }}
+          >
+            {musicName}
+          </span>
+          <span
+            style={{
+              fontSize: "14px",
+              color: theme.textColor,
+              textAlign: "center",
+            }}
+          >
+            {artist}
+          </span>
         </div>
       </div>
     </div>
@@ -442,31 +383,3 @@ const MusicCard = ({
 };
 
 export default MusicCard;
-/**
- * Mouse Component
- *
- * A small decorative SVG component that can be used to render a mouse icon.
- *
- * @param style - Custom CSS properties to style the component.
- *
- * @returns A styled React SVG element representing a mouse pointer icon.
- */
-const Mouse = ({ style }: { style: React.CSSProperties }) => {
-  return (
-    <svg
-      style={style}
-      width="22"
-      height="32"
-      viewBox="0 0 11 17"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M0.499559 0.979791L9.63096 7.60666L7.29259 8.77585L6.814 9.01514L7.08555 9.47619L10.0548 14.5174L6.93552 16.3183L4.10883 11.2838L3.86985 10.8581L3.43879 11.0872L0.499559 12.6493V0.979791Z"
-        fill="beige"
-        stroke="black"
-        strokeWidth="0.999118"
-      />
-    </svg>
-  );
-};

@@ -40,6 +40,7 @@ const SIDEBAR = [
   {
     category: "Inputs",
     items: [
+      { label: "Calendar", key: "Calendar" },
       { label: "Checkbox", key: "Checkbox" },
       { label: "Dropdown/Select", key: "Dropdown" },
       { label: "Radio Buttons", key: "RadioButton" },
