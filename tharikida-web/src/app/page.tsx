@@ -198,6 +198,7 @@ export default function Docs() {
         }}
       >
         <Button
+          cornerRadius={15}
           styles={{
             backgroundColor: "white",
             alignItems: "center",
@@ -221,8 +222,8 @@ export default function Docs() {
           Show your love — Star on GitHub!
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="46"
-            height="44"
+            width="33"
+            height="33"
             viewBox="0 0 46 44"
             fill="none"
           >
@@ -234,8 +235,9 @@ export default function Docs() {
             />
           </svg>
         </Button>
+        <div style={{ width: "15px" }}></div>
         <a href="https://github.com/harinarayanan-kp/tharikida-ui">
-          <ArrowButton />
+          <ArrowButton cornerRadius={15} />
         </a>
       </div>
       <div style={{ height: "50px" }}></div>
