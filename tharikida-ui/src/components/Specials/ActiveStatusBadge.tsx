@@ -10,7 +10,7 @@ export interface IAppProps {
   fontSize?: number;
 }
 
-export default function ActiveTag(props: IAppProps) {
+export default function ActiveStatusBadge(props: IAppProps) {
   const theme = useTheme();
   const { size, hideCircle, backGroundColor, color, fontFamily, fontSize } =
     props;

@@ -79,7 +79,8 @@ const Dropdown = ({
         });
       }
     }
-  }, [isOpen, selected, options]);
+    // Only depend on isOpen and selected for stability
+  }, [isOpen, selected]);
 
   return (
     <div style={{ position: "relative", width: width || "100%", ...styles }}>

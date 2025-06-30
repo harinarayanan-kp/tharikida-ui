@@ -15,47 +15,29 @@ import { useTheme } from "../../theme/ThemeProvider";
  *
  * @returns {JSX.Element} A styled toggle switch component.
  */
-
-// Props for the ToggleSwitch component
 export interface ToggleSwitchProps {
-  /**
-   * Controls the checked state (controlled component). If not provided, the switch manages its own state.
-   */
   checked?: boolean;
-  /**
-   * Called when the switch is toggled. Receives the change event.
-   */
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  /**
-   * Custom styles for the outer label.
-   */
   styles?: React.CSSProperties;
-  /**
-   * Additional className for the outer label.
-   */
   className?: string;
-  /**
-   * Disables the switch if true.
-   */
   disabled?: boolean;
 }
 
 const ToggleSwitch = ({
-  checked, // Controlled checked state
-  onChange, // Change handler
-  styles, // Custom styles
-  className = "", // Custom className
-  disabled = false, // Disabled state
+  checked,
+  onChange,
+  styles,
+  className = "",
+  disabled = false,
 }: ToggleSwitchProps) => {
   const theme = useTheme();
-
-  // Internal state for uncontrolled usage
   const [internalChecked, setInternalChecked] = useState(false);
-  // Determine if the component is controlled
   const isControlled = typeof checked === "boolean";
-  // Use controlled or internal state
   const currentChecked = isControlled ? checked : internalChecked;
-
+  const switchWidth = 40;
+  const switchHeight = 22;
+  const knobSize = 15;
+  const spacing = (switchHeight - knobSize) / 2;
   // Handles toggle action
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!isControlled) {
@@ -63,13 +45,9 @@ const ToggleSwitch = ({
     }
     onChange?.(event);
   };
-
-  // Switch dimensions
-  const switchWidth = 40;
-  const switchHeight = 22;
-  const knobSize = 15;
-  const spacing = (switchHeight - knobSize) / 2;
-
+  // Compute shadow offsets based on checked state
+  const computedShadowOffsetX = currentChecked ? "0px" : theme.shadowOffsetX;
+  const computedShadowOffsetY = currentChecked ? "0px" : theme.shadowOffsetY;
   return (
     <label
       className={`tharikida-toggle-switch ${className}`}
@@ -81,9 +59,16 @@ const ToggleSwitch = ({
         ...styles,
         opacity: disabled ? 0.6 : 1,
         cursor: disabled ? "not-allowed" : "pointer",
+        fontFamily: theme.fontFamily,
+        fontSize: theme.fontSize,
+        fontWeight: theme.fontWeight,
+        lineHeight: theme.lineHeight,
+        letterSpacing: theme.letterSpacing,
+        padding: theme.padding,
+        margin: theme.margin,
+        transition: theme.transitionDuration,
       }}
     >
-      {/* Hidden checkbox input for accessibility and state */}
       <input
         type="checkbox"
         checked={currentChecked}
@@ -96,7 +81,6 @@ const ToggleSwitch = ({
           position: "absolute",
         }}
       />
-      {/* Track of the switch */}
       <span
         style={{
           position: "absolute",
@@ -105,24 +89,29 @@ const ToggleSwitch = ({
           right: 0,
           bottom: 0,
           background: currentChecked
-            ? theme.primaryColor || "#4caf50"
-            : theme.backgroundColor || "#ccc",
+            ? theme.primaryColor
+            : theme.backgroundColor,
           borderRadius: switchHeight / 2,
-          transitionDuration: "0.3s",
-          border: `2px solid ${theme.textColor || "#000"}`,
+          transitionDuration: theme.transitionDuration,
+          border: `${theme.borderWidth} ${theme.borderStyle} ${theme.borderColor}`,
           display: "flex",
           alignItems: "center",
           justifyContent: currentChecked ? "flex-end" : "flex-start",
           padding: spacing,
+          boxShadow: `${
+            theme.shadowInset ? "inset " : ""
+          }${computedShadowOffsetX} ${computedShadowOffsetY} ${
+            theme.shadowBlur
+          } ${theme.shadowSpread} ${theme.shadowColor}`,
         }}
       >
         <span
           style={{
             width: knobSize,
             height: knobSize,
-            background: theme.textColor || "#fff",
+            background: theme.textColor,
             borderRadius: "50%",
-            transition: "all 0.3s",
+            transition: `all ${theme.transitionDuration}`,
             boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
           }}
         />

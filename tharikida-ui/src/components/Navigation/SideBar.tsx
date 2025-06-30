@@ -41,8 +41,8 @@ const SideBar = ({
   const sidebarStyles: React.CSSProperties = {
     width: 220,
     minWidth: 140,
-    background: theme.sidebarBg || "#f5e9d7",
-    borderRight: `1px solid ${theme.sidebarBorder || "#d1bfa3"}`,
+    background: theme.backgroundColor,
+    borderRight: `1px solid ${theme.borderColor}`,
     display: "flex",
     flexDirection: "column",
     height: "100vh",
@@ -51,12 +51,12 @@ const SideBar = ({
 
   const buttonBase: React.CSSProperties = {
     width: "100%",
-    color: theme.sidebarText || "#222",
+    color: theme.textColor,
     border: "none",
     textAlign: "left",
-    padding: "12px 20px",
-    fontFamily: theme.fontFamily || "Montserrat, sans-serif",
-    fontSize: theme.fontSize || 16,
+    padding: theme.padding || "12px 20px",
+    fontFamily: theme.fontFamily,
+    fontSize: theme.fontSize,
     cursor: "pointer",
     outline: "none",
     display: "flex",
@@ -65,7 +65,9 @@ const SideBar = ({
     background: "transparent",
     borderLeft: "4px solid transparent",
     fontWeight: 500,
-    transition: "background 0.2s, border 0.2s, box-shadow 0.2s",
+    transition:
+      theme.transitionDuration ||
+      "background 0.2s, border 0.2s, box-shadow 0.2s",
     boxShadow: "none",
   };
 
@@ -85,17 +87,25 @@ const SideBar = ({
               style={{
                 ...buttonBase,
                 background: isItemActive
-                  ? theme.sidebarActiveBg || "#d1bfa3"
+                  ? theme.primaryColor
                   : buttonBase.background,
-                color: theme.sidebarText || "#222",
+                color: theme.textColor,
                 borderLeft: isItemActive
-                  ? `4px solid ${theme.sidebarActiveBorder || "#bfa77a"}`
+                  ? `4px solid ${theme.secondaryColor}`
                   : buttonBase.borderLeft,
                 fontWeight: isItemActive ? 700 : 500,
                 boxShadow: isPressed
-                  ? "1px 1px 0px grey"
+                  ? `${theme.shadowInset ? "inset " : ""}${
+                      theme.shadowOffsetX
+                    } ${theme.shadowOffsetY} ${theme.shadowBlur} ${
+                      theme.shadowSpread
+                    } ${theme.shadowColor}`
                   : isItemActive
-                  ? "2px 2px 0px #bfa77a"
+                  ? `${theme.shadowInset ? "inset " : ""}${
+                      theme.shadowOffsetX
+                    } ${theme.shadowOffsetY} ${theme.shadowBlur} ${
+                      theme.shadowSpread
+                    } ${theme.secondaryColor}`
                   : buttonBase.boxShadow,
               }}
             >

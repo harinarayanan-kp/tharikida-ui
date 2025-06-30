@@ -1,72 +1,124 @@
 # Tharikida UI 🚀🔥
 
-## A Neo-Brutalist React Library for Bold, Fast UIs
+[![npm version](https://img.shields.io/npm/v/tharikida-ui.svg)](https://www.npmjs.com/package/tharikida-ui)
+[![license](https://img.shields.io/npm/l/tharikida-ui.svg)](LICENSE)
+[![downloads](https://img.shields.io/npm/dm/tharikida-ui.svg)](https://www.npmjs.com/package/tharikida-ui)
 
-Tharikida UI brings a bold neo-brutalist design to your React projects—raw, vibrant, and modern. With a built-in ThemeProvider, you can easily customize colors, spacing, and more to match your unique style. Build fast, stylish apps with a touch of Kerala flair!
+**A Naadan React Component Library for Fast, Fun, and Themed UIs**
+
+Tharikida UI is a lightweight React component library inspired by Kerala's vibrant yet simple aesthetic. It offers a growing set of accessible, customizable, and themeable components for building beautiful modern apps with ease.
+
+<p align="center">
+  <img src="tharikida-web/public/preview2.png" alt="Preview 2" width="45%" style="margin-right: 10px;"/>
+  <img src="tharikida-web/public/preview1.png" alt="Preview 1" width="45%"/>
+</p>
+
+## Why Tharikida UI?
+
+- 🏝️ **Kerala-inspired Design:** Unique, minimal, and vibrant UI components.
+- ⚡ **Fast & Lightweight:** Minimal dependencies, optimized for performance.
+- 🎨 **Theming Built-In:** Change colors, fonts, and corner radius globally with the `ThemeProvider`.
+- 🛠️ **Customizable:** All components support custom styles, theming, and flexible props.
+- ♿ **Accessible:** Components are built with accessibility in mind.
+- 📦 **Ready-to-Use:** Includes Button, Modal, Card, Input, Alert, ProgressBar, List, Table, and more.
 
 ---
 
-![image](https://github.com/user-attachments/assets/a6d99e38-6668-44f4-8df5-7ed05c1e0be5)
+## Links
 
-
-## Features
-- 🥥 **Naadan Design:** A clean, minimalistic design inspired by Kerala's vibrant yet simple aesthetic.  
-- ⚡ **Fast and Lightweight:** Optimized for performance with minimal dependencies.  
-- 🛠️ **Customizable:** Easy-to-use components with built-in theming support.  
-- 🌴 **Ready to Use:** A growing list of pre-built, accessible components to enhance your UI.  
+- 🌐 [Documentation & Playground](https://tharikida-ui.vercel.app/)
+- 🗂️ [GitHub Repository](https://github.com/harinarayanan-kp/tharikida-ui)
+- 📦 [NPM Package](https://www.npmjs.com/package/tharikida-ui)
 
 ---
 
 ## Installation
 
-You can easily add **Tharikida UI** to your React project via npm or yarn:
+Install Tharikida UI in your React project:
 
-### Using npm:
 ```bash
 npm install tharikida-ui
 ```
-## Usage:
-Once installed, you can start using Tharikida UI components in your React project.
 
-Example:
+---
 
-```tsx
-<Button type="secondary">Secondary</Button>
-<Button type="primary">Primary</Button>
-<ThemeProvider
-  primaryColor="green"
-  backgroundColor="yellow"
-  spacingfactor={8}>
-        <div>
-          <Button type="secondary">Secondary</Button>
-          <Button type="primary">Primary</Button>
-        </div>
-        <MusicPlayer
-          musicUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-          currentPosition={50}
-          images={[
-            "https://cdn.pixabay.com/photo/2024/11/13/08/47/city-9193823_1280.jpg",
-            "https://cdn.pixabay.com/photo/2023/06/28/11/25/man-8094211_960_720.jpg",
-          ]}
-          musicName="FE!N"
-          artist="Travis Scott"
-        />
-</ThemeProvider>
-<Star size={40} />
-```
-## Components:
-Tharikida UI includes the following components:
+## Getting Started
 
-Button: Customizable buttons with various styles.
-
-Customization
-Tharikida UI is built to be flexible! You can easily customize the look and feel of components through props and CSS overrides.
-
-Here’s an example of customizing the primary button color:
+Here's a quick example to get you up and running:
 
 ```jsx
-<Button style={{ backgroundColor: '#F1C40F' }} type="primary">
-  HELLO
-</Button>
+import React from "react";
+import { ThemeProvider } from "tharikida-ui";
+import { Button } from "tharikida-ui/button";
+
+const App = () => (
+  <ThemeProvider
+    primaryColor="#4caf50"
+    secondaryColor="#ff9800"
+    fontFamily="'Montserrat', sans-serif"
+    cornerRadius={16}
+  >
+    <h1>Welcome to Tharikida UI!</h1>
+    <Button type="primary" onClick={() => alert("Clicked!")}>
+      Themed Button
+    </Button>
+  </ThemeProvider>
+);
+
+export default App;
 ```
-For more advanced theming and customization options, refer to the documentation.
+
+---
+
+## Features
+
+- 🌴 **Naadan Design:** Minimal, clean, and Kerala-inspired UI components.
+- ⚡ **Fast & Lightweight:** Optimized for performance with minimal dependencies.
+- 🎨 **Theming Built-In:** Change colors, fonts, and corner radius globally with the `ThemeProvider`.
+- 🛠️ **Customizable:** All components support custom styles, theming, and flexible props.
+- ♿ **Accessible:** Built with accessibility best practices.
+- 📦 **Ready-to-Use:** Includes Button, Modal, Card, Input, Alert, ProgressBar, List, Table, and more.
+
+---
+
+## Playground
+
+Want to experiment with theming and components live? **Visit the Playground on the homepage!** Tweak colors, font, and corner radius, and see instant updates with code samples.
+
+---
+
+## Components
+
+Tharikida UI includes:
+
+- **Button:** Customizable, theme-aware buttons
+- **Modal:** Simple modal dialogs
+- **Input:** TextInput, CheckBox, RadioButton, DropDown, TextArea, ToggleSwitch
+- **Card:** Flexible content containers
+- **Alert:** Popup alerts
+- **ProgressBar:** Sleek progress indicators
+- **List & ListTile:** Structured lists
+- **Table:** Themed data tables
+- **Snackbar, Tooltip, Loader, and more!**
+
+---
+
+## Customization & Theming
+
+All components support custom styles via props. For global theming, use the `ThemeProvider` to set primary/secondary colors, font, and corner radius. You can also override styles and corner radius per component.
+
+---
+
+## Contributing
+
+Contributions are welcome! If you have suggestions, bug reports, or want to add new components, please open an issue or submit a pull request on [GitHub](https://github.com/harinarayanan-kp/tharikida-ui).
+
+1. Fork the repo
+2. Create your feature branch (`git checkout -b feature/YourFeature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/YourFeature`)
+5. Open a pull request
+
+---
+
+For full documentation and advanced usage, see the docs site or explore the Playground!

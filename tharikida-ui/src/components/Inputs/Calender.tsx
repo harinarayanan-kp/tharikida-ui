@@ -11,6 +11,17 @@ import { useTheme } from "../../theme/ThemeProvider";
  * @param {string} [props.size] - Width of the calendar component.
  * @param {Date} [props.initialDate] - The initial date to display as selected.
  * @param {number} [props.cornerRadius] - Custom border radius for the calendar. Overrides theme.cornerRadius if provided.
+ * @param {string} [props.primaryColor] - Primary color for selected date and highlights.
+ * @param {string} [props.textColor] - Text color for calendar.
+ * @param {string} [props.backgroundColor] - Background color for calendar.
+ * @param {number} [props.fontSize] - Font size for calendar text.
+ * @param {string} [props.fontFamily] - Font family for calendar text.
+ * @param {string} [props.borderColor] - Border color for calendar.
+ * @param {string} [props.borderWidth] - Border width for calendar.
+ * @param {string} [props.borderStyle] - Border style for calendar.
+ * @param {string} [props.fontWeight] - Font weight for calendar text.
+ * @param {string} [props.transitionDuration] - Transition duration for calendar popup.
+ * @param {string} [props.hoverColor] - Hover color for date cells.
  *
  * @returns {JSX.Element} A styled calendar date picker component.
  */
@@ -23,6 +34,28 @@ interface CalendarProps {
   initialDate?: Date;
   /** Custom border radius for the calendar. Overrides theme.cornerRadius if provided. */
   cornerRadius?: number;
+  /** Primary color for selected date and highlights */
+  primaryColor?: string;
+  /** Text color for calendar */
+  textColor?: string;
+  /** Background color for calendar */
+  backgroundColor?: string;
+  /** Font size for calendar text */
+  fontSize?: number;
+  /** Font family for calendar text */
+  fontFamily?: string;
+  /** Border color for calendar */
+  borderColor?: string;
+  /** Border width for calendar */
+  borderWidth?: string;
+  /** Border style for calendar */
+  borderStyle?: string;
+  /** Font weight for calendar text */
+  fontWeight?: string;
+  /** Transition duration for calendar popup */
+  transitionDuration?: string;
+  /** Hover color for date cells */
+  hoverColor?: string;
 }
 
 const Calendar = ({
@@ -30,12 +63,51 @@ const Calendar = ({
   handleDateClick,
   initialDate,
   cornerRadius,
+  primaryColor,
+  textColor,
+  backgroundColor,
+  fontSize,
+  fontFamily,
+  borderColor,
+  borderWidth,
+  borderStyle,
+  fontWeight,
+  transitionDuration,
+  hoverColor,
 }: CalendarProps) => {
   const theme = useTheme();
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(
     initialDate || null
   );
+
+  // Use prop > theme > fallback
+  const t = {
+    primaryColor: primaryColor || theme.primaryColor,
+    textColor: textColor || theme.textColor,
+    backgroundColor: backgroundColor || theme.backgroundColor,
+    fontSize: fontSize || theme.fontSize,
+    fontFamily: fontFamily || theme.fontFamily,
+    cornerRadius:
+      typeof cornerRadius === "number"
+        ? cornerRadius
+        : theme.cornerRadius ?? theme.spacingfactor * 2,
+    borderColor: borderColor || theme.borderColor,
+    borderWidth: borderWidth ?? theme.borderWidth,
+    borderStyle: borderStyle ?? theme.borderStyle,
+    fontWeight: fontWeight ?? theme.fontWeight,
+    transitionDuration: transitionDuration ?? theme.transitionDuration,
+    hoverColor: hoverColor || theme.hoverColor,
+    // fallback for removed props
+    padding: theme.padding,
+    margin: theme.margin,
+    shadowOffsetX: theme.shadowOffsetX,
+    shadowOffsetY: theme.shadowOffsetY,
+    shadowBlur: theme.shadowBlur,
+    shadowSpread: theme.shadowSpread,
+    shadowColor: theme.shadowColor,
+    shadowInset: theme.shadowInset,
+  };
 
   const generateCalendar = (month: number, year: number) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -75,14 +147,14 @@ const Calendar = ({
   };
 
   const handleMonthChange = (value: string) => {
-    setCurrentMonth(months.indexOf(value)); // Find the index of the month string
+    setCurrentMonth(months.indexOf(value));
   };
 
   const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentYear(parseInt(event.target.value, 10));
   };
 
-  const years = Array.from({ length: 101 }, (_, i) => 1950 + i); // Years from 1950 to 2050
+  const years = Array.from({ length: 101 }, (_, i) => 1950 + i);
   const months = [
     "January",
     "February",
@@ -98,29 +170,50 @@ const Calendar = ({
     "December",
   ];
 
-  // Format selectedDate for display
   const formatDate = (date: Date | null) => {
-    if (!date) return "Pick a Date"; // If no date selected, show placeholder
+    if (!date) return "Pick a Date";
     const options: Intl.DateTimeFormatOptions = {
       year: "numeric",
-      month: "short", // "short" gives abbreviated month names
+      month: "short",
       day: "numeric",
     };
-    return date.toLocaleDateString(undefined, options); // Formats to "Dec 2, 2024"
+    return date.toLocaleDateString(undefined, options);
   };
-
-  const borderRadius =
-    typeof cornerRadius === "number"
-      ? cornerRadius
-      : theme.cornerRadius ?? theme.spacingfactor * 2;
 
   return (
     <div style={{ width: size || "300px" }}>
       <div
-        style={{ ...styles.container, backgroundColor: theme.backgroundColor }}
+        style={{
+          boxSizing: "border-box",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          position: "relative",
+          width: "100%",
+          padding: t.padding,
+          fontFamily: t.fontFamily,
+          fontSize: t.fontSize,
+          fontWeight: t.fontWeight,
+          lineHeight: theme.lineHeight,
+          letterSpacing: theme.letterSpacing,
+          margin: t.margin,
+        }}
       >
         <div
-          style={styles.dateInput}
+          style={{
+            boxSizing: "border-box",
+            padding: t.padding,
+            border: `${t.borderWidth} ${t.borderStyle} ${t.borderColor}`,
+            borderRadius: t.cornerRadius,
+            textAlign: "center",
+            cursor: "pointer",
+            backgroundColor: t.backgroundColor,
+            width: "100%",
+            boxShadow: `${t.shadowOffsetX} ${t.shadowOffsetY} ${t.shadowBlur} ${t.shadowSpread} ${t.shadowColor}`,
+            fontSize: t.fontSize,
+            color: t.textColor,
+            transition: t.transitionDuration,
+          }}
           onClick={() => setShowCalendar(!showCalendar)}
         >
           {formatDate(selectedDate)}
@@ -128,12 +221,28 @@ const Calendar = ({
         {showCalendar && (
           <div
             style={{
-              ...styles.calendar,
-              borderRadius: borderRadius,
-              backgroundColor: theme.backgroundColor,
+              position: "absolute",
+              top: "60px",
+              backgroundColor: t.backgroundColor,
+              zIndex: 10,
+              width: "100%",
+              border: `${t.borderWidth} ${t.borderStyle} ${t.borderColor}`,
+              boxShadow: `${t.shadowInset ? "inset " : ""}${t.shadowOffsetX} ${
+                t.shadowOffsetY
+              } ${t.shadowBlur} ${t.shadowSpread} ${t.shadowColor}`,
+              borderRadius: t.cornerRadius,
+              gap: theme.spacingfactor,
+              padding: t.padding,
+              transition: t.transitionDuration,
             }}
           >
-            <div style={styles.header}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: theme.spacingfactor,
+              }}
+            >
               <Dropdown
                 options={months}
                 defaultOption={months[currentMonth]}
@@ -149,14 +258,39 @@ const Calendar = ({
                 }
               />
             </div>
-            <div style={styles.daysRow}>
+            <div
+              style={{
+                boxSizing: "border-box",
+                textAlign: "center",
+                padding: `${theme.spacingfactor * 2}px ${
+                  theme.spacingfactor * 1.5
+                }px`,
+                display: "grid",
+                gridTemplateColumns: "repeat(7, 1fr)",
+                width: "100%",
+                color: t.textColor,
+                fontFamily: t.fontFamily,
+                fontWeight: t.fontWeight,
+                fontSize: t.fontSize,
+              }}
+            >
               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-                <div key={day} style={styles.dayName}>
+                <div key={day} style={{ fontFamily: t.fontFamily }}>
                   {day}
                 </div>
               ))}
             </div>
-            <div style={styles.datesGrid}>
+            <div
+              style={{
+                boxSizing: "border-box",
+                padding: t.padding,
+                gap: theme.spacingfactor,
+                display: "grid",
+                width: "100%",
+                gridTemplateColumns: "repeat(7, 1fr)",
+                textAlign: "center",
+              }}
+            >
               {dates.map((day, index) => {
                 const isSelected =
                   day !== null &&
@@ -174,21 +308,45 @@ const Calendar = ({
                   <div
                     key={index}
                     style={{
-                      ...styles.dateCell,
-                      borderRadius: borderRadius,
+                      boxSizing: "border-box",
+                      width: "100%",
+                      aspectRatio: "1/1",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      borderRadius: t.cornerRadius,
+                      transition: t.transitionDuration,
+                      color: t.textColor,
+                      fontFamily: t.fontFamily,
+                      fontWeight: t.fontWeight,
+                      fontSize: t.fontSize,
                       ...(day && { cursor: "pointer" }),
                       ...(isSelected && {
-                        backgroundColor: theme.primaryColor,
+                        backgroundColor: t.primaryColor,
                         color: "#fff",
                         borderRadius: "50%",
-                        border: `2px solid ${theme.primaryColor}`,
+                        border: `2px solid ${t.primaryColor}`,
                       }),
                       ...(!isSelected &&
                         isToday && {
-                          border: `2px solid ${theme.primaryColor}`,
+                          border: `2px solid ${t.primaryColor}`,
                         }),
                     }}
                     onClick={() => handleDateClickInternal(day)}
+                    onMouseOver={(e) => {
+                      if (day && !isSelected) {
+                        (
+                          e.currentTarget as HTMLDivElement
+                        ).style.backgroundColor = t.hoverColor;
+                      }
+                    }}
+                    onMouseOut={(e) => {
+                      if (day && !isSelected) {
+                        (
+                          e.currentTarget as HTMLDivElement
+                        ).style.backgroundColor = "";
+                      }
+                    }}
                   >
                     {day || ""}
                   </div>
@@ -200,87 +358,6 @@ const Calendar = ({
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    boxSizing: "border-box" as "border-box",
-    display: "flex",
-    flexDirection: "column" as "column",
-    alignItems: "center",
-    position: "relative" as "relative",
-    width: "100%",
-    padding: "7px 24px",
-    fontFamily: "'Arial', sans-serif",
-  },
-  dateInput: {
-    boxSizing: "border-box" as "border-box",
-    padding: "10px",
-    border: "1px solid #ccc",
-    borderRadius: "5px",
-    textAlign: "center" as "center",
-    cursor: "pointer",
-    backgroundColor: "#fff",
-    width: "100%",
-    boxShadow: "4px 4px 0px black",
-    fontSize: "16px",
-  },
-  calendar: {
-    position: "absolute" as "absolute",
-    top: "60px",
-    backgroundColor: "#fff",
-    zIndex: 10,
-    width: "100%",
-    border: "1px black solid",
-    boxShadow: "4px 4px 0px black",
-    borderRadius: "16px",
-    gap: "5px",
-    padding: "24px 7px",
-  },
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "10px",
-  },
-  daysRow: {
-    boxSizing: "border-box" as "border-box",
-    textAlign: "center" as "center",
-    padding: "8px 6px",
-    display: "grid",
-    gridTemplateColumns: "repeat(7, 1fr)",
-    width: "100%",
-  },
-  datesGrid: {
-    boxSizing: "border-box" as "border-box",
-    padding: "10px",
-    gap: "10px",
-    display: "grid",
-    width: "100%",
-    gridTemplateColumns: "repeat(7, 1fr)",
-    textAlign: "center" as "center",
-  },
-  dayName: {
-    fontFamily: "Montserrat",
-  },
-  dateCell: {
-    boxSizing: "border-box" as "border-box",
-    width: "100%",
-    aspectRatio: "1/1",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: "500px",
-    transition: "0.3s ease-in-out",
-  },
-  selectedDate: {
-    backgroundColor: "#007BFF",
-    color: "#fff",
-    borderRadius: "50%",
-  },
-  dateCellHover: {
-    backgroundColor: "red",
-    cursor: "pointer",
-  },
 };
 
 export default Calendar;

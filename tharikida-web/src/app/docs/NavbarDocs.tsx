@@ -12,9 +12,7 @@ const NavbarDocs = () => (
     </p>
     <h2>Basic Usage</h2>
     <Navbar
-      logo={
-        <Image src="/tharikida-logo.png" alt="Logo" height={32} width={32} />
-      }
+      logo={<img src="/tharikida-logo.png" alt="Logo" height={32} width={32} />}
       links={[
         { label: "Home", href: "/", active: true },
         { label: "Docs", href: "/docs" },

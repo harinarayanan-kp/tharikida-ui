@@ -15,24 +15,30 @@ import { useTheme } from "../../theme/ThemeProvider";
  * @returns {JSX.Element} A styled loader spinner.
  */
 export interface LoaderProps {
-  /** Size of the loader in px */
   size?: number;
-  /** Loader color */
   color?: string;
-  /** Custom styles */
   styles?: React.CSSProperties;
-  /** Additional className */
   className?: string;
 }
 
 const Loader = ({ size = 32, color, styles, className = "" }: LoaderProps) => {
   const theme = useTheme();
   const loaderColor = color || theme.primaryColor || "#000";
+  const loaderStyles: React.CSSProperties = {
+    display: "inline-block",
+    color: theme.textColor,
+    fontFamily: theme.fontFamily,
+    fontSize: theme.fontSize,
+    fontWeight: theme.fontWeight,
+    lineHeight: theme.lineHeight,
+    letterSpacing: theme.letterSpacing,
+    padding: theme.padding,
+    margin: theme.margin,
+    transition: theme.transitionDuration,
+    ...styles,
+  };
   return (
-    <div
-      className={`tharikida-loader ${className}`}
-      style={{ display: "inline-block", ...styles }}
-    >
+    <div className={`tharikida-loader ${className}`} style={loaderStyles}>
       <svg
         width={size}
         height={size}

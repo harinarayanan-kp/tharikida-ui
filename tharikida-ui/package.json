@@ -1,11 +1,11 @@
 {
   "name": "tharikida-ui",
   "author": "Harinarayanan K P harikpaug18@gmail.com",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "A lightweight, customizable React UI component library designed for simplicity and flexibility.",
   "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
   "homepage": "https://tharikida-ui.vercel.app/",
   "repository": {
     "type": "git",
@@ -16,40 +16,60 @@
     "React",
     "component library",
     "React components",
-    "Tharikida UI"
+    "Tharikida UI",
+    "UI kit",
+    "design system",
+    "typescript",
+    "customizable",
+    "component",
+    "frontend",
+    "web",
+    "library",
+    "open source",
+    "theme",
+    "modern",
+    "responsive"
   ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./button": {
       "import": "./dist/button.js",
-      "require": "./dist/button.js"
+      "require": "./dist/button.js",
+      "types": "./dist/button.d.ts"
     },
     "./datadisplay": {
       "import": "./dist/datadisplay.js",
-      "require": "./dist/datadisplay.js"
+      "require": "./dist/datadisplay.js",
+      "types": "./dist/datadisplay.d.ts"
     },
     "./input": {
       "import": "./dist/input.js",
-      "require": "./dist/input.js"
+      "require": "./dist/input.js",
+      "types": "./dist/input.d.ts"
     },
     "./navigation": {
       "import": "./dist/navigation.js",
-      "require": "./dist/navigation.js"
+      "require": "./dist/navigation.js",
+      "types": "./dist/navigation.d.ts"
     },
     "./specials": {
       "import": "./dist/specials.js",
-      "require": "./dist/specials.js"
+      "require": "./dist/specials.js",
+      "types": "./dist/specials.d.ts"
     },
     "./media": {
       "import": "./dist/media.js",
-      "require": "./dist/media.js"
+      "require": "./dist/media.js",
+      "types": "./dist/media.d.ts"
     },
     "./feedback": {
       "import": "./dist/feedback.js",
-      "require": "./dist/feedback.js"
+      "require": "./dist/feedback.js",
+      "types": "./dist/feedback.d.ts"
     }
   },
   "scripts": {

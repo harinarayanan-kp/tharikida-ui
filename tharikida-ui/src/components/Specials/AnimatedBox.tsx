@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Star from "../Shapes/Star";
+import Star from "./Star";
 
 /**
  * `RandomDivs` (AnimatedBox) is a component that animates random star shapes within a box, supporting custom styles and animation settings.
