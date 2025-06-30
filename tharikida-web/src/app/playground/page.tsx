@@ -16,7 +16,7 @@ import { Accordion } from "tharikida-ui/datadisplay";
 import Navbar from "../Navbar/Navbar";
 import { Tooltip } from "tharikida-ui/feedback";
 import "./playground.css";
-import { FaApple, FaCoffee, FaHome, FaIcons } from "react-icons/fa";
+import { FaApple, FaCoffee, FaHome } from "react-icons/fa";
 
 const Playground = () => {
   const [primaryColor, setPrimaryColor] = useState("#2ecc71");
@@ -55,7 +55,6 @@ const Playground = () => {
   const [shadowSpread, setShadowSpread] = useState("0px");
   const [shadowInset, setShadowInset] = useState(false);
   const [hoverColor, setHoverColor] = useState("#62f39f");
-  const [checkbox, setCheckbox] = useState(false);
 
   // Default values for ThemeProvider props
   const defaultTheme = {
