@@ -4,20 +4,23 @@
 [![license](https://img.shields.io/npm/l/tharikida-ui.svg)](LICENSE)
 [![downloads](https://img.shields.io/npm/dm/tharikida-ui.svg)](https://www.npmjs.com/package/tharikida-ui)
 
-**A Naadan React Component Library for Fast, Fun, and Themed UIs**
+**A Modern React Component Library for Fast, Flexible, and Themed UIs**
 
-Tharikida UI is a lightweight React component library inspired by Kerala's vibrant yet simple aesthetic. It offers a growing set of accessible, customizable, and themeable components for building beautiful modern apps with ease.
+Tharikida UI is a lightweight React component library designed for simplicity, flexibility, and a beautiful user experience. It offers a growing set of accessible, customizable, and themeable components for building professional, modern web applications with ease.
 
----
+<p align="center">
+  <img src="https://github.com/harinarayanan-kp/tharikida-ui/blob/main/tharikida-web/public/preview2.png" alt="Preview 2" width="45%" style="margin-right: 10px;"/>
+  <img src="https://github.com/harinarayanan-kp/tharikida-ui/blob/main/tharikida-web/public/preview1.png" alt="Preview 1" width="45%"/>
+</p>
 
 ## Why Tharikida UI?
 
-- 🏝️ **Kerala-inspired Design:** Unique, minimal, and vibrant UI components.
+- ✨ **Modern Design:** Clean, minimal, and visually appealing UI components.
 - ⚡ **Fast & Lightweight:** Minimal dependencies, optimized for performance.
-- 🎨 **Theming Built-In:** Change colors, fonts, and corner radius globally with the `ThemeProvider`.
-- 🛠️ **Customizable:** All components support custom styles, theming, and flexible props.
-- ♿ **Accessible:** Components are built with accessibility in mind.
-- 📦 **Ready-to-Use:** Includes Button, Modal, Card, Input, Alert, ProgressBar, List, Table, and more.
+- 🎨 **Theming Built-In:** Effortlessly customize colors, fonts, and corner radius globally with the `ThemeProvider`.
+- 🛠️ **Highly Customizable:** All components support custom styles, theming, and flexible props.
+- ♿ **Accessible:** Built with accessibility and usability best practices.
+- 📦 **Comprehensive:** Includes Button, Modal, Card, Input, Alert, ProgressBar, List, Table, and more.
 
 ---
 
@@ -69,12 +72,12 @@ export default App;
 
 ## Features
 
-- 🌴 **Naadan Design:** Minimal, clean, and Kerala-inspired UI components.
+- ✨ **Modern Design:** Clean, minimal, and visually appealing UI components.
 - ⚡ **Fast & Lightweight:** Optimized for performance with minimal dependencies.
 - 🎨 **Theming Built-In:** Change colors, fonts, and corner radius globally with the `ThemeProvider`.
 - 🛠️ **Customizable:** All components support custom styles, theming, and flexible props.
 - ♿ **Accessible:** Built with accessibility best practices.
-- 📦 **Ready-to-Use:** Includes Button, Modal, Card, Input, Alert, ProgressBar, List, Table, and more.
+- 📦 **Comprehensive:** Includes Button, Modal, Card, Input, Alert, ProgressBar, List, Table, and more.
 
 ---
 
@@ -115,6 +118,19 @@ Contributions are welcome! If you have suggestions, bug reports, or want to add 
 3. Commit your changes (`git commit -am 'Add new feature'`)
 4. Push to the branch (`git push origin feature/YourFeature`)
 5. Open a pull request
+
+---
+
+## Tech Stack Compatibility
+
+Tharikida UI is designed to work seamlessly with modern React-based projects, including:
+
+- **React** (v18 and v19)
+- **TypeScript**
+- **Next.js**
+- **Vite**
+- **Create React App**
+- Any other React framework or build tool supporting ES modules
 
 ---
 
