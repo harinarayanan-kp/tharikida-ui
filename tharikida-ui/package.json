@@ -1,7 +1,7 @@
 {
   "name": "tharikida-ui",
   "author": "Harinarayanan K P harikpaug18@gmail.com",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A modern, lightweight React UI component library with built-in theming, accessibility, and full TypeScript support. Create beautiful, responsive, and customizable web apps faster with ready-to-use components for any project.",
   "license": "MIT",
   "main": "dist/index.js",
